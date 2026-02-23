@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News & Announcements - Computer Science Division</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #61223B;
+            --text: #333333;
+            --bg-light: #F5F5F5;
+            --border: #CCCCCC;
+            --link: #0779BF;
+            --white: #FFFFFF;
+        }
+        body {
+            font-family: 'Raleway', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background-color: var(--white);
+        }
+        header {
+            background-color: var(--white);
+            border-bottom: 3px solid var(--primary);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        nav a:hover, nav a.active {
+            color: var(--primary);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--primary);
+        }
+        .news-item {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            background-color: var(--white);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s;
+        }
+        .news-item:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        .news-date {
+            color: #999;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        .news-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+        .news-category {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        .news-content {
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+        .read-more {
+            color: var(--link);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .read-more:hover {
+            text-decoration: underline;
+        }
+        a { color: var(--link); }
+        a:hover { text-decoration: underline; }
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+        .featured {
+            border-left: 4px solid var(--primary);
+        }
+        @media (max-width: 768px) {
+            nav ul { gap: 15px; flex-direction: column; }
+            h1 { font-size: 1.5rem; }
+            .news-title { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-wrapper">
+            <div class="logo" onclick="window.location='/'">CS Division</div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/programmes.html">Programmes</a></li>
+                    <li><a href="/courses.html">Courses</a></li>
+                    <li><a href="/staff.html">Staff</a></li>
+                    <li><a href="/research.html">Research</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>News & Announcements</h1>
+        <p style="margin-bottom: 30px;">Stay updated with the latest news, events, and announcements from the Computer Science Division.</p>
+
+        <div class="news-item featured">
+            <div class="news-date">February 23, 2026</div>
+            <div class="news-category">Announcement</div>
+            <div class="news-title">2026 Honours and Masters Admission Cycle Open</div>
+            <div class="news-content">
+                <p>The Computer Science Division is now accepting applications for Honours and Masters programmes for the 2026 academic year. Prospective students interested in advancing their computing science education are encouraged to apply. Application deadlines vary by programme - contact <a href="mailto:postgrad@cs.sun.ac.za">postgrad@cs.sun.ac.za</a> for specific dates and requirements.</p>
+            </div>
+        </div>
+
+        <div class="news-item featured">
+            <div class="news-date">February 15, 2026</div>
+            <div class="news-category">Event</div>
+            <div class="news-title">Div & Conquer Hackathon 2026 - Department Website Launch</div>
+            <div class="news-content">
+                <p>As part of the Div & Conquer Hackathon 2026, the Computer Science Division has launched a modern, comprehensive website showcasing our academic programmes, research groups, and staff. This new digital presence reflects our commitment to excellence in computer science education and research at Stellenbosch University.</p>
+            </div>
+        </div>
+
+        <div class="news-item">
+            <div class="news-date">February 10, 2026</div>
+            <div class="news-category">Research</div>
+            <div class="news-title">New Research Collaboration: Machine Learning for Earth Observation</div>
+            <div class="news-content">
+                <p>The Machine Learning and Artificial Intelligence research group has established a collaboration with international partners on earth observation and remote sensing applications. This project combines machine learning expertise with geographic information systems for environmental monitoring and climate research.</p>
+            </div>
+        </div>
+
+        <div class="news-item">
+            <div class="news-date">January 28, 2026</div>
+            <div class="news-category">Academic</div>
+            <div class="news-title">First Year Computer Science Orientation Programme</div>
+            <div class="news-content">
+                <p>Welcome to all new first-year students in the Computer Science Division! Orientation activities begin in February with introductions to campus life, academic support services, and computing resources. Faculty mentors will be available to help with the transition to university life and to answer questions about our programmes.</p>
+            </div>
+        </div>
+
+        <div class="news-item">
+            <div class="news-date">January 15, 2026</div>
+            <div class="news-category">Award</div>
+            <div class="news-title">Professor Andries Engelbrecht Recognized for Research Excellence</div>
+            <div class="news-content">
+                <p>Professor Andries Engelbrecht has been recognized for his outstanding contributions to swarm intelligence and evolutionary computation. His work continues to influence research communities worldwide and has generated numerous citations and international collaborations.</p>
+            </div>
+        </div>
+
+        <div class="news-item">
+            <div class="news-date">December 15, 2025</div>
+            <div class="news-category">Announcement</div>
+            <div class="news-title">2026 Course Schedule Released</div>
+            <div class="news-content">
+                <p>The complete course schedule for the 2026 academic year is now available. Students can access course times, venues, and lecturers through the university portal. Course registration opens in January. For course-related questions, contact <a href="mailto:undergrad@cs.sun.ac.za">undergrad@cs.sun.ac.za</a>.</p>
+            </div>
+        </div>
+
+        <div class="news-item">
+            <div class="news-date">December 1, 2025</div>
+            <div class="news-category">Research</div>
+            <div class="news-title">Software Verification Workshop Held at Department</div>
+            <div class="news-content">
+                <p>The Software Engineering and Verification group hosted an intensive workshop on formal verification methods and model checking techniques. The workshop featured contributions from both local researchers and visiting academics from international institutions.</p>
+            </div>
+        </div>
+
+        <div class="news-item">
+            <div class="news-date">November 10, 2025</div>
+            <div class="news-category">Event</div>
+            <div class="news-title">Final Year Project Showcase 2025</div>
+            <div class="news-content">
+                <p>The annual Final Year Project Showcase highlighted the outstanding work of honours students in the Computer Science Division. Projects ranged from machine learning applications to software engineering innovations, demonstrating the quality of education and research in our programmes.</p>
+            </div>
+        </div>
+
+        <div class="news-item">
+            <div class="news-date">October 20, 2025</div>
+            <div class="news-category">Collaboration</div>
+            <div class="news-title">International Research Partnership with European Universities</div>
+            <div class="news-content">
+                <p>The Computer Science Division has formalized research partnerships with universities in the Netherlands and Germany. These collaborations focus on automata theory, formal methods, and distributed systems research, with plans for student exchange and joint publications.</p>
+            </div>
+        </div>
+
+        <div class="news-item">
+            <div class="news-date">September 15, 2025</div>
+            <div class="news-category">Award</div>
+            <div class="news-title">Honours Graduate Awarded Prestigious Scholarship</div>
+            <div class="news-content">
+                <p>A recent honours graduate from the Computer Science Division has been awarded a prestigious international scholarship for postgraduate studies. The award recognizes excellence in research and academic achievement in the field of machine learning and artificial intelligence.</p>
+            </div>
+        </div>
+
+        <div class="news-item">
+            <div class="news-date">August 28, 2025</div>
+            <div class="news-category">Academic</div>
+            <div class="news-title">New Courses Offered in 2026</div>
+            <div class="news-content">
+                <p>The division is expanding its course offerings for 2026 with new modules in emerging areas of computer science. New courses include advanced topics in cybersecurity, data science methodologies, and cloud computing systems. These additions reflect current industry trends and research interests.</p>
+            </div>
+        </div>
+
+        <h2 style="color: var(--primary); margin-top: 50px; margin-bottom: 30px;">Subscribe for Updates</h2>
+        <p style="margin-bottom: 20px;">To receive notifications about new announcements, events, and research updates from the Computer Science Division, please:</p>
+        <ul style="margin-left: 20px; margin-bottom: 30px;">
+            <li>Follow us on <a href="https://facebook.com/groups/csmaties/">Facebook</a></li>
+            <li>Contact <a href="mailto:secretary@cs.sun.ac.za">secretary@cs.sun.ac.za</a> to join our mailing list</li>
+            <li>Visit the main <a href="https://cs.sun.ac.za">department website</a> for updates</li>
+        </ul>
+
+        <h2 style="color: var(--primary); margin-top: 50px; margin-bottom: 20px;">Past Events & Archive</h2>
+        <p>For archived announcements and past event information, please contact the <a href="/contact.html">department office</a> or visit the <a href="/">home page</a> for historical records.</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Computer Science Division, Stellenbosch University</p>
+    </footer>
+</body>
+</html>

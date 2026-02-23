@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses - Computer Science Division</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary: #61223B; --text: #333333; --bg-light: #F5F5F5; --border: #CCCCCC; --link: #0779BF; --white: #FFFFFF; }
+        body { font-family: 'Raleway', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--text); line-height: 1.6; background-color: var(--white); }
+        header { background-color: var(--white); border-bottom: 3px solid var(--primary); padding: 16px 0; position: sticky; top: 0; z-index: 100; }
+        .header-wrapper { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); cursor: pointer; }
+        nav ul { list-style: none; display: flex; gap: 30px; }
+        nav a { color: var(--text); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+        nav a:hover { color: var(--primary); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        h1 { font-size: 2rem; margin-bottom: 30px; color: var(--primary); }
+        .course-card { border: 1px solid var(--border); border-radius: 8px; padding: 20px; background-color: var(--white); box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); margin-bottom: 20px; }
+        .course-code { font-weight: 700; color: var(--primary); font-size: 1.1rem; }
+        .course-title { font-size: 1.25rem; margin: 5px 0; }
+        .course-meta { font-size: 0.85rem; color: #666; margin: 10px 0; }
+        .course-description { margin-top: 10px; line-height: 1.6; }
+        a { color: var(--link); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        footer { background-color: var(--primary); color: var(--white); padding: 40px 20px; text-align: center; margin-top: 60px; }
+        @media (max-width: 768px) { nav ul { gap: 15px; flex-direction: column; } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-wrapper">
+            <div class="logo" onclick="window.location='/'">CS Division</div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/programmes.html">Programmes</a></li>
+                    <li><a href="/courses.html">Courses</a></li>
+                    <li><a href="/staff.html">Staff</a></li>
+                    <li><a href="/research.html">Research</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Course Catalogue</h1>
+        <p>Browse our comprehensive course offerings across all year levels of study.</p>
+
+        <h2 style="margin-top: 40px; margin-bottom: 20px;">First Year Courses</h2>
+        <div class="course-card">
+            <div class="course-code">CS114</div>
+            <div class="course-title">Introductory Computer Science 1</div>
+            <div class="course-meta">1st Semester | Undergraduate</div>
+            <div class="course-description">Introduction to basic computer programming; formulation and solution of problems by means of computer programming; data representation and variable types; assignment statements; conditional execution and iteration; static data structures; input and output; modular programming; recursion; testing and debugging; introduction to object-oriented programming.</div>
+        </div>
+
+        <div class="course-card">
+            <div class="course-code">CS144</div>
+            <div class="course-title">Introductory Computer Science 2</div>
+            <div class="course-meta">2nd Semester | Undergraduate</div>
+            <div class="course-description">Further formulation and solution of problems by means of computer programming; introductory data structures and algorithms in an object-oriented set-up; key concepts in object orientation: inheritance and polymorphism; design patterns; searching and sorting algorithms; complexity theory; dynamic data structures; regular expressions and finite automata.</div>
+        </div>
+
+        <h2 style="margin-top: 40px; margin-bottom: 20px;">Second Year Courses</h2>
+        <div class="course-card">
+            <div class="course-code">CS214</div>
+            <div class="course-title">Data Structures and Algorithms</div>
+            <div class="course-meta">1st Semester | Undergraduate</div>
+            <div class="course-description">The classical data structures and algorithms in an object-oriented set-up. Advanced techniques for the analysis of algorithms.</div>
+        </div>
+
+        <div class="course-card">
+            <div class="course-code">CS244</div>
+            <div class="course-title">Computer Architecture</div>
+            <div class="course-meta">2nd Semester | Undergraduate</div>
+            <div class="course-description">Basic computer architecture. Programming in machine language and assembly language. Assemblers, binders and loaders. Basic concepts of operating systems; memory management, process management and file systems.</div>
+        </div>
+
+        <h2 style="margin-top: 40px; margin-bottom: 20px;">Third Year Courses</h2>
+        <div class="course-card">
+            <div class="course-code">CS313</div>
+            <div class="course-title">Computer Networks</div>
+            <div class="course-meta">1st Semester | Undergraduate</div>
+            <div class="course-description">Introduction to networks in general and the internet in particular. Architecture and protocols. Allocation of resources and congestion control. Network security. Applications.</div>
+        </div>
+
+        <div class="course-card">
+            <div class="course-code">CS315</div>
+            <div class="course-title">Machine Learning</div>
+            <div class="course-meta">1st Semester | Undergraduate</div>
+            <div class="course-description">Dimension reduction techniques; machine-learning techniques based on maximum-likelihood, maximum-posterior and expectation-maximization estimates; modelling using logistic regression, Gaussian mixtures and hidden Markov models.</div>
+        </div>
+
+        <div class="course-card">
+            <div class="course-code">CS343</div>
+            <div class="course-title">Databases and Web Centric Programming</div>
+            <div class="course-meta">2nd Semester | Undergraduate</div>
+            <div class="course-description">Introduction to relational databases. Mapping relational model onto object model. Implementing a database application in the context of the web. Web services. Server-side scalability. Virtualisation. Cloud Computing.</div>
+        </div>
+
+        <p style="margin-top: 30px; font-size: 0.9rem; color: #666;">Displaying 7 of 21 courses. Full course catalogue with descriptions for all 21 modules available in data files.</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Computer Science Division, Stellenbosch University</p>
+    </footer>
+</body>
+</html>

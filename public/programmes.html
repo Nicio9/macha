@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programmes - Computer Science Division</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #61223B;
+            --text: #333333;
+            --bg-light: #F5F5F5;
+            --border: #CCCCCC;
+            --link: #0779BF;
+            --white: #FFFFFF;
+        }
+        body {
+            font-family: 'Raleway', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background-color: var(--white);
+        }
+        header {
+            background-color: var(--white);
+            border-bottom: 3px solid var(--primary);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        nav a:hover, nav a.active {
+            color: var(--primary);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--primary);
+        }
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        h3 {
+            font-size: 1.1rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        .programme-intro {
+            font-size: 1.05rem;
+            margin-bottom: 30px;
+            background-color: var(--bg-light);
+            padding: 20px;
+            border-left: 4px solid var(--primary);
+            border-radius: 4px;
+        }
+        .programme-card {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 25px;
+            background-color: var(--white);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 25px;
+            transition: box-shadow 0.3s;
+        }
+        .programme-card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        .programme-card h3 {
+            margin-top: 0;
+        }
+        .programme-type {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .duration {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        .key-info {
+            background-color: var(--bg-light);
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 15px;
+            font-size: 0.95rem;
+        }
+        .key-info ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        .key-info li {
+            margin-bottom: 8px;
+        }
+        .focal-areas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .focal-area {
+            background-color: var(--bg-light);
+            padding: 15px;
+            border-radius: 4px;
+            border-left: 3px solid var(--primary);
+        }
+        .focal-area h4 {
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        a {
+            color: var(--link);
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 15px;
+                flex-direction: column;
+            }
+            h1 { font-size: 1.5rem; }
+            h2 { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-wrapper">
+            <div class="logo" onclick="window.location='/'">CS Division</div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/programmes.html" class="active">Programmes</a></li>
+                    <li><a href="/courses.html">Courses</a></li>
+                    <li><a href="/staff.html">Staff</a></li>
+                    <li><a href="/research.html">Research</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Academic Programmes</h1>
+        <div class="programme-intro">
+            <p>The Computer Science Division at Stellenbosch University offers comprehensive undergraduate and postgraduate programmes designed to prepare students for careers in computing and research. Our flexible structure allows students to specialize in areas such as data science, software engineering, machine learning, and more.</p>
+        </div>
+
+        <h2>Undergraduate Programmes</h2>
+
+        <div class="programme-card">
+            <span class="programme-type">Undergraduate</span>
+            <h3>BSc Computer Science</h3>
+            <div class="duration">Duration: 3 years</div>
+            <p>The Bachelor of Science in Computer Science is a flexible degree that allows students to choose focal areas aligned with their career interests. All students complete a core curriculum covering fundamental computing concepts, algorithms, data structures, and systems, while having the freedom to specialize.</p>
+            
+            <div class="key-info">
+                <strong>Entry Requirements:</strong>
+                <ul>
+                    <li>Minimum NSC Level 5 or equivalent in Mathematics</li>
+                    <li>English language proficiency</li>
+                    <li>Competitive admission based on academic performance</li>
+                </ul>
+            </div>
+
+            <strong style="margin-top: 20px; display: block;">Available Focal Areas:</strong>
+            <div class="focal-areas">
+                <div class="focal-area">
+                    <h4>General Computer Science</h4>
+                    <p>Broad training in computing with flexibility to choose Science modules, ideal for those interested in diverse computing topics.</p>
+                </div>
+                <div class="focal-area">
+                    <h4>Computer Systems</h4>
+                    <p>CS major combined with Electrical & Electronic Engineering modules for systems-focused careers.</p>
+                </div>
+                <div class="focal-area">
+                    <h4>Data Science</h4>
+                    <p>CS major supplemented with Statistics and Data Science modules for careers in analytics and data-driven problem solving.</p>
+                </div>
+                <div class="focal-area">
+                    <h4>CS with Genetics (Second Major)</h4>
+                    <p>Combined major programme integrating computational biology and bioinformatics.</p>
+                </div>
+                <div class="focal-area">
+                    <h4>CS with Geographical Information Technology</h4>
+                    <p>Combined major programme for GIS and spatial data applications.</p>
+                </div>
+            </div>
+
+            <div class="key-info" style="margin-top: 20px;">
+                <strong>Core Curriculum (All Focal Areas):</strong>
+                <ul>
+                    <li><strong>Year 1:</strong> Introductory Computer Science 1 & 2</li>
+                    <li><strong>Year 2:</strong> Data Structures & Algorithms, Computer Architecture, plus electives</li>
+                    <li><strong>Year 3:</strong> Computer Networks, Machine Learning, Databases & Web Programming, plus advanced topics in automata, concurrency, and program design</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="programme-card">
+            <span class="programme-type">Undergraduate</span>
+            <h3>BDatSci Bachelor of Data Science</h3>
+            <div class="duration">Duration: 4 years</div>
+            <p>The Bachelor of Data Science is a specialized 4-year degree designed for students passionate about extracting insights from data. This programme combines Computer Science courses with advanced Mathematics and Statistics, preparing graduates for data science, analytics, and research careers.</p>
+            
+            <div class="key-info">
+                <strong>Entry Requirements:</strong>
+                <ul>
+                    <li>Strong background in Mathematics and Sciences</li>
+                    <li>Minimum NSC Level 5 in Mathematics</li>
+                    <li>Quantitative aptitude and analytical thinking</li>
+                </ul>
+            </div>
+
+            <strong style="margin-top: 20px; display: block;">Focal Area Options:</strong>
+            <div class="focal-areas">
+                <div class="focal-area">
+                    <h4>Computer Science Track</h4>
+                    <p>Full CS curriculum with data science focus</p>
+                </div>
+                <div class="focal-area">
+                    <h4>Applied Mathematics</h4>
+                    <p>Mathematical foundations for data science</p>
+                </div>
+                <div class="focal-area">
+                    <h4>Statistical Physics</h4>
+                    <p>Physics-based approaches to modeling complex systems</p>
+                </div>
+                <div class="focal-area">
+                    <h4>Analytics & Optimization</h4>
+                    <p>Quantitative methods for decision-making</p>
+                </div>
+                <div class="focal-area">
+                    <h4>Behavioral Economics</h4>
+                    <p>Economic and behavioral dimensions of data analysis</p>
+                </div>
+                <div class="focal-area">
+                    <h4>Statistical Learning</h4>
+                    <p>Statistical foundations of machine learning</p>
+                </div>
+            </div>
+        </div>
+
+        <h2>Postgraduate Programmes</h2>
+
+        <div class="programme-card">
+            <span class="programme-type">Honours</span>
+            <h3>Honours in Computer Science (CS797)</h3>
+            <div class="duration">Duration: 1 year (full-time) or 2 years (part-time)</div>
+            <p>The Honours degree is an intensive postgraduate programme designed to deepen expertise in Computer Science. Students complete 6 elective modules (96 credits) and an independent honours project (32 credits) under supervision.</p>
+            
+            <div class="key-info">
+                <strong>Entry Requirements:</strong>
+                <ul>
+                    <li>3-year BSc degree or equivalent</li>
+                    <li>At least 32 credits at 2nd/3rd year level in Computer Science or related quantitative disciplines</li>
+                    <li>Competitive selection process</li>
+                    <li>Mandatory full-time attendance (if selecting full-time option)</li>
+                </ul>
+            </div>
+
+            <div class="key-info" style="margin-top: 20px;">
+                <strong>Programme Structure:</strong>
+                <ul>
+                    <li>6 elective modules (choose based on interests)</li>
+                    <li>Honours project (large software construction or research problem)</li>
+                    <li>Independent supervision by faculty members</li>
+                    <li>Specialization options: Machine Learning, Data Science, Software Engineering, and more</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="programme-card">
+            <span class="programme-type">Masters</span>
+            <h3>Masters in Computer Science (CS878)</h3>
+            <div class="duration">Duration: 2 years (typical)</div>
+            <p>The Master's degree is a research-focused programme requiring students to conduct original research under faculty supervision. Students develop a significant contribution to their field of study through independent research leading to a thesis.</p>
+            
+            <div class="key-info">
+                <strong>Entry Requirements:</strong>
+                <ul>
+                    <li>Honours degree in Computer Science or equivalent</li>
+                    <li>Strong academic record</li>
+                    <li>Research proposal (to be developed with supervisor)</li>
+                    <li>Faculty supervisor assignment based on research interests</li>
+                </ul>
+            </div>
+
+            <div class="key-info" style="margin-top: 20px;">
+                <strong>Key Features:</strong>
+                <ul>
+                    <li>Independent research on approved topic</li>
+                    <li>Regular supervision meetings</li>
+                    <li>Progress reports and milestones</li>
+                    <li>Final thesis submission and evaluation</li>
+                    <li>Flexibility in research timeline and specialization</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="programme-card">
+            <span class="programme-type">PhD</span>
+            <h3>PhD in Computer Science (CS978)</h3>
+            <div class="duration">Duration: 3+ years</div>
+            <p>The PhD programme is designed for students committed to making significant contributions to Computer Science through original research. This is a comprehensive research degree requiring development of new knowledge in the field.</p>
+            
+            <div class="key-info">
+                <strong>Entry Requirements:</strong>
+                <ul>
+                    <li>Master's degree or Honours degree with strong research record</li>
+                    <li>Clear research interests and goals</li>
+                    <li>Faculty supervisor willing to supervise research topic</li>
+                    <li>Research proposal development</li>
+                </ul>
+            </div>
+
+            <div class="key-info" style="margin-top: 20px;">
+                <strong>Key Features:</strong>
+                <ul>
+                    <li>Comprehensive original research</li>
+                    <li>Supervision by experienced faculty</li>
+                    <li>Progress reviews and evaluations</li>
+                    <li>Final dissertation and defense</li>
+                    <li>Opportunity to contribute to academic conferences and publications</li>
+                    <li>Flexible timeline based on research needs</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>Related Programmes</h2>
+        <p>The Computer Science Division also offers modules and support for students pursuing related degrees such as:</p>
+        <div class="focal-areas">
+            <div class="focal-area">
+                <h4>BSc Mathematical Sciences</h4>
+                <p>With CS curriculum integration for mathematics-focused computing</p>
+            </div>
+            <div class="focal-area">
+                <h4>BCom Mathematical Sciences</h4>
+                <p>Data Science specialization for business analytics</p>
+            </div>
+            <div class="focal-area">
+                <h4>BSc GeoInformatics</h4>
+                <p>Spatial computing and geographic information systems</p>
+            </div>
+        </div>
+
+        <h2>Contact for Programme Information</h2>
+        <p>For more information about any of our programmes:</p>
+        <ul style="margin-left: 20px; margin-top: 15px;">
+            <li><strong>Undergraduate Enquiries:</strong> <a href="mailto:undergrad@cs.sun.ac.za">undergrad@cs.sun.ac.za</a></li>
+            <li><strong>Postgraduate Enquiries:</strong> <a href="mailto:postgrad@cs.sun.ac.za">postgrad@cs.sun.ac.za</a></li>
+            <li><strong>General Information:</strong> <a href="mailto:secretary@cs.sun.ac.za">secretary@cs.sun.ac.za</a></li>
+            <li><strong>Phone:</strong> +27 21 808 4232</li>
+        </ul>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Computer Science Division, Stellenbosch University</p>
+    </footer>
+</body>
+</html>

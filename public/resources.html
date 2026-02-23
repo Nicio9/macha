@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Resources - Computer Science Division</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #61223B;
+            --text: #333333;
+            --bg-light: #F5F5F5;
+            --border: #CCCCCC;
+            --link: #0779BF;
+            --white: #FFFFFF;
+        }
+        body {
+            font-family: 'Raleway', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background-color: var(--white);
+        }
+        header {
+            background-color: var(--white);
+            border-bottom: 3px solid var(--primary);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        nav a:hover, nav a.active {
+            color: var(--primary);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--primary);
+        }
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        .intro {
+            font-size: 1.05rem;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: var(--bg-light);
+            border-left: 4px solid var(--primary);
+            border-radius: 4px;
+        }
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .resource-card {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            background-color: var(--white);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s;
+        }
+        .resource-card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        .resource-card h3 {
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+        .resource-card p {
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        .resource-links {
+            list-style: none;
+            margin: 15px 0;
+        }
+        .resource-links li {
+            margin-bottom: 10px;
+        }
+        .resource-links a {
+            color: var(--link);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .resource-links a:hover {
+            text-decoration: underline;
+        }
+        .faq-item {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: var(--white);
+        }
+        .faq-question {
+            font-weight: 700;
+            color: var(--primary);
+            cursor: pointer;
+            margin-bottom: 12px;
+        }
+        .faq-answer {
+            padding-top: 12px;
+            border-top: 1px solid var(--border);
+            line-height: 1.7;
+        }
+        .important {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        .important strong {
+            color: #856404;
+        }
+        a { color: var(--link); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+        @media (max-width: 768px) {
+            nav ul { gap: 15px; flex-direction: column; }
+            h1 { font-size: 1.5rem; }
+            .resource-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-wrapper">
+            <div class="logo" onclick="window.location='/'">CS Division</div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/programmes.html">Programmes</a></li>
+                    <li><a href="/courses.html">Courses</a></li>
+                    <li><a href="/staff.html">Staff</a></li>
+                    <li><a href="/research.html">Research</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Student Resources</h1>
+        <div class="intro">
+            <p>Welcome to the Computer Science Division student resources. Here you'll find links to important services, frequently asked questions, and tools to support your academic success.</p>
+        </div>
+
+        <h2>Academic Support & Tools</h2>
+        <div class="resource-grid">
+            <div class="resource-card">
+                <h3>📚 Learning Management System</h3>
+                <p>Access course materials, assignments, and announcements through the university's learning platform.</p>
+                <ul class="resource-links">
+                    <li><a href="https://online.sun.ac.za" target="_blank">SUNLearn Portal</a></li>
+                    <li><a href="https://www.sun.ac.za/en/student-support" target="_blank">Student Support Services</a></li>
+                </ul>
+            </div>
+
+            <div class="resource-card">
+                <h3>💻 Computing Facilities</h3>
+                <p>Information about computer labs, software, and technical support available to students.</p>
+                <ul class="resource-links">
+                    <li>Lab Hours: Posted in CS Building entrance</li>
+                    <li><a href="/contact.html">IT Support</a> for access issues</li>
+                    <li>Software licenses available through university</li>
+                </ul>
+            </div>
+
+            <div class="resource-card">
+                <h3>📖 Library Services</h3>
+                <p>Stellenbosch University library resources, databases, and research support.</p>
+                <ul class="resource-links">
+                    <li><a href="https://library.sun.ac.za" target="_blank">University Library</a></li>
+                    <li><a href="https://library.sun.ac.za/research" target="_blank">Research Support</a></li>
+                    <li>Subject librarian available for consultations</li>
+                </ul>
+            </div>
+
+            <div class="resource-card">
+                <h3>🎓 Tutoring & Mentoring</h3>
+                <p>Peer tutoring, faculty office hours, and mentoring programmes for student success.</p>
+                <ul class="resource-links">
+                    <li><a href="mailto:undergrad@cs.sun.ac.za">Undergraduate Support</a></li>
+                    <li>Attend office hours (schedule in course syllabus)</li>
+                    <li>Join study groups and peer learning sessions</li>
+                </ul>
+            </div>
+
+            <div class="resource-card">
+                <h3>🖥️ Programming Resources</h3>
+                <p>Online platforms, documentation, and tutorials for programming languages.</p>
+                <ul class="resource-links">
+                    <li><a href="https://github.com/" target="_blank">GitHub</a> - Version control</li>
+                    <li><a href="https://stackoverflow.com/" target="_blank">Stack Overflow</a> - Q&A community</li>
+                    <li><a href="https://www.python.org/" target="_blank">Python</a>, Java, C++ documentation</li>
+                </ul>
+            </div>
+
+            <div class="resource-card">
+                <h3>📊 Data & Research Tools</h3>
+                <p>Tools for data analysis, visualization, and research.</p>
+                <ul class="resource-links">
+                    <li>MATLAB, R, Python (Anaconda distribution)</li>
+                    <li><a href="https://www.latex-project.org/" target="_blank">LaTeX</a> for document preparation</li>
+                    <li>Database management systems</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>Student Services & Support</h2>
+        <div class="important">
+            <strong>Need Help?</strong> Contact <a href="mailto:undergrad@cs.sun.ac.za">undergrad@cs.sun.ac.za</a> for undergraduate support or <a href="mailto:postgrad@cs.sun.ac.za">postgrad@cs.sun.ac.za</a> for postgraduate assistance.
+        </div>
+
+        <div class="resource-grid">
+            <div class="resource-card">
+                <h3>🏥 Health & Wellness</h3>
+                <p>Campus health services and counseling support.</p>
+                <ul class="resource-links">
+                    <li><a href="https://www.sun.ac.za/en/Student-Life/health-and-wellness" target="_blank">Student Health Services</a></li>
+                    <li><a href="https://www.sun.ac.za/en/Student-Life/student-counselling" target="_blank">Counseling Services</a></li>
+                </ul>
+            </div>
+
+            <div class="resource-card">
+                <h3>💰 Financial Support</h3>
+                <p>Information about bursaries, scholarships, and financial aid.</p>
+                <ul class="resource-links">
+                    <li><a href="https://www.sun.ac.za/en/student-funding" target="_blank">Student Funding</a></li>
+                    <li><a href="https://www.sun.ac.za/en/Financial-Aid" target="_blank">Financial Aid Office</a></li>
+                    <li>Department scholarships for high-achieving students</li>
+                </ul>
+            </div>
+
+            <div class="resource-card">
+                <h3>🤝 Student Organizations</h3>
+                <p>Get involved with student societies and networking groups.</p>
+                <ul class="resource-links">
+                    <li><a href="https://facebook.com/groups/csmaties/" target="_blank">CS Maties Facebook Group</a></li>
+                    <li>ACM Student Chapter</li>
+                    <li>Join project and hackathon teams</li>
+                </ul>
+            </div>
+
+            <div class="resource-card">
+                <h3>🌍 Career Services</h3>
+                <p>Job placement, internship opportunities, and career planning.</p>
+                <ul class="resource-links">
+                    <li><a href="https://www.sun.ac.za/en/Study/careers" target="_blank">Career Services</a></li>
+                    <li>Alumni network and mentorship</li>
+                    <li>Industry networking events</li>
+                </ul>
+            </div>
+
+            <div class="resource-card">
+                <h3>♿ Accessibility & Accommodation</h3>
+                <p>Support for students with disabilities.</p>
+                <ul class="resource-links">
+                    <li><a href="https://www.sun.ac.za/en/Student-Life/Disability-Services" target="_blank">Disability Services</a></li>
+                    <li>Accommodation requests and support</li>
+                    <li><a href="/contact.html">Contact department head</a> for specific needs</li>
+                </ul>
+            </div>
+
+            <div class="resource-card">
+                <h3>📋 Academic Forms & Documents</h3>
+                <p>Common forms and documents needed during your studies.</p>
+                <ul class="resource-links">
+                    <li>Course registration forms</li>
+                    <li>Academic appeal procedures</li>
+                    <li><a href="mailto:secretary@cs.sun.ac.za">Contact office</a> for specific forms</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <div class="faq-question">Q: Where are my course materials and assignments?</div>
+            <div class="faq-answer">
+                All course materials are available on the <a href="https://online.sun.ac.za" target="_blank">SUNLearn portal</a>. You should have access automatically at the start of each semester. If you can't access a course, contact the lecturer or <a href="mailto:undergrad@cs.sun.ac.za">undergrad@cs.sun.ac.za</a>.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Q: When are office hours and how do I book a consultation?</div>
+            <div class="faq-answer">
+                Faculty office hours are listed in each course syllabus. Most lecturers offer drop-in hours or appointments. Email the lecturer to confirm their availability. For academic advising, contact <a href="mailto:undergrad@cs.sun.ac.za">undergrad@cs.sun.ac.za</a>.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Q: What programming languages and tools will I need?</div>
+            <div class="faq-answer">
+                The core languages in the CS curriculum include Python, Java, and C/C++. Most tools are free and available for Linux, Windows, and macOS. Your course materials will specify exactly which tools you need for each course. Campus computers have all required software pre-installed.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Q: How do I access the campus computing labs?</div>
+            <div class="faq-answer">
+                Computing labs are open during posted hours. Your student ID grants access. Hours and locations are posted at the CS Building entrance (A50x corridor). Labs close during semester breaks. For access issues, contact IT Support.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Q: What if I'm struggling with my courses?</div>
+            <div class="faq-answer">
+                Don't hesitate to reach out for help! Resources include:
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Attend lecturer office hours</li>
+                    <li>Join peer study groups</li>
+                    <li>Contact <a href="mailto:undergrad@cs.sun.ac.za">undergrad@cs.sun.ac.za</a> for tutoring referrals</li>
+                    <li>Visit the <a href="https://www.sun.ac.za/en/Student-Life/student-counselling" target="_blank">counseling center</a> for academic planning</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Q: How do I apply for honours or master's programmes?</div>
+            <div class="faq-answer">
+                Contact <a href="mailto:postgrad@cs.sun.ac.za">postgrad@cs.sun.ac.za</a> for application deadlines and requirements. Typically, applications open in the last semester of your degree. You'll need a strong academic record and may need to propose a research topic or supervisor.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Q: Are there internship or industry partnership opportunities?</div>
+            <div class="faq-answer">
+                Yes! The division has partnerships with local and international technology companies. Check the <a href="/news.html">news page</a> and <a href="https://facebook.com/groups/csmaties/" target="_blank">Facebook group</a> for internship announcements. The <a href="https://www.sun.ac.za/en/Study/careers" target="_blank">Career Services office</a> also maintains a list of opportunities.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Q: What is the academic integrity policy?</div>
+            <div class="faq-answer">
+                Stellenbosch University has strict academic integrity standards. Plagiarism, cheating, and unauthorized collaboration are serious violations. You'll receive detailed guidelines in each course. When in doubt, ask your lecturer. The university provides resources on proper citation and academic writing.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Q: How can I get involved in research?</div>
+            <div class="faq-answer">
+                Opportunities to participate in research include:
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Honours project (required, supervised research)</li>
+                    <li>Master's thesis (independent research)</li>
+                    <li>Join research groups as an undergraduate</li>
+                    <li>Attend departmental research seminars</li>
+                    <li>Contact lecturers during office hours about research opportunities</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 style="margin-top: 50px;">Important Contacts</h2>
+        <div class="resource-grid">
+            <div class="resource-card">
+                <h3>📧 Email Contacts</h3>
+                <ul class="resource-links">
+                    <li><strong>Undergraduate:</strong> <a href="mailto:undergrad@cs.sun.ac.za">undergrad@cs.sun.ac.za</a></li>
+                    <li><strong>Postgraduate:</strong> <a href="mailto:postgrad@cs.sun.ac.za">postgrad@cs.sun.ac.za</a></li>
+                    <li><strong>General:</strong> <a href="mailto:secretary@cs.sun.ac.za">secretary@cs.sun.ac.za</a></li>
+                </ul>
+            </div>
+
+            <div class="resource-card">
+                <h3>📞 Phone & Visit</h3>
+                <ul class="resource-links">
+                    <li><strong>Phone:</strong> <a href="tel:+27218084232">+27 21 808 4232</a></li>
+                    <li><strong>Office:</strong> A514 (Administrative)</li>
+                    <li><strong>Visit:</strong> <a href="/contact.html">Location & directions</a></li>
+                </ul>
+            </div>
+
+            <div class="resource-card">
+                <h3>🔗 Useful Links</h3>
+                <ul class="resource-links">
+                    <li><a href="https://www.sun.ac.za" target="_blank">Stellenbosch University</a></li>
+                    <li><a href="https://cs.sun.ac.za" target="_blank">Department Website</a></li>
+                    <li><a href="/news.html">Division News</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 style="margin-top: 50px;">Additional Resources</h2>
+        <p>For a comprehensive guide to university resources and services, visit the <a href="https://www.sun.ac.za/en/Students" target="_blank">Students page</a> on the main university website.</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Computer Science Division, Stellenbosch University</p>
+    </footer>
+</body>
+</html>

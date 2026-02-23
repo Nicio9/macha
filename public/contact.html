@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Computer Science Division</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #61223B;
+            --text: #333333;
+            --bg-light: #F5F5F5;
+            --border: #CCCCCC;
+            --link: #0779BF;
+            --white: #FFFFFF;
+        }
+        body {
+            font-family: 'Raleway', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background-color: var(--white);
+        }
+        header {
+            background-color: var(--white);
+            border-bottom: 3px solid var(--primary);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        nav a:hover, nav a.active {
+            color: var(--primary);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--primary);
+        }
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        .contact-card {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 25px;
+            background-color: var(--white);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s;
+        }
+        .contact-card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        .contact-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        .contact-info {
+            margin-bottom: 15px;
+        }
+        .contact-info strong {
+            color: var(--primary);
+            display: block;
+            margin-bottom: 5px;
+        }
+        .contact-info p {
+            margin-bottom: 10px;
+        }
+        .info-box {
+            background-color: var(--bg-light);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--primary);
+        }
+        .info-box h3 {
+            margin-top: 0;
+        }
+        .address-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .address-item {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .address-item h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        .address-item p {
+            margin-bottom: 8px;
+        }
+        .map-container {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            height: 400px;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        a { color: var(--link); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .button {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        .button:hover {
+            background-color: #4a1a2d;
+            text-decoration: none;
+        }
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+        @media (max-width: 768px) {
+            nav ul { gap: 15px; flex-direction: column; }
+            h1 { font-size: 1.5rem; }
+            .address-section { grid-template-columns: 1fr; }
+            .map-container { height: 250px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-wrapper">
+            <div class="logo" onclick="window.location='/'">CS Division</div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/programmes.html">Programmes</a></li>
+                    <li><a href="/courses.html">Courses</a></li>
+                    <li><a href="/staff.html">Staff</a></li>
+                    <li><a href="/research.html">Research</a></li>
+                    <li><a href="/contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Contact & Location</h1>
+        <div class="info-box">
+            <h3>Get in Touch</h3>
+            <p>The Computer Science Division is part of the Department of Mathematical Sciences at Stellenbosch University. We welcome inquiries from prospective students, researchers, and partners. Please contact us using the information below.</p>
+        </div>
+
+        <h2>Quick Contact Channels</h2>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <h3>📧 Email</h3>
+                <div class="contact-info">
+                    <strong>General Enquiries:</strong>
+                    <p><a href="mailto:secretary@cs.sun.ac.za">secretary@cs.sun.ac.za</a></p>
+                </div>
+                <div class="contact-info">
+                    <strong>Undergraduate Information:</strong>
+                    <p><a href="mailto:undergrad@cs.sun.ac.za">undergrad@cs.sun.ac.za</a></p>
+                </div>
+                <div class="contact-info">
+                    <strong>Postgraduate Information:</strong>
+                    <p><a href="mailto:postgrad@cs.sun.ac.za">postgrad@cs.sun.ac.za</a></p>
+                </div>
+                <div class="contact-info">
+                    <strong>Technical Issues:</strong>
+                    <p><a href="mailto:tech@cs.sun.ac.za">tech@cs.sun.ac.za</a></p>
+                </div>
+            </div>
+
+            <div class="contact-card">
+                <h3>📞 Telephone</h3>
+                <div class="contact-info">
+                    <strong>Main Office:</strong>
+                    <p><a href="tel:+27218084232">+27 21 808 4232</a></p>
+                </div>
+                <div class="contact-info">
+                    <strong>Fax:</strong>
+                    <p><a href="tel:+27866037130">+27 86 603 7130</a></p>
+                </div>
+                <div class="contact-info">
+                    <strong>Hours:</strong>
+                    <p>Monday to Friday, 08:00 - 17:00 SAST</p>
+                </div>
+            </div>
+
+            <div class="contact-card">
+                <h3>🌐 Online</h3>
+                <div class="contact-info">
+                    <strong>Website:</strong>
+                    <p><a href="https://cs.sun.ac.za" target="_blank">cs.sun.ac.za</a></p>
+                </div>
+                <div class="contact-info">
+                    <strong>Facebook:</strong>
+                    <p><a href="https://facebook.com/groups/csmaties/" target="_blank">Facebook Community</a></p>
+                </div>
+                <div class="contact-info">
+                    <strong>Main University:</strong>
+                    <p><a href="https://www.sun.ac.za" target="_blank">stellenbosch.ac.za</a></p>
+                </div>
+            </div>
+        </div>
+
+        <h2>Departmental Head</h2>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <h3>Professor Brink van der Merwe</h3>
+                <div class="contact-info">
+                    <strong>Position:</strong>
+                    <p>Head of Computer Science Division</p>
+                </div>
+                <div class="contact-info">
+                    <strong>Office:</strong>
+                    <p>A511, Computer Science Building</p>
+                </div>
+                <div class="contact-info">
+                    <strong>Email:</strong>
+                    <p><a href="mailto:abvdm@cs.sun.ac.za">abvdm@cs.sun.ac.za</a></p>
+                </div>
+                <div class="contact-info">
+                    <strong>Phone:</strong>
+                    <p><a href="tel:+27218084232">+27 21 808 4232</a></p>
+                </div>
+                <div class="contact-info">
+                    <strong>Research:</strong>
+                    <p>Tree automata and learning of grammars from data</p>
+                </div>
+            </div>
+        </div>
+
+        <h2>Mailing & Physical Address</h2>
+        <div class="address-section">
+            <div class="address-item">
+                <h4>Postal Address</h4>
+                <p><strong>Computer Science Division</strong></p>
+                <p>Department of Mathematical Sciences</p>
+                <p>Stellenbosch University</p>
+                <p>Private Bag X1</p>
+                <p>Matieland, 7602</p>
+                <p><strong>SOUTH AFRICA</strong></p>
+            </div>
+            <div class="address-item">
+                <h4>Physical Address</h4>
+                <p><strong>Computer Science Building</strong></p>
+                <p>Decanting Facility</p>
+                <p>Hammanshand Road</p>
+                <p>Stellenbosch, 7600</p>
+                <p><strong>SOUTH AFRICA</strong></p>
+                <p><strong>Coordinates:</strong><br>
+                33° 55′ 30.90″ S<br>
+                18° 51′ 55.10″ E</p>
+            </div>
+        </div>
+
+        <h2>Location Map</h2>
+        <p>Our department is located on the Stellenbosch University campus. Use the map below to find us:</p>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3319.7944473816886!2d18.865252!3d-33.9252526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1dcc5e1e3c3c3c3d%3A0x1e3c3c3c3c3c3c3e!2sComputer%20Science%20Division%2C%20Stellenbosch%20University!5e0!3m2!1sen!2sza!4v1614000000000" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+
+        <h2>Administrative Staff</h2>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <h3>Gaynor Fortuin</h3>
+                <p><strong>Administrative Officer</strong></p>
+                <div class="contact-info">
+                    <strong>Office:</strong>
+                    <p>A514</p>
+                </div>
+                <div class="contact-info">
+                    <strong>Email:</strong>
+                    <p><a href="mailto:gfortuin@cs.sun.ac.za">gfortuin@cs.sun.ac.za</a></p>
+                </div>
+                <div class="contact-info">
+                    <strong>Phone:</strong>
+                    <p><a href="tel:+27218084232">+27 21 808 4232</a></p>
+                </div>
+            </div>
+
+            <div class="contact-card">
+                <h3>Emile Dreyer & Derrick Stephanus</h3>
+                <p><strong>Administrative Assistants</strong></p>
+                <div class="contact-info">
+                    <strong>Office:</strong>
+                    <p>A507</p>
+                </div>
+                <div class="contact-info">
+                    <strong>Emails:</strong>
+                    <p><a href="mailto:edreyer@sun.ac.za">edreyer@sun.ac.za</a><br>
+                    <a href="mailto:djstep@sun.ac.za">djstep@sun.ac.za</a></p>
+                </div>
+                <div class="contact-info">
+                    <strong>Phone:</strong>
+                    <p><a href="tel:+27218084232">+27 21 808 4232</a></p>
+                </div>
+            </div>
+        </div>
+
+        <h2>Visiting Campus</h2>
+        <div class="info-box">
+            <h3>Getting to Stellenbosch University</h3>
+            <p><strong>By Air:</strong> Cape Town International Airport is approximately 50km from Stellenbosch (45-60 minutes by car).</p>
+            <p style="margin-top: 15px;"><strong>By Road:</strong> The university is conveniently located on the N1 highway between Cape Town and Franschhoek. Free parking is available on campus.</p>
+            <p style="margin-top: 15px;"><strong>Public Transport:</strong> Long-distance buses and shuttle services operate between Cape Town and Stellenbosch.</p>
+            <p style="margin-top: 15px;"><strong>Campus Tours:</strong> For visiting information and campus tours, please contact the main university <a href="https://www.sun.ac.za" target="_blank">website</a> or call the main switchboard at <a href="tel:+27218089111">+27 21 808 9111</a>.</p>
+        </div>
+
+        <h2>Connect With Us</h2>
+        <div style="margin-top: 25px;">
+            <p style="margin-bottom: 20px;">Stay updated with our latest news and events:</p>
+            <a href="/" class="button">Latest News</a>
+            <a href="/staff.html" class="button">Meet Our Staff</a>
+            <a href="/research.html" class="button">Research Groups</a>
+            <a href="/programmes.html" class="button">Study With Us</a>
+        </div>
+
+        <h2 style="margin-top: 50px;">Frequently Asked Questions</h2>
+        <div style="margin-top: 25px;">
+            <p><strong>Q: How can I apply for undergraduate programmes?</strong></p>
+            <p style="margin-bottom: 20px;">A: Applications are handled through the main Stellenbosch University admissions portal. Visit <a href="https://www.sun.ac.za" target="_blank">sun.ac.za</a> for details.</p>
+
+            <p><strong>Q: What are the postgraduate application deadlines?</strong></p>
+            <p style="margin-bottom: 20px;">A: Please contact <a href="mailto:postgrad@cs.sun.ac.za">postgrad@cs.sun.ac.za</a> for specific deadlines and programme information.</p>
+
+            <p><strong>Q: Can I visit the department?</strong></p>
+            <p style="margin-bottom: 20px;">A: Yes! Contact our administrative office to arrange a visit. We welcome prospective students and researchers.</p>
+
+            <p><strong>Q: How can I contact a specific staff member?</strong></p>
+            <p style="margin-bottom: 20px;">A: Visit our <a href="/staff.html">staff directory</a> for contact information for individual researchers and faculty members.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Computer Science Division, Stellenbosch University</p>
+    </footer>
+</body>
+</html>

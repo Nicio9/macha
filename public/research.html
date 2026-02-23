@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Groups - Computer Science Division</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #61223B;
+            --text: #333333;
+            --bg-light: #F5F5F5;
+            --border: #CCCCCC;
+            --link: #0779BF;
+            --white: #FFFFFF;
+        }
+        body {
+            font-family: 'Raleway', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background-color: var(--white);
+        }
+        header {
+            background-color: var(--white);
+            border-bottom: 3px solid var(--primary);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        nav a:hover, nav a.active {
+            color: var(--primary);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--primary);
+        }
+        .intro-text {
+            font-size: 1.05rem;
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: var(--bg-light);
+            border-left: 4px solid var(--primary);
+            border-radius: 4px;
+        }
+        .research-card {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 25px;
+            background-color: var(--white);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            transition: box-shadow 0.3s;
+        }
+        .research-card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        .research-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        .research-area {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 8px;
+            margin-bottom: 12px;
+        }
+        .description {
+            margin: 15px 0;
+            line-height: 1.8;
+        }
+        .members {
+            margin-top: 15px;
+        }
+        .members strong {
+            color: var(--primary);
+        }
+        .members-list {
+            list-style: none;
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        .members-list li {
+            padding: 5px 0;
+        }
+        .members-list li a {
+            color: var(--link);
+            text-decoration: none;
+        }
+        .members-list li a:hover {
+            text-decoration: underline;
+        }
+        .research-interests {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: var(--bg-light);
+            border-radius: 4px;
+        }
+        .research-interests strong {
+            color: var(--primary);
+        }
+        a { color: var(--link); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+        @media (max-width: 768px) {
+            nav ul { gap: 15px; flex-direction: column; }
+            h1 { font-size: 1.5rem; }
+            .research-card { padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-wrapper">
+            <div class="logo" onclick="window.location='/'">CS Division</div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/programmes.html">Programmes</a></li>
+                    <li><a href="/courses.html">Courses</a></li>
+                    <li><a href="/staff.html">Staff</a></li>
+                    <li><a href="/research.html" class="active">Research</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Research Groups</h1>
+        <div class="intro-text">
+            <p>The Computer Science Division hosts eight vibrant research groups working on cutting-edge problems across diverse domains including machine learning, software engineering, formal methods, and specialized computing applications. Our researchers collaborate with industry partners and international institutions to push the boundaries of computing science.</p>
+        </div>
+
+        <!-- Research Group 1 -->
+        <div class="research-card">
+            <h3>Theory and Applications of Automata and Grammars</h3>
+            <div>
+                <span class="research-area">Automata Theory</span>
+                <span class="research-area">Formal Languages</span>
+                <span class="research-area">Pattern Recognition</span>
+            </div>
+            <div class="description">
+                This group investigates nondeterministic finite automata, descriptional complexity, and applications of automata and grammars to practical problems. Research areas include pattern layout, image processing, music generation, and grammar correction. The group develops both theoretical foundations and practical applications of formal language theory.
+            </div>
+            <div class="members">
+                <strong>Lead Researchers:</strong>
+                <ul class="members-list">
+                    <li>Brink van der Merwe (Professor, Head of Division)</li>
+                    <li>Willem Bester (Junior Lecturer)</li>
+                    <li>Lynette van Zijl (Professor)</li>
+                </ul>
+            </div>
+            <div class="research-interests">
+                <strong>Research Interests:</strong> Automata theory, formal languages, cellular automata, pattern recognition, music generation, grammar learning
+            </div>
+        </div>
+
+        <!-- Research Group 2 -->
+        <div class="research-card">
+            <h3>Software Engineering and Verification</h3>
+            <div>
+                <span class="research-area">Formal Verification</span>
+                <span class="research-area">Program Analysis</span>
+                <span class="research-area">Model Checking</span>
+            </div>
+            <div class="description">
+                Founded in 1990, this group develops highly reliable system software using computer-aided verification, systematic testing, and defensive programming. The group has extensive experience in OS kernels, communication protocols, and the development of verification tools. Research focuses on ensuring correctness and security of critical software systems.
+            </div>
+            <div class="members">
+                <strong>Lead Researchers:</strong>
+                <ul class="members-list">
+                    <li>Bernd Fischer (Professor)</li>
+                    <li>Cornelia Inggs (Senior Lecturer)</li>
+                    <li>Willem Visser (Part-time Professor)</li>
+                </ul>
+            </div>
+            <div class="research-interests">
+                <strong>Research Interests:</strong> Software engineering, formal verification, program analysis, model checking, symbolic execution, testing, software construction
+            </div>
+        </div>
+
+        <!-- Research Group 3 -->
+        <div class="research-card">
+            <h3>Machine Learning and Artificial Intelligence</h3>
+            <div>
+                <span class="research-area">Machine Learning</span>
+                <span class="research-area">Optimization</span>
+                <span class="research-area">Swarm Intelligence</span>
+            </div>
+            <div class="description">
+                This active group addresses decision-making problems including sequential decision-making, planning, and search algorithms using probability and game theory. The group combines theoretical foundations with practical applications in big data analysis, earth observation, and radio interferometry. Research includes evolutionary computation, neural networks, and optimization techniques.
+            </div>
+            <div class="members">
+                <strong>Lead Researchers:</strong>
+                <ul class="members-list">
+                    <li>Andries Engelbrecht (Professor)</li>
+                    <li>Steve Kroon (Associate Professor)</li>
+                    <li>Trienko Grobler (Lecturer)</li>
+                    <li>Mkhuseli Ngxande (Lecturer)</li>
+                </ul>
+            </div>
+            <div class="research-interests">
+                <strong>Research Interests:</strong> Machine learning, optimization, swarm intelligence, evolutionary computation, hyper-heuristics, neural networks, data analytics, big data analysis, earth observation
+            </div>
+        </div>
+
+        <!-- Research Group 4 -->
+        <div class="research-card">
+            <h3>Telkom-Siemens Centre of Excellence in ATM and Broadband Networks</h3>
+            <div>
+                <span class="research-area">Network Technologies</span>
+                <span class="research-area">Telecommunications</span>
+                <span class="research-area">Broadband Systems</span>
+            </div>
+            <div class="description">
+                This centre promotes research and development in broadband technologies and provides specialized training of postgraduate students in telecommunications expertise. The group works on advanced telecommunications technologies and network research with industrial partnerships.
+            </div>
+            <div class="members">
+                <strong>Lead Researchers:</strong>
+                <ul class="members-list">
+                    <li>William (Bill) Tucker (Professor)</li>
+                    <li>Willem Visser (Part-time Professor)</li>
+                </ul>
+            </div>
+            <div class="research-interests">
+                <strong>Research Interests:</strong> ATM (Asynchronous Transfer Mode), broadband networks, telecommunications, network protocols, internet technologies
+            </div>
+        </div>
+
+        <!-- Research Group 5 -->
+        <div class="research-card">
+            <h3>Natural Language Processing and Semantic Computing</h3>
+            <div>
+                <span class="research-area">NLP</span>
+                <span class="research-area">Semantic Web</span>
+                <span class="research-area">Knowledge Representation</span>
+            </div>
+            <div class="description">
+                This group focuses on multilingual natural language processing, semantic computing, ontology development, and machine translation. Research includes semantic web technologies, knowledge representation and reasoning, and language generation techniques. The group works on making computers understand and generate human language across multiple languages.
+            </div>
+            <div class="members">
+                <strong>Lead Researcher:</strong>
+                <ul class="members-list">
+                    <li>Laurette Pretorius (Associate Professor Extraordinary)</li>
+                    <li>Maria Keet (Professor Extraordinary)</li>
+                </ul>
+            </div>
+            <div class="research-interests">
+                <strong>Research Interests:</strong> Multilingual NLP, semantic web, ontology development, semantic computing, machine translation, language generation, knowledge representation and reasoning
+            </div>
+        </div>
+
+        <!-- Research Group 6 -->
+        <div class="research-card">
+            <h3>Computer Vision and Pattern Recognition</h3>
+            <div>
+                <span class="research-area">Computer Vision</span>
+                <span class="research-area">Pattern Recognition</span>
+                <span class="research-area">Bioinformatics</span>
+            </div>
+            <div class="description">
+                This group employs brain-inspired computing approaches to computer vision and pattern recognition. Research includes developing intelligent systems that can process visual information similar to biological systems, with applications in smart cameras, surveillance, and bioinformatics. The group combines deep learning with neuroscience-inspired algorithms.
+            </div>
+            <div class="members">
+                <strong>Lead Researchers:</strong>
+                <ul class="members-list">
+                    <li>George Azzopardi (Associate Professor Extraordinary)</li>
+                    <li>McElory Hoffmann (Senior Lecturer Extraordinary)</li>
+                    <li>Mkhuseli Ngxande (Lecturer)</li>
+                </ul>
+            </div>
+            <div class="research-interests">
+                <strong>Research Interests:</strong> Computer vision, pattern recognition, brain-inspired computing, machine learning, smart cameras, image processing, surveillance systems, bioinformatics
+            </div>
+        </div>
+
+        <!-- Research Group 7 -->
+        <div class="research-card">
+            <h3>Cognitive Robotics and Knowledge Representation</h3>
+            <div>
+                <span class="research-area">Robotics</span>
+                <span class="research-area">Knowledge Representation</span>
+                <span class="research-area">Automated Planning</span>
+            </div>
+            <div class="description">
+                This group covers logic-based knowledge representation, deterministic and probabilistic planning, and reinforcement learning for intelligent systems. Research includes developing robots that can reason about their environment and plan actions autonomously. The group integrates symbolic AI with modern machine learning approaches.
+            </div>
+            <div class="members">
+                <strong>Lead Researcher:</strong>
+                <ul class="members-list">
+                    <li>Gavin Rens (Lecturer)</li>
+                </ul>
+            </div>
+            <div class="research-interests">
+                <strong>Research Interests:</strong> Cognitive robotics, knowledge representation and reasoning, automated planning, reinforcement learning, probabilistic reasoning, logic programming, uncertainty reasoning
+            </div>
+        </div>
+
+        <!-- Research Group 8 -->
+        <div class="research-card">
+            <h3>Programming Languages and Software Quality</h3>
+            <div>
+                <span class="research-area">Programming Languages</span>
+                <span class="research-area">Software Testing</span>
+                <span class="research-area">Code Quality</span>
+            </div>
+            <div class="description">
+                This group investigates programming language design and implementation, software testing techniques including fuzzing, and code quality assurance. Research focuses on making programming more efficient, safer, and more reliable. The group contributes to both theoretical language design and practical tools for software developers.
+            </div>
+            <div class="members">
+                <strong>Lead Researchers:</strong>
+                <ul class="members-list">
+                    <li>Willem Bester (Junior Lecturer)</li>
+                    <li>Moeketsi Raselimo (Lecturer Extraordinary)</li>
+                    <li>Fabian Yamaguchi (Professor Extraordinary)</li>
+                </ul>
+            </div>
+            <div class="research-interests">
+                <strong>Research Interests:</strong> Programming languages, software testing, fuzzing, formal methods, code analysis, program analysis, security, software construction
+            </div>
+        </div>
+
+        <h2 style="margin-top: 50px;">Collaboration and Partnerships</h2>
+        <p>Our research groups actively collaborate with:</p>
+        <ul style="margin-left: 20px; margin-top: 15px;">
+            <li><strong>International Institutions:</strong> Universities in Europe, North America, and Africa</li>
+            <li><strong>Industry Partners:</strong> Technology companies, telecom providers, and software firms</li>
+            <li><strong>National Research Initiatives:</strong> NRF-funded projects and academic networks</li>
+            <li><strong>Interdisciplinary Research:</strong> Collaboration with Physics, Statistics, Engineering, and other departments</li>
+        </ul>
+
+        <h2 style="margin-top: 50px;">Research Funding and Opportunities</h2>
+        <p>Research groups are supported by various funding sources including:</p>
+        <ul style="margin-left: 20px; margin-top: 15px;">
+            <li>National Research Foundation (NRF) grants</li>
+            <li>Industry partnerships and sponsored research</li>
+            <li>Stellenbosch University research funding</li>
+            <li>International research collaborations</li>
+            <li>Postgraduate scholarships and bursaries</li>
+        </ul>
+
+        <h2 style="margin-top: 50px;">Getting Involved</h2>
+        <p>Students interested in research are encouraged to:</p>
+        <ul style="margin-left: 20px; margin-top: 15px;">
+            <li>Explore research topics during honours and master's projects</li>
+            <li>Join research teams as postgraduate students</li>
+            <li>Attend research seminars and colloquia</li>
+            <li>Connect with researchers during office hours</li>
+            <li>Contact <a href="mailto:postgrad@cs.sun.ac.za">postgrad@cs.sun.ac.za</a> for postgraduate research opportunities</li>
+        </ul>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Computer Science Division, Stellenbosch University</p>
+    </footer>
+</body>
+</html>
