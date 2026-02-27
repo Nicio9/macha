@@ -6,140 +6,12 @@
     <title>Staff Directory - Computer Science Division</title>
     <link rel="stylesheet" href="/css/styles.css">
     <script src="/js/shared.js"></script>
-    <style>
-        .intro {
-            margin-bottom: 30px;
-            font-size: 1.05rem;
-            padding: 15px;
-            background-color: var(--bg-light);
-            border-left: 4px solid var(--primary);
-            border-radius: 4px;
-        }
-        .staff-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        .staff-card {
-            border: 1.5px solid var(--border);
-            border-radius: 12px;
-            padding: 20px;
-            background-color: var(--white);
-            box-shadow: var(--shadow);
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            display: flex;
-            gap: 20px;
-            align-items: flex-start;
-            position: relative;
-            overflow: hidden;
-        }
-        .staff-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent);
-            transition: left 0.6s ease;
-            z-index: 0;
-        }
-        .staff-card:hover::before {
-            left: 100%;
-        }
-        .staff-card > * {
-            position: relative;
-            z-index: 1;
-        }
-        .staff-card:hover {
-            box-shadow: var(--shadow-hover);
-            border-color: var(--primary);
-            transform: translateY(-4px);
-        }
-        .staff-info {
-            flex: 1;
-            min-width: 0;
-        }
-        .staff-photo {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--primary);
-            flex-shrink: 0;
-            background: var(--bg-light);
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            box-shadow: 0 4px 12px rgba(97, 34, 59, 0.15);
-        }
-        .staff-card:hover .staff-photo {
-            border-color: var(--secondary);
-            transform: scale(1.08) rotate(2deg);
-            box-shadow: 0 8px 20px rgba(97, 34, 59, 0.25);
-        }
-        .staff-name {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 5px;
-            transition: color 0.3s ease;
-        }
-        .staff-card:hover .staff-name {
-            color: var(--secondary);
-        }
-        .staff-title {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--text-light);
-            margin-bottom: 12px;
-            transition: color 0.3s ease;
-        }
-        .staff-card:hover .staff-title {
-            color: var(--primary);
-        }
-        .staff-research {
-            font-size: 0.85rem;
-            font-style: italic;
-            margin: 12px 0;
-            line-height: 1.5;
-            color: #555;
-        }
-        .staff-contact {
-            font-size: 0.8rem;
-            margin-top: 12px;
-            padding-top: 12px;
-            border-top: 1px solid var(--border);
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-        .staff-contact-item {
-            display: flex;
-            gap: 8px;
-        }
-        .staff-contact-label {
-             font-weight: 600;
-             min-width: 65px;
-             flex-shrink: 0;
-         }
-         h2 {
-             width: 100%;
-             box-sizing: border-box;
-         }
-         @media (max-width: 768px) {
-              h1 { font-size: 1.5rem; }
-             .staff-list {
-                 grid-template-columns: 1fr;
-             }
-         }
-         .no-results { padding: 40px 20px; text-align: center; color: var(--text-light); }
-    </style>
 </head>
 <body>
 
     <div class="container">
         <h1>Staff Directory</h1>
-        <div class="intro">
+        <div class="staff-intro">
             <p>Meet our 27 staff members. The Computer Science Division brings together researchers, educators, and practitioners working across all major areas of computing science.</p>
         </div>
 
@@ -149,7 +21,7 @@
               </div>
           </div>
 
-        <h2 style="color: var(--primary); margin-bottom: 20px;">Professors</h2>
+        <h2>Professors</h2>
         <div class="staff-list">
             <div class="staff-card" id="andries-engelbrecht">
                 <img loading="lazy" src="/images/staff/APE.jpg" alt="Andries Engelbrecht" class="staff-photo">
@@ -267,7 +139,7 @@
             </div>
         </div>
 
-        <h2 style="color: var(--primary); margin-top: 40px; margin-bottom: 20px;">Associate & Senior Lecturers</h2>
+        <h2>Associate & Senior Lecturers</h2>
         <div class="staff-list">
             <div class="staff-card" id="steve-kroon">
                 <img loading="lazy" src="/images/staff/kroon.jpg" alt="Steve Kroon" class="staff-photo">
@@ -339,7 +211,7 @@
             </div>
         </div>
 
-        <h2 style="color: var(--primary); margin-top: 40px; margin-bottom: 20px;">Lecturers</h2>
+        <h2>Lecturers</h2>
         <div class="staff-list">
             <div class="staff-card" id="trienko-grobler">
                 <img loading="lazy" src="/images/staff/TLGrobler_html_4a3853191f04f0e9.gif" alt="Trienko Grobler" class="staff-photo">
@@ -411,7 +283,7 @@
             </div>
         </div>
 
-        <h2 style="color: var(--primary); margin-top: 40px; margin-bottom: 20px;">Junior & Research Staff</h2>
+        <h2>Junior & Research Staff</h2>
         <div class="staff-list">
             <div class="staff-card" id="willem-bester">
                 <img loading="lazy" src="/images/staff/whkbester.jpg" alt="Willem Bester" class="staff-photo">
@@ -456,7 +328,7 @@
             </div>
         </div>
 
-        <h2 style="color: var(--primary); margin-top: 40px; margin-bottom: 20px;">Extraordinary & Visiting Academics</h2>
+        <h2>Extraordinary & Visiting Academics</h2>
         <div class="staff-list">
             <div class="staff-card" id="george-azzopardi">
                 <img loading="lazy" src="/images/staff/gazzopardi.jpg" alt="George Azzopardi" class="staff-photo">
@@ -688,7 +560,7 @@
             </div>
         </div>
 
-        <h2 style="color: var(--primary); margin-top: 40px; margin-bottom: 20px;">Administrative Staff</h2>
+        <h2>Administrative Staff</h2>
         <div class="staff-list">
             <div class="staff-card" id="gaynor-fortuin">
                 <img loading="lazy" src="/images/staff/gfortuin.jpg" alt="Gaynor Fortuin" class="staff-photo">

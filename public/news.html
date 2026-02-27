@@ -6,24 +6,6 @@
     <title>News & Announcements - Computer Science Division</title>
     <link rel="stylesheet" href="/css/styles.css">
     <script src="/js/shared.js"></script>
-    <style>
-        h1 { font-size: var(--font-2xl); margin-bottom: 30px; color: var(--primary); }
-        h2 { font-size: var(--font-xl); color: var(--primary); margin: 30px 0 15px; }
-        .news-item, .news-card { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 25px; margin-bottom: 25px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: box-shadow 0.3s; }
-        .news-item:hover, .news-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
-        .news-date { color: var(--text-light); font-size: 0.9rem; margin-bottom: 8px; }
-        .news-category { display: inline-block; background: var(--primary); color: var(--white); padding: 3px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; margin-bottom: 10px; }
-        .news-title { font-size: 1.2rem; font-weight: 700; color: var(--primary); margin-bottom: 10px; }
-        .news-content { line-height: 1.6; }
-        .news-content p { margin-bottom: 10px; }
-        .news-meta { margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--border); font-size: 0.9rem; color: var(--text-light); }
-        .featured { border-left: 4px solid var(--primary); }
-        .events-calendar { margin: 30px 0; }
-        .calendar-filters { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
-        .events-timeline { position: relative; padding-left: 30px; }
-        .timeline-item { padding: 15px; margin-bottom: 15px; border-left: 3px solid var(--primary); }
-        .timeline-item::before { content: '●'; position: absolute; left: -14px; font-size: 1.2rem; color: var(--primary); }
-    </style>
 </head>
 <body>
 
@@ -43,7 +25,7 @@
 
         <div class="news-item featured">
             <div class="news-date">February 23, 2026</div>
-            <div class="news-category">Announcement</div>
+            <div class="news-category cat-announcement">Announcement</div>
             <div class="news-title">2026 Honours and Masters Admission Cycle Open</div>
             <div class="news-content">
                 <p>The Computer Science Division is now accepting applications for Honours and Masters programmes for the 2026 academic year. Prospective students interested in advancing their computing science education are encouraged to apply. Application deadlines vary by programme - contact <a href="mailto:postgrad@cs.sun.ac.za">postgrad@cs.sun.ac.za</a> for specific dates and requirements.</p>
@@ -52,7 +34,7 @@
 
         <div class="news-item featured">
             <div class="news-date">February 15, 2026</div>
-            <div class="news-category">Event</div>
+            <div class="news-category cat-event">Event</div>
             <div class="news-title">Div & Conquer Hackathon 2026 - Department Website Launch</div>
             <div class="news-content">
                 <p>As part of the Div & Conquer Hackathon 2026, the Computer Science Division has launched a modern, comprehensive website showcasing our academic programmes, research groups, and staff. This new digital presence reflects our commitment to excellence in computer science education and research at Stellenbosch University.</p>
@@ -61,7 +43,7 @@
 
         <div class="news-item">
             <div class="news-date">February 10, 2026</div>
-            <div class="news-category">Research</div>
+            <div class="news-category cat-research">Research</div>
             <div class="news-title">New Research Collaboration: Machine Learning for Earth Observation</div>
             <div class="news-content">
                 <p>The Machine Learning and Artificial Intelligence research group has established a collaboration with international partners on earth observation and remote sensing applications. This project combines machine learning expertise with geographic information systems for environmental monitoring and climate research.</p>
@@ -79,7 +61,7 @@
 
         <div class="news-item">
             <div class="news-date">January 15, 2026</div>
-            <div class="news-category">Award</div>
+            <div class="news-category cat-award">Award</div>
             <div class="news-title">Professor Andries Engelbrecht Recognized for Research Excellence</div>
             <div class="news-content">
                 <p>Professor Andries Engelbrecht has been recognized for his outstanding contributions to swarm intelligence and evolutionary computation. His work continues to influence research communities worldwide and has generated numerous citations and international collaborations.</p>
@@ -88,7 +70,7 @@
 
         <div class="news-item">
             <div class="news-date">December 15, 2025</div>
-            <div class="news-category">Announcement</div>
+            <div class="news-category cat-announcement">Announcement</div>
             <div class="news-title">2026 Course Schedule Released</div>
             <div class="news-content">
                 <p>The complete course schedule for the 2026 academic year is now available. Students can access course times, venues, and lecturers through the university portal. Course registration opens in January. For course-related questions, contact <a href="mailto:undergrad@cs.sun.ac.za">undergrad@cs.sun.ac.za</a>.</p>
@@ -97,7 +79,7 @@
 
         <div class="news-item">
             <div class="news-date">December 1, 2025</div>
-            <div class="news-category">Research</div>
+            <div class="news-category cat-research">Research</div>
             <div class="news-title">Software Verification Workshop Held at Department</div>
             <div class="news-content">
                 <p>The Software Engineering and Verification group hosted an intensive workshop on formal verification methods and model checking techniques. The workshop featured contributions from both local researchers and visiting academics from international institutions.</p>
@@ -106,7 +88,7 @@
 
         <div class="news-item">
             <div class="news-date">November 10, 2025</div>
-            <div class="news-category">Event</div>
+            <div class="news-category cat-event">Event</div>
             <div class="news-title">Final Year Project Showcase 2025</div>
             <div class="news-content">
                 <p>The annual Final Year Project Showcase highlighted the outstanding work of honours students in the Computer Science Division. Projects ranged from machine learning applications to software engineering innovations, demonstrating the quality of education and research in our programmes.</p>
@@ -124,7 +106,7 @@
 
         <div class="news-item">
             <div class="news-date">September 15, 2025</div>
-            <div class="news-category">Award</div>
+            <div class="news-category cat-award">Award</div>
             <div class="news-title">Honours Graduate Awarded Prestigious Scholarship</div>
             <div class="news-content">
                 <p>A recent honours graduate from the Computer Science Division has been awarded a prestigious international scholarship for postgraduate studies. The award recognizes excellence in research and academic achievement in the field of machine learning and artificial intelligence.</p>

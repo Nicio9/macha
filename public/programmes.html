@@ -6,88 +6,6 @@
     <title>Programmes - Computer Science Division</title>
     <link rel="stylesheet" href="/css/styles.css">
     <script src="/js/shared.js"></script>
-    <style>
-        h1 {
-            font-size: 2rem;
-            margin-bottom: 30px;
-            color: var(--primary);
-        }
-        h2 {
-            font-size: 1.5rem;
-            margin-top: 40px;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-        h3 {
-            font-size: 1.1rem;
-            margin-top: 20px;
-            margin-bottom: 10px;
-            color: var(--primary);
-        }
-        .programme-intro {
-            font-size: 1.05rem;
-            margin-bottom: 30px;
-            background-color: var(--bg-light);
-            padding: 20px;
-            border-left: 4px solid var(--primary);
-            border-radius: 4px;
-        }
-        .programme-card {
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 25px;
-            background-color: var(--white);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin-bottom: 25px;
-            transition: box-shadow 0.3s;
-        }
-        .programme-card:hover {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-        }
-        .programme-type {
-            display: inline-block;
-            padding: 4px 12px;
-            background-color: var(--primary);
-            color: white;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            margin-bottom: 10px;
-        }
-        .programme-card h3 {
-            margin-top: 0;
-        }
-        .programme-details {
-            margin-top: 15px;
-        }
-        .programme-details p {
-            margin: 8px 0;
-        }
-        .duration {
-            color: var(--text-light);
-            font-size: 0.95rem;
-        }
-        ul.programme-list {
-            list-style: none;
-            padding-left: 0;
-        }
-        ul.programme-list li {
-            padding: 8px 0;
-            border-bottom: 1px solid var(--border);
-        }
-        ul.programme-list li:last-child {
-            border-bottom: none;
-        }
-        .highlight-box {
-            background-color: var(--highlight);
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-        }
-        @media (max-width: 768px) {
-            h1 { font-size: 1.5rem; }
-            h2 { font-size: 1.2rem; }
-        }
-    </style>
 </head>
 <body>
 
@@ -114,7 +32,7 @@
                 </ul>
             </div>
 
-            <strong style="margin-top: 20px; display: block;">Available Focal Areas:</strong>
+            <strong class="focal-areas-label">Available Focal Areas:</strong>
             <div class="focal-areas">
                 <div class="focal-area">
                     <h4>General Computer Science</h4>
@@ -138,7 +56,7 @@
                 </div>
             </div>
 
-            <div class="key-info" style="margin-top: 20px;">
+            <div class="key-info key-info-spaced">
                 <strong>Core Curriculum (All Focal Areas):</strong>
                 <ul>
                     <li><strong>Year 1:</strong> Introductory Computer Science 1 & 2</li>
@@ -163,7 +81,7 @@
                 </ul>
             </div>
 
-            <strong style="margin-top: 20px; display: block;">Focal Area Options:</strong>
+            <strong class="focal-areas-label">Focal Area Options:</strong>
             <div class="focal-areas">
                 <div class="focal-area">
                     <h4>Computer Science Track</h4>
@@ -195,7 +113,7 @@
         <h2>Postgraduate Programmes</h2>
 
         <div class="programme-card">
-            <span class="programme-type">Honours</span>
+            <span class="programme-type type-honours">Honours</span>
             <h3>Honours in Computer Science (CS797)</h3>
             <div class="duration">Duration: 1 year (full-time) or 2 years (part-time)</div>
             <p>The Honours degree is an intensive postgraduate programme designed to deepen expertise in Computer Science. Students complete 6 elective modules (96 credits) and an independent honours project (32 credits) under supervision.</p>
@@ -210,7 +128,7 @@
                 </ul>
             </div>
 
-            <div class="key-info" style="margin-top: 20px;">
+            <div class="key-info key-info-spaced">
                 <strong>Programme Structure:</strong>
                 <ul>
                     <li>6 elective modules (choose based on interests)</li>
@@ -222,7 +140,7 @@
         </div>
 
         <div class="programme-card">
-            <span class="programme-type">Masters</span>
+            <span class="programme-type type-masters">Masters</span>
             <h3>Masters in Computer Science (CS878)</h3>
             <div class="duration">Duration: 2 years (typical)</div>
             <p>The Master's degree is a research-focused programme requiring students to conduct original research under faculty supervision. Students develop a significant contribution to their field of study through independent research leading to a thesis.</p>
@@ -237,7 +155,7 @@
                 </ul>
             </div>
 
-            <div class="key-info" style="margin-top: 20px;">
+            <div class="key-info key-info-spaced">
                 <strong>Key Features:</strong>
                 <ul>
                     <li>Independent research on approved topic</li>
@@ -250,7 +168,7 @@
         </div>
 
         <div class="programme-card">
-            <span class="programme-type">PhD</span>
+            <span class="programme-type type-phd">PhD</span>
             <h3>PhD in Computer Science (CS978)</h3>
             <div class="duration">Duration: 3+ years</div>
             <p>The PhD programme is designed for students committed to making significant contributions to Computer Science through original research. This is a comprehensive research degree requiring development of new knowledge in the field.</p>
@@ -265,7 +183,7 @@
                 </ul>
             </div>
 
-            <div class="key-info" style="margin-top: 20px;">
+            <div class="key-info key-info-spaced">
                 <strong>Key Features:</strong>
                 <ul>
                     <li>Comprehensive original research</li>
@@ -297,7 +215,7 @@
 
         <h2>Contact for Programme Information</h2>
         <p>For more information about any of our programmes:</p>
-        <ul style="margin-left: 20px; margin-top: 15px;">
+            <ul class="indented-list">
             <li><strong>Undergraduate Enquiries:</strong> <a href="mailto:undergrad@cs.sun.ac.za">undergrad@cs.sun.ac.za</a></li>
             <li><strong>Postgraduate Enquiries:</strong> <a href="mailto:postgrad@cs.sun.ac.za">postgrad@cs.sun.ac.za</a></li>
             <li><strong>General Information:</strong> <a href="mailto:secretary@cs.sun.ac.za">secretary@cs.sun.ac.za</a></li>
