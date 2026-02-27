@@ -665,6 +665,33 @@ button:not(.theme-toggle-btn):not(.hamburger):hover {
     box-shadow: 0 8px 20px rgba(97, 34, 59, 0.2);
 }
 
+/* ========== FILTER & ACTION BUTTONS ========== */
+.filter-btn {
+    padding: var(--space-md) var(--space-lg);
+    border: 1px solid var(--border);
+    background: var(--bg-light);
+    color: var(--text);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    font-size: var(--font-base);
+}
+
+.filter-btn:hover {
+    background: var(--primary);
+    color: var(--white);
+    border-color: var(--primary);
+    transform: translateY(-2px);
+}
+
+.filter-btn.active {
+    background: var(--primary);
+    color: var(--white);
+    border-color: var(--primary);
+    font-weight: 600;
+}
+
 /* ========== INPUT & SEARCH FIELD ANIMATIONS ========== */
 input[type="text"]:not(.search-input),
 input[type="search"]:not(.search-input) {
