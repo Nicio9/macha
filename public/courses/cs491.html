@@ -3,125 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CS491 - Space Science Algorithms (791*)    </style>
-
-</title>
-    <script>
-        if (localStorage.getItem('darkMode') === 'true') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-        }
-    </script>
+    <title>CS491 - Space Science Algorithms (791*)</title>
     <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/shared.js"></script>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --primary: #61223B;
-            --text: #333333;
-            --bg-light: #F5F5F5;
-            --border: #CCCCCC;
-            --link: #0779BF;
-            --white: #FFFFFF;
-        }
-        body {
-            background-color: var(--white);
-            color: var(--text);
-            font-family: 'Raleway', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            transition: all 0.3s ease;
-        }
-        /* ===== DARK MODE STYLES ===== */
-        [data-theme="dark"] {
-            --primary: #9B4D7D !important;
-            --text: #E8E8E8 !important;
-            --bg-light: #2A2A2A !important;
-            --border: #444444 !important;
-            --link: #64B5F6 !important;
-            --white: #1E1E1E !important;
-        }
+        .breadcrumb { padding: var(--space-md) var(--space-lg); background: var(--bg-light); border-bottom: 1px solid var(--border); font-size: var(--font-sm); }
+        .breadcrumb a { color: var(--link); text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .course-header { padding: var(--space-3xl) var(--space-lg); background: var(--white); }
+        .course-header h1 { color: var(--primary); margin-bottom: var(--space-md); }
+        .course-meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-lg); margin-top: var(--space-lg); }
+        .meta-item { background: var(--bg-light); padding: var(--space-lg); border-radius: 8px; }
+        .meta-item strong { color: var(--primary); display: block; margin-bottom: var(--space-sm); }
+        .course-content { padding: var(--space-3xl) var(--space-lg); }
+        .course-section { margin-bottom: var(--space-3xl); }
+        .course-section h2 { color: var(--primary); margin-bottom: var(--space-lg); font-size: var(--font-xl); }
+        .course-section p, .course-section li { margin-bottom: var(--space-md); line-height: 1.6; }
+        .course-section ul { margin-left: var(--space-3xl); }
+        [data-theme="dark"] .breadcrumb { background: var(--bg-light); }
+        [data-theme="dark"] .course-header { background: var(--white); }
+        [data-theme="dark"] .meta-item { background: var(--bg-light); }
+    </style>
+</head>
+<body>
 
-        [data-theme="dark"] body { transition: all 0.3s ease;
-            background-color: #1E1E1E !important;
-            color: #E8E8E8 !important;
-        }
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> / 
+        <a href="/courses.html">Courses</a> / 
+        <span>CS491 - Space Science Algorithms (791*)</span>
+    </nav>
 
-        [data-theme="dark"] header {
-            background-color: #1E1E1E !important;
-        }
+    <div class="course-header">
+        <h1>CS491: Space Science Algorithms (791*)</h1>
+        <div class="course-meta">
+            <div class="meta-item">
+                <strong>Semester:</strong>
+                2nd Semester
+            </div>
+            <div class="meta-item">
+                <strong>Prerequisites:</strong>
+                CS315
+            </div>
+        </div>
+    </div>
 
-        [data-theme="dark"] footer {
-            background-color: #1a1420 !important;
-        }
+    <div class="container">
+        <div class="course-content">
+            <div class="course-section">
+                <h2>Course Description</h2>
+                <p>This course covers advanced topics in computer science. For detailed information, please visit the main <a href="/courses.html">course catalogue</a>.</p>
+            </div>
 
-        [data-theme="dark"] nav a {
-            color: #E8E8E8 !important;
-        }
+            <div class="course-section">
+                <h2>Learning Outcomes</h2>
+                <ul>
+                    <li>Develop advanced technical skills in the course subject area</li>
+                    <li>Apply theoretical concepts to practical problems</li>
+                    <li>Participate in hands-on projects and assignments</li>
+                </ul>
+            </div>
 
-        [data-theme="dark"] nav a:hover {
-            color: #9B4D7D !important;
-        }
+            <div class="course-section">
+                <h2>Assessment</h2>
+                <p>Assessment is based on practical assignments, examinations, and projects that demonstrate mastery of the course concepts.</p>
+            </div>
+        </div>
+    </div>
 
-        [data-theme="dark"] .card {
-            background-color: #2A2A2A !important;
-            border-color: #444444 !important;
-            color: #E8E8E8 !important;
-        }
+    <footer>
+        <p>&copy; 2026 Computer Science Division, Stellenbosch University</p>
+    </footer>
 
-        [data-theme="dark"] .content-section {
-            background-color: #2A2A2A !important;
-            border-color: #444444 !important;
-            color: #E8E8E8 !important;
-        }
-
-        [data-theme="dark"] .course-header {
-            background-color: #2A2A2A !important;
-            border-color: #444444 !important;
-        }
-
-        [data-theme="dark"] .breadcrumb {
-            background-color: #2A2A2A !important;
-            border-color: #444444 !important;
-        }
-
-        [data-theme="dark"] .meta-item {
-            background-color: #2A2A2A !important;
-            border-color: #444444 !important;
-            color: #E8E8E8 !important;
-        }
-
-        [data-theme="dark"] .assessment-item {
-            background-color: #333333 !important;
-        }
-
-        [data-theme="dark"] .instructor {
-            background-color: #2A2A2A !important;
-            color: #E8E8E8 !important;
-        }
-
-        [data-theme="dark"] h1,
-        [data-theme="dark"] h2,
-        [data-theme="dark"] h3,
-        [data-theme="dark"] h4,
-        [data-theme="dark"] h5,
-        [data-theme="dark"] h6 {
-            color: #9B4D7D !important;
-        }
-
-        [data-theme="dark"] p,
-        [data-theme="dark"] li {
-            color: #E8E8E8 !important;
-        }
-
-        [data-theme="dark"] a {
-            color: #64B5F6 !important;
-        }
-
-        [data-theme="dark"] .spec-button {
-            background-color: #9B4D7D !important;
-            color: white !important;
-        }
-
-        [data-theme="dark"] input,
-        [data-theme="dark"] textarea {
-            background-color: #2A2A2A !important;
-            color: #E8E8E8 !important;
-            border-color: #444444 !important;
-        }
+</body>
+</html>

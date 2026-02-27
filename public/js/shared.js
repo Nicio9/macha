@@ -93,4 +93,111 @@ document.addEventListener('DOMContentLoaded', function() {
     renderHeader();
     initDarkModeBtn();
     initHamburger();
+    initCourseSearch();
+    initStaffSearch();
+    initNewsFilter();
 });
+
+// Search and Filter Functions
+function initCourseSearch() {
+    var courseSearchInput = document.getElementById('courseSearch');
+    
+    if (courseSearchInput) {
+        courseSearchInput.addEventListener('keyup', function () {
+            var filter = this.value.toLowerCase();
+            var cards = document.querySelectorAll('.grid .card');
+            var visibleCount = 0;
+            
+            cards.forEach(function(card) {
+                var text = card.textContent.toLowerCase();
+                if (text.includes(filter)) {
+                    card.style.display = '';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // Show "no results" message if needed
+            var noResultsMsg = document.getElementById('noCoursesResultsMsg');
+            if (visibleCount === 0 && filter.length > 0) {
+                if (!noResultsMsg) {
+                    noResultsMsg = document.createElement('div');
+                    noResultsMsg.id = 'noCoursesResultsMsg';
+                    noResultsMsg.style.cssText = 'padding: 40px 20px; text-align: center; color: var(--text-light);';
+                    noResultsMsg.textContent = 'No courses found matching your search.';
+                    var grid = document.querySelector('.grid');
+                    if (grid) grid.parentNode.insertBefore(noResultsMsg, grid);
+                }
+                noResultsMsg.style.display = 'block';
+            } else if (noResultsMsg) {
+                noResultsMsg.style.display = 'none';
+            }
+        });
+    }
+}
+
+function initStaffSearch() {
+    var staffSearchInput = document.getElementById('staffSearch');
+    
+    if (staffSearchInput) {
+        staffSearchInput.addEventListener('keyup', function () {
+            var filter = this.value.toLowerCase();
+            var staffCards = document.querySelectorAll('.staff-card');
+            var visibleCount = 0;
+            
+            staffCards.forEach(function(card) {
+                var text = card.textContent.toLowerCase();
+                if (text.includes(filter)) {
+                    card.style.display = '';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // Show "no results" message if needed
+            var noResultsMsg = document.getElementById('noResultsMsg');
+            if (visibleCount === 0 && filter.length > 0) {
+                if (!noResultsMsg) {
+                    noResultsMsg = document.createElement('div');
+                    noResultsMsg.id = 'noResultsMsg';
+                    noResultsMsg.className = 'no-results';
+                    noResultsMsg.textContent = 'No staff members found matching your search.';
+                    var staffList = document.querySelector('.staff-list:last-of-type');
+                    if (staffList) staffList.parentNode.insertBefore(noResultsMsg, staffList.nextSibling);
+                }
+                noResultsMsg.style.display = 'block';
+            } else if (noResultsMsg) {
+                noResultsMsg.style.display = 'none';
+            }
+        });
+    }
+}
+
+function initNewsFilter() {
+    var filterButtons = document.querySelectorAll('#news-filter-buttons .filter-btn');
+    var newsItems = document.querySelectorAll('.news-item');
+    
+    if (filterButtons.length > 0) {
+        filterButtons.forEach(function(button) {
+            button.addEventListener('click', function () {
+                var category = this.getAttribute('data-category');
+                
+                // Update active button
+                filterButtons.forEach(function(btn) { btn.classList.remove('active'); });
+                this.classList.add('active');
+                
+                // Filter news items
+                newsItems.forEach(function(item) {
+                    if (category === 'all') {
+                        item.style.display = 'block';
+                    } else {
+                        var itemCategory = item.querySelector('.news-category').textContent.trim();
+                        item.style.display = itemCategory === category ? 'block' : 'none';
+                    }
+                });
+            });
+        });
+    }
+}

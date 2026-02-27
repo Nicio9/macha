@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="/css/styles.css">
     <script src="/js/shared.js"></script>
     <style>
-        h1 { font-size: 2rem; margin-bottom: 30px; color: var(--primary); }
         .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 40px; }
         .contact-card { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
         .contact-card h2 { font-size: 1.3rem; color: var(--primary); margin-bottom: 15px; }
@@ -15,6 +14,9 @@
         .contact-card a { color: var(--link); }
         .map-container { margin-top: 40px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
         .map-container iframe { width: 100%; height: 400px; border: 0; }
+        .address-section { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+        .address-item { padding: 20px; background: var(--bg-light); border-radius: 8px; }
+        h1 { font-size: var(--font-2xl); margin-bottom: 30px; color: var(--primary); }
         @media (max-width: 768px) { h1 { font-size: 1.5rem; } .address-section { grid-template-columns: 1fr; } .map-container { height: 250px; } }
     </style>
 </head>
@@ -181,33 +183,33 @@
         <div class="info-box">
             <h3>Getting to Stellenbosch University</h3>
             <p><strong>By Air:</strong> Cape Town International Airport is approximately 50km from Stellenbosch (45-60 minutes by car).</p>
-            <p style="margin-top: 15px;"><strong>By Road:</strong> The university is conveniently located on the N1 highway between Cape Town and Franschhoek. Free parking is available on campus.</p>
-            <p style="margin-top: 15px;"><strong>Public Transport:</strong> Long-distance buses and shuttle services operate between Cape Town and Stellenbosch.</p>
-            <p style="margin-top: 15px;"><strong>Campus Tours:</strong> For visiting information and campus tours, please contact the main university <a href="https://www.sun.ac.za" target="_blank">website</a> or call the main switchboard at <a href="tel:+27218089111">+27 21 808 9111</a>.</p>
+            <p class="spacing-top-sm"><strong>By Road:</strong> The university is conveniently located on the N1 highway between Cape Town and Franschhoek. Free parking is available on campus.</p>
+            <p class="spacing-top-sm"><strong>Public Transport:</strong> Long-distance buses and shuttle services operate between Cape Town and Stellenbosch.</p>
+            <p class="spacing-top-sm"><strong>Campus Tours:</strong> For visiting information and campus tours, please contact the main university <a href="https://www.sun.ac.za" target="_blank">website</a> or call the main switchboard at <a href="tel:+27218089111">+27 21 808 9111</a>.</p>
         </div>
 
         <h2>Connect With Us</h2>
-        <div style="margin-top: 25px;">
-            <p style="margin-bottom: 20px;">Stay updated with our latest news and events:</p>
+        <div class="button-group spacing-top-lg">
+            <p class="spacing-bottom-lg">Stay updated with our latest news and events:</p>
             <a href="/" class="button">Latest News</a>
             <a href="/staff.html" class="button">Meet Our Staff</a>
             <a href="/research.html" class="button">Research Groups</a>
             <a href="/programmes.html" class="button">Study With Us</a>
         </div>
 
-        <h2 style="margin-top: 50px;">Frequently Asked Questions</h2>
-        <div style="margin-top: 25px;">
+        <h2 class="spacing-top-4xl">Frequently Asked Questions</h2>
+        <div class="spacing-top-lg">
             <p><strong>Q: How can I apply for undergraduate programmes?</strong></p>
-            <p style="margin-bottom: 20px;">A: Applications are handled through the main Stellenbosch University admissions portal. Visit <a href="https://www.sun.ac.za" target="_blank">sun.ac.za</a> for details.</p>
+            <p class="faq-answer">A: Applications are handled through the main Stellenbosch University admissions portal. Visit <a href="https://www.sun.ac.za" target="_blank">sun.ac.za</a> for details.</p>
 
             <p><strong>Q: What are the postgraduate application deadlines?</strong></p>
-            <p style="margin-bottom: 20px;">A: Please contact <a href="mailto:postgrad@cs.sun.ac.za">postgrad@cs.sun.ac.za</a> for specific deadlines and programme information.</p>
+            <p class="faq-answer">A: Please contact <a href="mailto:postgrad@cs.sun.ac.za">postgrad@cs.sun.ac.za</a> for specific deadlines and programme information.</p>
 
             <p><strong>Q: Can I visit the department?</strong></p>
-            <p style="margin-bottom: 20px;">A: Yes! Contact our administrative office to arrange a visit. We welcome prospective students and researchers.</p>
+            <p class="faq-answer">A: Yes! Contact our administrative office to arrange a visit. We welcome prospective students and researchers.</p>
 
             <p><strong>Q: How can I contact a specific staff member?</strong></p>
-            <p style="margin-bottom: 20px;">A: Visit our <a href="/staff.html">staff directory</a> for contact information for individual researchers and faculty members.</p>
+            <p class="faq-answer">A: Visit our <a href="/staff.html">staff directory</a> for contact information for individual researchers and faculty members.</p>
         </div>
     </div>
 

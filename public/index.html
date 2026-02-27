@@ -6,66 +6,7 @@
     <title>Computer Science Division - Stellenbosch University</title>
     <link rel="stylesheet" href="/css/styles.css">
     <script src="/js/shared.js"></script>
-    <style>
-        body {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        .hero {
-            text-align: center;
-            padding: 44px 20px 24px 20px;
-            background: var(--bg-light);
-            margin-bottom: 14px;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 18px;
-            margin-top: 20px;
-            margin-bottom: 28px;
-        }
-        .card {
-            background: var(--bg-light);
-            border-radius: 10px;
-            border: 2px solid var(--border);
-            box-shadow: 0 2px 8px rgba(97,34,59,0.02);
-            padding: 18px 20px 12px 20px;
-            display: block;
-            transition: box-shadow 0.2s, border-color 0.2s, transform 0.3s cubic-bezier(.22,.68,.47,1.03);
-            will-change: transform;
-            transform-style: preserve-3d;
-            text-decoration: none;
-            color: var(--text);
-        }
-        .card:hover, .card:focus {
-            box-shadow: 0 8px 32px rgba(97,34,59,0.08);
-            border-color: var(--primary);
-            outline: none;
-        }
-        .area-card {
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 15px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        h1 {
-            margin-bottom: 8px;
-            font-size: 2.2rem;
-            font-weight: 700;
-        }
-        h2, h3 {
-            margin-top: 26px;
-            margin-bottom: 16px;
-        }
-        footer {
-            margin-top: auto;
-        }
-        @media (max-width: 700px) {
-            .hero { padding: 26px 8px 22px 8px; }
-        }
-    </style>
+
 </head>
 <body>
 
@@ -74,7 +15,7 @@
         <p>Department of Mathematical Sciences, Stellenbosch University</p>
     </div>
     <div class="container">
-         <h3 style="margin-top: 0; margin-bottom: 20px;">Quick Links</h3>
+          <h3 class="heading-no-margin-top spacing-bottom-lg">Quick Links</h3>
          <div class="grid">
              <a href="/staff.html" class="card">
                  <h3>Staff Directory</h3>
@@ -106,10 +47,10 @@
              </a>
          </div>
 
-         <h2 style="margin-top: 50px;">Welcome to the Computer Science Division</h2>
+          <h2 class="spacing-top-4xl">Welcome to the Computer Science Division</h2>
          <p>The Department of Computer Science was founded in 1972. We have now merged with Mathematics and Applied Mathematics to form the Computer Science Division in the Department of Mathematical Sciences.</p>
-         <p style="margin-top: 20px;">We currently have 27 academic staff members whose research activities span a range of subject areas, including:</p>
-         <div class="grid" style="margin-top: 20px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+          <p class="spacing-top-lg">We currently have 27 academic staff members whose research activities span a range of subject areas, including:</p>
+          <div class="grid spacing-top-lg">
              <div class="area-card"><strong>Automata Theory & Formal Methods</strong></div>
              <div class="area-card"><strong>Machine Learning & AI</strong></div>
              <div class="area-card"><strong>Software Engineering</strong></div>
@@ -118,10 +59,10 @@
              <div class="area-card"><strong>Robotics & Cognitive Systems</strong></div>
          </div>
 
-         <!-- Division Statistics Section -->
-         <div style="margin-top: 50px; padding: 40px 0;">
-             <h2 style="text-align: center; margin-bottom: 40px;">By the Numbers</h2>
-             <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 24px; margin-bottom: 40px;">
+          <!-- Division Statistics Section -->
+          <div class="stats-section">
+              <h2 class="heading-centered spacing-bottom-2xl">By the Numbers</h2>
+              <div class="stats-grid">
                  <div class="stat-card">
                      <div class="stat-number">27</div>
                      <div class="stat-label">Academic Staff</div>

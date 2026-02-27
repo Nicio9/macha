@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="/css/styles.css">
     <script src="/js/shared.js"></script>
     <style>
-        h1 { font-size: 2rem; margin-bottom: 30px; color: var(--primary); }
-        h2 { font-size: 1.5rem; color: var(--primary); margin: 30px 0 15px; }
+        h1 { font-size: var(--font-2xl); margin-bottom: 30px; color: var(--primary); }
+        h2 { font-size: var(--font-xl); color: var(--primary); margin: 30px 0 15px; }
         .news-item, .news-card { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 25px; margin-bottom: 25px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: box-shadow 0.3s; }
         .news-item:hover, .news-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
         .news-date { color: var(--text-light); font-size: 0.9rem; margin-bottom: 8px; }
@@ -26,22 +26,21 @@
         .timeline-item { padding: 15px; margin-bottom: 15px; border-left: 3px solid var(--primary); }
         .timeline-item::before { content: '●'; position: absolute; left: -14px; font-size: 1.2rem; color: var(--primary); }
     </style>
-    </style>
 </head>
 <body>
 
     <div class="container">
         <h1>News & Announcements</h1>
-        <p style="margin-bottom: 30px;">Stay updated with the latest news, events, and announcements from the Computer Science Division.</p>
+        <p class="spacing-bottom-2xl">Stay updated with the latest news, events, and announcements from the Computer Science Division.</p>
 
-        <h2 style="color: var(--primary); margin: 30px 0 20px;">Filter by Category</h2>
-        <div class="calendar-filters">
-            <button class="filter-btn active" onclick="filterNews('all')">All</button>
-            <button class="filter-btn" onclick="filterNews('Event')">Events</button>
-            <button class="filter-btn" onclick="filterNews('Research')">Research</button>
-            <button class="filter-btn" onclick="filterNews('Award')">Awards</button>
-            <button class="filter-btn" onclick="filterNews('Announcement')">Announcements</button>
-            <button class="filter-btn" onclick="filterNews('Academic')">Academic</button>
+        <h2 class="heading-filter-section">Filter by Category</h2>
+        <div class="calendar-filters" id="news-filter-buttons">
+            <button class="filter-btn active" data-category="all">All</button>
+            <button class="filter-btn" data-category="Event">Events</button>
+            <button class="filter-btn" data-category="Research">Research</button>
+            <button class="filter-btn" data-category="Award">Awards</button>
+            <button class="filter-btn" data-category="Announcement">Announcements</button>
+            <button class="filter-btn" data-category="Academic">Academic</button>
         </div>
 
         <div class="news-item featured">
@@ -143,41 +142,20 @@
             </div>
         </div>
 
-        <h2 style="color: var(--primary); margin-top: 50px; margin-bottom: 30px;">Subscribe for Updates</h2>
-        <p style="margin-bottom: 20px;">To receive notifications about new announcements, events, and research updates from the Computer Science Division, please:</p>
-        <ul style="margin-left: 20px; margin-bottom: 30px;">
+        <h2 class="heading-subscribe spacing-top-4xl">Subscribe for Updates</h2>
+        <p class="spacing-bottom-lg">To receive notifications about new announcements, events, and research updates from the Computer Science Division, please:</p>
+        <ul class="subscribe-list">
             <li>Follow us on <a href="https://facebook.com/groups/csmaties/">Facebook</a></li>
             <li>Contact <a href="mailto:secretary@cs.sun.ac.za">secretary@cs.sun.ac.za</a> to join our mailing list</li>
             <li>Visit the main <a href="https://cs.sun.ac.za">department website</a> for updates</li>
         </ul>
 
-        <h2 style="color: var(--primary); margin-top: 50px; margin-bottom: 20px;">Past Events & Archive</h2>
+        <h2 class="heading-archive spacing-top-4xl">Past Events & Archive</h2>
         <p>For archived announcements and past event information, please contact the <a href="/contact.html">department office</a> or visit the <a href="/">home page</a> for historical records.</p>
     </div>
 
     <footer>
         <p>&copy; 2026 Computer Science Division, Stellenbosch University</p>
-    </footer>
-
-    <script>
-        function filterNews(category) {
-            const items = document.querySelectorAll('.news-item');
-            const buttons = document.querySelectorAll('.filter-btn');
-            
-            // Update active button
-            buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-            
-            // Filter news items
-            items.forEach(item => {
-                if (category === 'all') {
-                    item.style.display = 'block';
-                } else {
-                    const itemCategory = item.querySelector('.news-category').textContent.trim();
-                    item.style.display = itemCategory === category ? 'block' : 'none';
-                }
-            });
-        }
-    </script>
-</body>
-</html>
+     </footer>
+ </body>
+ </html>

@@ -143,11 +143,11 @@
             <p>Meet our 27 staff members. The Computer Science Division brings together researchers, educators, and practitioners working across all major areas of computing science.</p>
         </div>
 
-         <div class="search-box">
-             <div class="search-wrapper">
-                 <input type="text" class="search-input" id="staffSearch" placeholder="Search by name or research area..." onkeyup="searchStaff()">
-             </div>
-         </div>
+          <div class="search-box">
+              <div class="search-wrapper">
+                  <input type="text" class="search-input" id="staffSearch" placeholder="Search by name or research area...">
+              </div>
+          </div>
 
         <h2 style="color: var(--primary); margin-bottom: 20px;">Professors</h2>
         <div class="staff-list">
@@ -748,41 +748,6 @@
 
     <footer>
         <p>&copy; 2026 Computer Science Division, Stellenbosch University</p>
-    </footer>
-
-    <script>
-        function searchStaff() {
-            const input = document.getElementById('staffSearch');
-            const filter = input.value.toLowerCase();
-            const staffCards = document.querySelectorAll('.staff-card');
-            let visibleCount = 0;
-            
-            staffCards.forEach(card => {
-                const text = card.textContent.toLowerCase();
-                if (text.includes(filter)) {
-                    card.style.display = '';
-                    visibleCount++;
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-            
-            // Show "no results" message if needed
-            let noResultsMsg = document.getElementById('noResultsMsg');
-            if (visibleCount === 0 && filter.length > 0) {
-                if (!noResultsMsg) {
-                    noResultsMsg = document.createElement('div');
-                    noResultsMsg.id = 'noResultsMsg';
-                    noResultsMsg.className = 'no-results';
-                    noResultsMsg.textContent = 'No staff members found matching your search.';
-                    const staffList = document.querySelector('.staff-list:last-of-type');
-                    if (staffList) staffList.parentNode.insertBefore(noResultsMsg, staffList.nextSibling);
-                }
-                noResultsMsg.style.display = 'block';
-            } else if (noResultsMsg) {
-                noResultsMsg.style.display = 'none';
-            }
-        }
-    </script>
-</body>
-</html>
+     </footer>
+ </body>
+ </html>

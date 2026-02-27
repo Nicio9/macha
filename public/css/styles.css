@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 :root {
+    /* Colors */
     --primary: #61223B;
     --secondary: #9B4D7D;
     --highlight: #ebddf1;
@@ -16,12 +17,31 @@
     --white: #FFFFFF;
     --shadow: 0 4px 32px 0 rgba(97,34,59,0.07);
     --shadow-hover: 0 12px 36px 0 rgba(97,34,59,0.15);
-    --card-radius: 16px;
+    --card-radius: var(--space-lg);
     --dropdown-bg: #fff;
     --dropdown-link: #333;
     --warning-bg: #fff3cd;
     --warning-text: #856404;
     --warning-border: #ffc107;
+    
+    /* Typography - 8-point scale */
+    --font-xs: 0.75rem;    /* Badges, small text */
+    --font-sm: 0.85rem;    /* Secondary text */
+    --font-base: 1rem;     /* Body text */
+    --font-lg: 1.1rem;     /* Course titles */
+    --font-xl: 1.5rem;     /* Section headings */
+    --font-2xl: 2rem;      /* Page titles */
+    --font-3xl: 2.6rem;    /* Hero titles */
+    --font-4xl: 2.8rem;    /* Stats numbers */
+    
+    /* Spacing - 4px grid */
+    --space-xs: var(--space-xs);
+    --space-sm: var(--space-sm);
+    --space-md: var(--space-md);
+    --space-lg: var(--space-lg);
+    --space-xl: var(--space-xl);
+    --space-2xl: var(--space-2xl);
+    --space-3xl: var(--space-3xl);
 }
 [data-theme="dark"] {
     --primary: #B3688D;
@@ -59,14 +79,14 @@ header {
     align-items: center;
 }
 .logo {
-    font-size: 1.5rem;
+    font-size: var(--font-xl);
     font-weight: 700;
     color: var(--primary);
 }
 nav ul {
     list-style: none;
     display: flex;
-    gap: 30px;
+    gap: var(--space-3xl);
     position: relative;
 }
 nav ul li {
@@ -90,10 +110,10 @@ nav a:hover {
     padding: 8px 14px;
     border-radius: 6px;
     border: 1px solid var(--border);
-    background: var(--bg-light);
-    cursor: pointer;
-    font-size: 1.1rem;
-    transition: all 0.2s;
+     background: var(--bg-light);
+     cursor: pointer;
+     font-size: var(--font-lg);
+     transition: all 0.2s;
 }
 .theme-toggle-btn:hover {
     background: var(--highlight);
@@ -103,10 +123,10 @@ nav a:hover {
     display: none;
     flex-direction: column;
     justify-content: space-between;
-    width: 24px;
-    height: 18px;
+    width: var(--space-xl);
+    height: var(--space-xl);
     cursor: pointer;
-    padding: 4px;
+    padding: var(--space-xs);
     background: none;
     border: none;
 }
@@ -162,7 +182,7 @@ nav ul li:focus-within > .dropdown {
 .theme-toggle-btn {
     margin-left: 22px;
     padding: 8px 15px;
-    border-radius: 4px;
+    border-radius: var(--space-xs);
     border: 1px solid var(--border);
     background: var(--bg-light);
 }
@@ -184,7 +204,7 @@ nav ul li:focus-within > .dropdown {
         gap: 2px;
         background: var(--white);
         border: 1px solid var(--border);
-        border-radius: 8px;
+        border-radius: var(--space-sm);
         padding: 5px;
         box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
@@ -208,7 +228,7 @@ nav ul li:focus-within > .dropdown {
         position: static;
         box-shadow: none;
         border: none;
-        padding-left: 20px;
+        padding-left: var(--space-3xl);
     }
     .header-wrapper { 
         flex-wrap: wrap; 
@@ -216,7 +236,7 @@ nav ul li:focus-within > .dropdown {
     .header-right {
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: var(--space-md);
     }
 }
 @media (max-width: 700px) {
@@ -236,20 +256,20 @@ body {
 }
 h1 {
     margin: 36px 0 10px;
-    font-size: 2.6rem;
+    font-size: var(--font-3xl);
     letter-spacing: -2px;
     font-weight: 900;
     color: var(--primary);
 }
 .courses-intro {
     color: var(--text-light);
-    font-size: 1.2rem;
+    font-size: var(--font-lg);
     margin-bottom: 2rem;
 }
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 32px;
+    gap: var(--space-2xl);
     margin-top: 0;
 }
 .card {
@@ -268,6 +288,7 @@ h1 {
     will-change: transform;
     transform-style: preserve-3d;
 }
+
 .card:hover, .card:focus {
     box-shadow: var(--shadow-hover);
     border-color: var(--primary);
@@ -276,37 +297,35 @@ h1 {
 }
 .course-badge {
     display: inline-block;
-    font-size: 1rem;
+    font-size: var(--font-base);
     background: var(--badge);
     color: var(--primary);
     font-weight: bold;
-    border-radius: 14px;
+    border-radius: var(--space-lg);
     padding: 2px 15px;
     letter-spacing: 0;
     margin-bottom: 7px;
 }
 .card strong {
-    font-size: 1.19rem;
+    font-size: var(--font-lg);
     color: var(--secondary);
     font-weight: 800;
-    display: block;
-    margin-bottom: 0.2rem;
 }
 .semester-badge {
-    float: right;
-    background: var(--highlight);
-    color: var(--primary);
-    font-size: 0.97rem;
-    font-weight: bold;
+     float: right;
+     background: var(--highlight);
+     color: var(--primary);
+     font-size: var(--font-sm);
+     font-weight: bold;
     padding: 4px 13px;
-    border-radius: 18px;
+    border-radius: var(--space-xl);
     margin-top: 2px;
 }
 .card-description {
-    margin: 18px 0 0;
-    color: var(--text-light);
-    font-size: 1.06rem;
-    line-height: 1.46;
+     margin: 18px 0 0;
+     color: var(--text-light);
+     font-size: var(--font-base);
+     line-height: 1.46;
     max-height: 4.2em;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -315,9 +334,9 @@ h1 {
     -webkit-box-orient: vertical;
 }
 .card h2 {
-    margin: 0;
-    font-size: 1.54rem;
-    font-weight: 900;
+     margin: 0;
+     font-size: var(--font-xl);
+     font-weight: 900;
     color: var(--primary);
     letter-spacing: -1px;
     display: inline-block;
@@ -325,7 +344,7 @@ h1 {
 }
 @media (max-width: 700px) {
     .container { padding: 0 4vw 16vw 4vw; }
-    h1 { font-size: 2rem; }
+     h1 { font-size: var(--font-2xl); }
     .card { padding: 22px 12px 12px 16px; }
 }
 
@@ -385,10 +404,6 @@ body {
 }
 
 /* ========== ENHANCED CARD HOVER EFFECTS ========== */
-.card {
-    position: relative;
-    overflow: hidden;
-}
 
 .card::before {
     content: '';
@@ -409,11 +424,6 @@ body {
 .card > * {
     position: relative;
     z-index: 1;
-}
-
-.card:hover {
-    transform: translateY(-6px) scale(1.02);
-    box-shadow: 0 12px 32px rgba(97, 34, 59, 0.2);
 }
 
 /* ========== STAFF CARD PROFILE PREVIEW ========== */
@@ -442,7 +452,7 @@ body {
 }
 
 .staff-card-info {
-    padding: 18px;
+    padding: var(--space-xl);
     background: var(--white);
     flex-grow: 1;
     display: flex;
@@ -455,7 +465,7 @@ body {
 }
 
 .staff-card-name {
-    font-size: 1.1rem;
+    font-size: var(--font-lg);
     font-weight: 700;
     color: var(--primary);
     margin: 0 0 6px 0;
@@ -467,14 +477,14 @@ body {
 }
 
 .staff-card-title {
-    font-size: 0.9rem;
+    font-size: var(--font-sm);
     color: var(--text-light);
     margin: 0 0 8px 0;
     line-height: 1.4;
 }
 
 .staff-card-research {
-    font-size: 0.85rem;
+    font-size: var(--font-sm);
     color: var(--text-light);
     line-height: 1.5;
     flex-grow: 1;
@@ -483,7 +493,7 @@ body {
 .staff-card-research strong {
     color: var(--primary);
     display: block;
-    margin-bottom: 4px;
+    margin-bottom: var(--space-xs);
 }
 
 /* ========== COURSE CARD ENHANCEMENTS ========== */
@@ -497,12 +507,12 @@ body {
     display: inline-block;
     background: var(--primary);
     color: var(--white);
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
+     padding: 4px 12px;
+     border-radius: var(--space-3xl);
+     font-size: var(--font-xs);
+     font-weight: 600;
     letter-spacing: 0.5px;
-    margin-bottom: 8px;
+    margin-bottom: var(--space-sm);
     transition: all 0.3s ease;
     width: fit-content;
 }
@@ -513,7 +523,7 @@ body {
 }
 
 .course-title {
-    font-size: 1.2rem;
+    font-size: var(--font-lg);
     font-weight: 700;
     color: var(--primary);
     margin: 0 0 10px 0;
@@ -526,7 +536,7 @@ body {
 
 .course-description {
     color: var(--text-light);
-    font-size: 0.95rem;
+    font-size: var(--font-sm);
     line-height: 1.5;
     margin: 0;
     flex-grow: 1;
@@ -534,18 +544,18 @@ body {
 
 .course-meta {
     display: flex;
-    gap: 12px;
-    margin-top: 12px;
-    padding-top: 12px;
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+    padding-top: var(--space-md);
     border-top: 1px solid var(--border);
-    font-size: 0.85rem;
+    font-size: var(--font-sm);
     color: var(--text-light);
 }
 
 .course-meta-item {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: var(--space-xs);
 }
 
 /* ========== SECTION & CONTENT ANIMATIONS ========== */
@@ -656,7 +666,7 @@ input[type="search"]:not(.search-input):focus {
 .stat-card {
     background: var(--white);
     border: 1.5px solid var(--border);
-    border-radius: 12px;
+    border-radius: var(--space-md);
     padding: 28px 20px;
     text-align: center;
     transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -693,13 +703,13 @@ input[type="search"]:not(.search-input):focus {
 }
 
 .stat-number {
-    font-size: 2.8rem;
+    font-size: var(--font-4xl);
     font-weight: 900;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    margin-bottom: 8px;
+    margin-bottom: var(--space-sm);
     transition: transform 0.3s ease;
 }
 
@@ -708,15 +718,15 @@ input[type="search"]:not(.search-input):focus {
 }
 
 .stat-label {
-    font-size: 1.1rem;
+    font-size: var(--font-lg);
     font-weight: 700;
     color: var(--primary);
-    margin-bottom: 8px;
+    margin-bottom: var(--space-sm);
     letter-spacing: -0.5px;
 }
 
 .stat-description {
-    font-size: 0.9rem;
+    font-size: var(--font-sm);
     color: var(--text-light);
     line-height: 1.5;
     margin: 0;
@@ -728,11 +738,11 @@ input[type="search"]:not(.search-input):focus {
     }
 
     .stat-number {
-        font-size: 2.2rem;
+        font-size: var(--font-3xl);
     }
 
     .stat-label {
-        font-size: 1rem;
+        font-size: var(--font-base);
     }
 }
 
@@ -746,11 +756,11 @@ input[type="search"]:not(.search-input):focus {
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     color: var(--white);
     padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 0.85rem;
+    border-radius: var(--space-3xl);
+    font-size: var(--font-sm);
     font-weight: 700;
     letter-spacing: 0.5px;
-    margin-bottom: 10px;
+    margin-bottom: var(--space-md);
     transition: all 0.3s ease;
     position: relative;
     z-index: 2;
@@ -767,8 +777,8 @@ input[type="search"]:not(.search-input):focus {
     background: linear-gradient(135deg, var(--secondary), rgba(155, 77, 125, 0.6));
     color: var(--white);
     padding: 4px 12px;
-    border-radius: 12px;
-    font-size: 0.75rem;
+    border-radius: var(--space-md);
+    font-size: var(--font-xs);
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -783,7 +793,7 @@ input[type="search"]:not(.search-input):focus {
 .search-box {
     margin: 30px 0 40px 0;
     display: flex;
-    gap: 10px;
+    gap: var(--space-md);
 }
 
 .search-wrapper {
@@ -796,11 +806,11 @@ input[type="search"]:not(.search-input):focus {
 .search-wrapper::before {
     content: '🔍';
     position: absolute;
-    left: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1.1rem;
-    pointer-events: none;
+    left: var(--space-lg);
+     top: 50%;
+     transform: translateY(-50%);
+     font-size: var(--font-lg);
+     pointer-events: none;
     z-index: 2;
 }
 
@@ -808,8 +818,8 @@ input[type="search"]:not(.search-input):focus {
     width: 100%;
     padding: 14px 18px 14px 48px;
     border: 2px solid var(--primary);
-    border-radius: 10px;
-    font-size: 1rem;
+    border-radius: var(--space-md);
+    font-size: var(--font-base);
     background: var(--white);
     color: var(--text);
     font-family: 'Raleway', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -854,4 +864,138 @@ input[type="search"]:not(.search-input):focus {
     border-color: var(--secondary);
     box-shadow: 0 0 0 4px rgba(179, 104, 141, 0.2);
     background: var(--white);
+}
+
+/* ========== FOOTER STYLING ========== */
+footer {
+    background: var(--bg-light);
+    border-top: 1px solid var(--border);
+    padding: var(--space-3xl) var(--space-lg);
+    text-align: center;
+    color: var(--text-light);
+    font-size: var(--font-sm);
+    margin-top: auto;
+}
+
+footer p {
+    margin: var(--space-sm) 0;
+}
+
+/* ========== UTILITY CLASSES ========== */
+.heading-no-margin-top {
+    margin-top: 0 !important;
+}
+
+.heading-section {
+    margin-top: var(--space-3xl);
+}
+
+.heading-centered {
+    text-align: center;
+}
+
+.spacing-top {
+    margin-top: var(--space-lg);
+}
+
+.spacing-top-lg {
+    margin-top: var(--space-3xl);
+}
+
+.padding-section {
+    padding: var(--space-3xl) 0;
+}
+
+.grid-gap-lg {
+    gap: var(--space-2xl);
+}
+
+.grid-3col {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.grid-auto {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--space-2xl);
+}
+
+.spacing-bottom-lg {
+    margin-bottom: var(--space-lg);
+}
+
+.spacing-bottom-2xl {
+    margin-bottom: var(--space-2xl);
+}
+
+.spacing-top-4xl {
+    margin-top: var(--space-3xl);
+}
+
+.stats-section {
+    margin-top: var(--space-3xl);
+    padding: var(--space-2xl) 0;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--space-xl);
+    margin-bottom: var(--space-2xl);
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.spacing-top-sm {
+    margin-top: var(--space-sm);
+}
+
+.spacing-bottom-lg {
+    margin-bottom: var(--space-lg);
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.faq-answer {
+    margin-bottom: var(--space-lg);
+}
+
+.address-section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-2xl);
+}
+
+.address-item {
+    padding: var(--space-xl);
+    background: var(--bg-light);
+    border-radius: var(--space-sm);
+}
+
+.heading-filter-section {
+    color: var(--primary);
+    margin: var(--space-2xl) 0 var(--space-xl);
+}
+
+.heading-subscribe {
+    color: var(--primary);
+    margin-bottom: var(--space-2xl);
+}
+
+.heading-archive {
+    color: var(--primary);
+    margin-bottom: var(--space-lg);
+}
+
+.subscribe-list {
+    margin-left: var(--space-lg);
+    margin-bottom: var(--space-2xl);
 }
