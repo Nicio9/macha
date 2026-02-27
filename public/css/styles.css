@@ -648,8 +648,8 @@ html {
 .grid > .card:nth-child(6) { animation-delay: 0.3s; }
 .grid > .card:nth-child(n+7) { animation-delay: 0.35s; }
 
-/* Prevent animation re-triggers when filtering */
-.grid.filtered > .card {
+/* Prevent animation re-triggers when filtering on courses page only */
+.courses-page .grid.filtered > .card {
     animation: none;
 }
 
