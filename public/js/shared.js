@@ -99,15 +99,12 @@ function triggerThemeToggleShine(switchThemeFn) {
     var existingOverlay = clone.querySelector('#theme-wipe-overlay');
     if (existingOverlay) existingOverlay.remove();
 
-    // Freeze ALL colour-bearing elements in the clone by forcing the old vars
-    // onto the clone root — use a <style> tag injected into the clone so it
-    // overrides the live [data-theme] attribute with higher specificity.
+    // Inject a <style> that hard-freezes the old CSS vars onto every element in the clone
     var freezeStyle = document.createElement('style');
-    freezeStyle.textContent = 'body, body * { ' + frozenVars + ' !important; }';
-    // Insert as first child so it applies
+    freezeStyle.textContent = '* { ' + frozenVars + ' !important; transition: none !important; }';
     clone.insertBefore(freezeStyle, clone.firstChild);
 
-    // Position the clone to match the current scroll
+    // Position clone to match current scroll
     clone.style.cssText = [
         'position:absolute',
         'top:' + (-window.scrollY) + 'px',
@@ -117,32 +114,31 @@ function triggerThemeToggleShine(switchThemeFn) {
         'pointer-events:none'
     ].join(';');
 
-    // Wrap in a fixed viewport overlay, clipped to full screen initially
+    // Overlay: starts fully visible on the RIGHT side of the screen (inset from left = 0)
+    // Wipes to the right (inset from left grows to 100%), revealing new theme from the left
     var overlay = document.createElement('div');
     overlay.id = 'theme-wipe-overlay';
-    overlay.style.cssText = [
-        'position:fixed', 'top:0', 'left:0',
-        'width:100vw', 'height:100vh',
-        'overflow:hidden',
-        'pointer-events:none',
-        'z-index:9999',
-        'clip-path:inset(0 0 0 0%)',   // fully visible
-        'transition:none'
-    ].join(';');
+    overlay.style.position = 'fixed';
+    overlay.style.top = '0';
+    overlay.style.left = '0';
+    overlay.style.width = '100vw';
+    overlay.style.height = '100vh';
+    overlay.style.overflow = 'hidden';
+    overlay.style.pointerEvents = 'none';
+    overlay.style.zIndex = '9999';
+    overlay.style.clipPath = 'inset(0 0 0 0%)';
 
     overlay.appendChild(clone);
     document.body.appendChild(overlay);
 
-    // Switch theme underneath — live page now shows new theme
+    // Switch theme underneath immediately
     switchThemeFn();
 
-    // On next frame, animate the clip from left: old theme retreats to the right
-    requestAnimationFrame(function() {
-        requestAnimationFrame(function() {
-            overlay.style.transition = 'clip-path 0.65s cubic-bezier(0.4,0,0.2,1)';
-            overlay.style.clipPath = 'inset(0 0 0 100%)';
-        });
-    });
+    // Animate the wipe: clip grows from the left, pushing the old theme off to the right
+    setTimeout(function() {
+        overlay.style.transition = 'clip-path 0.65s cubic-bezier(0.4,0,0.2,1)';
+        overlay.style.clipPath = 'inset(0 0 0 100%)';
+    }, 20);
 
     setTimeout(function() {
         overlay.remove();
