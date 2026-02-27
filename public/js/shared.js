@@ -83,12 +83,24 @@ function initDarkModeBtn() {
 }
 
 function triggerThemeToggleShine(switchThemeFn) {
+    // Snapshot all current CSS variable values BEFORE switching
+    var cs = getComputedStyle(document.documentElement);
+    var frozenVars = [
+        '--primary','--secondary','--highlight','--badge',
+        '--text','--text-light','--bg-light','--border','--link','--white',
+        '--shadow','--shadow-hover','--dropdown-bg','--dropdown-link',
+        '--warning-bg','--warning-text','--warning-border'
+    ].map(function(v) { return v + ':' + cs.getPropertyValue(v); }).join(';');
+
     // Clone the entire body to freeze the current theme visually
     var clone = document.body.cloneNode(true);
 
-    // Remove any nested clones/overlays from the clone to avoid recursion
+    // Remove any nested overlays from the clone
     var existingOverlay = clone.querySelector('#theme-wipe-overlay');
     if (existingOverlay) existingOverlay.remove();
+
+    // Freeze the clone's CSS variables so it ignores theme changes on <html>
+    clone.setAttribute('style', (clone.getAttribute('style') || '') + ';' + frozenVars);
 
     // Wrap clone in a fixed, full-viewport, non-interactive overlay
     var overlay = document.createElement('div');
@@ -99,25 +111,24 @@ function triggerThemeToggleShine(switchThemeFn) {
         'overflow:hidden',
         'pointer-events:none',
         'z-index:9999',
-        'clip-path:inset(0 0% 0 0)',   // start: fully visible
+        'clip-path:inset(0 0% 0 0)',
         'transition:clip-path 0.65s cubic-bezier(0.4,0,0.2,1)'
     ].join(';');
 
-    // The clone needs to match the current scroll position
-    clone.style.cssText = [
-        'position:absolute', 'top:' + (-window.scrollY) + 'px', 'left:0',
-        'width:' + document.documentElement.scrollWidth + 'px',
-        'pointer-events:none',
-        'margin:0'
-    ].join(';');
+    clone.style.position = 'absolute';
+    clone.style.top = (-window.scrollY) + 'px';
+    clone.style.left = '0';
+    clone.style.width = document.documentElement.scrollWidth + 'px';
+    clone.style.margin = '0';
+    clone.style.pointerEvents = 'none';
 
     overlay.appendChild(clone);
     document.body.appendChild(overlay);
 
-    // Switch theme now — page underneath updates
+    // Switch theme underneath
     switchThemeFn();
 
-    // Wipe the clone away left-to-right: clip-path right edge shrinks to 100%
+    // Wipe the clone away right-to-left
     requestAnimationFrame(function() {
         requestAnimationFrame(function() {
             overlay.style.clipPath = 'inset(0 100% 0 0)';
