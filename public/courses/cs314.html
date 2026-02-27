@@ -10,6 +10,9 @@
         .breadcrumb { padding: var(--space-md) var(--space-lg); background: var(--bg-light); border-bottom: 1px solid var(--border); font-size: var(--font-sm); }
         .breadcrumb a { color: var(--link); text-decoration: none; }
         .breadcrumb a:hover { text-decoration: underline; }
+        .official-link { background: var(--highlight); border: 1px solid var(--primary); border-radius: 8px; padding: var(--space-lg); margin-bottom: var(--space-2xl); }
+        .official-link a { color: var(--primary); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: var(--space-sm); }
+        .official-link a:hover { text-decoration: underline; }
         .course-header { padding: var(--space-3xl) var(--space-lg); background: var(--white); }
         .course-header h1 { color: var(--primary); margin-bottom: var(--space-md); }
         .course-meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-lg); margin-top: var(--space-lg); }
@@ -23,6 +26,7 @@
         [data-theme="dark"] .breadcrumb { background: var(--bg-light); }
         [data-theme="dark"] .course-header { background: var(--white); }
         [data-theme="dark"] .meta-item { background: var(--bg-light); }
+        [data-theme="dark"] .official-link { background: var(--highlight); }
     </style>
 </head>
 <body>
@@ -34,6 +38,9 @@
     </nav>
 
     <div class="course-header">
+        <div class="official-link">
+            <a href="https://cs.sun.ac.za/courses/cs314/" target="_blank">📖 View Official Course Specifications on SUN Website →</a>
+        </div>
         <h1>CS314: Concurrency</h1>
         <div class="course-meta">
             <div class="meta-item">
