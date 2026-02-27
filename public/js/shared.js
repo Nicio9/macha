@@ -71,22 +71,39 @@ function initDarkModeBtn() {
     if (isDark) { html.setAttribute('data-theme', 'dark'); }
     setButtonLabel(isDark);
     btn.addEventListener('click', function () {
-        isDark = !(html.getAttribute('data-theme') === 'dark');
-        if (isDark) { html.setAttribute('data-theme', 'dark'); } else { html.removeAttribute('data-theme'); }
-        setButtonLabel(isDark);
-        localStorage.setItem('darkMode', isDark);
-        
-        // Trigger the theme toggle shine effect
-        triggerThemeToggleShine();
+        var goingDark = !(html.getAttribute('data-theme') === 'dark');
+
+        triggerThemeToggleShine(function() {
+            isDark = goingDark;
+            if (isDark) { html.setAttribute('data-theme', 'dark'); } else { html.removeAttribute('data-theme'); }
+            setButtonLabel(isDark);
+            localStorage.setItem('darkMode', isDark);
+        });
     });
 }
 
-function triggerThemeToggleShine() {
+function triggerThemeToggleShine(switchThemeFn) {
+    // Capture the old background color before switching
+    var oldBg = getComputedStyle(document.documentElement).getPropertyValue('--bg-light').trim();
+
+    // Create outer wrapper (slides left)
     var overlay = document.createElement('div');
     overlay.className = 'theme-toggle-overlay';
+
+    // Create inner block (the solid blind panel, old theme color)
+    var inner = document.createElement('div');
+    inner.className = 'theme-toggle-overlay-inner';
+    inner.style.background = oldBg;
+    overlay.appendChild(inner);
+
     document.body.appendChild(overlay);
-    
-    // Remove the overlay after animation completes
+
+    // Switch the theme right at the midpoint of the animation (when blind fully covers screen)
+    setTimeout(function() {
+        switchThemeFn();
+    }, 275);
+
+    // Remove overlay after animation completes
     setTimeout(function() {
         overlay.remove();
     }, 600);
