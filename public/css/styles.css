@@ -339,7 +339,6 @@ h2, h3 {
 .card:hover, .card:focus {
     box-shadow: var(--shadow-hover);
     border-color: var(--primary);
-    transform: translateY(-3px) scale(1.02);
     outline: none;
 }
 .course-badge {
