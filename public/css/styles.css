@@ -35,13 +35,13 @@
     --font-4xl: 2.8rem;    /* Stats numbers */
     
     /* Spacing - 4px grid */
-    --space-xs: var(--space-xs);
-    --space-sm: var(--space-sm);
-    --space-md: var(--space-md);
-    --space-lg: var(--space-lg);
-    --space-xl: var(--space-xl);
-    --space-2xl: var(--space-2xl);
-    --space-3xl: var(--space-3xl);
+    --space-xs: 4px;       /* Extra small */
+    --space-sm: 8px;       /* Small */
+    --space-md: 12px;      /* Medium */
+    --space-lg: 16px;      /* Large */
+    --space-xl: 20px;      /* Extra large */
+    --space-2xl: 24px;     /* 2x large */
+    --space-3xl: 30px;     /* 3x large */
 }
 [data-theme="dark"] {
     --primary: #B3688D;
