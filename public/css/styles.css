@@ -464,31 +464,6 @@ html {
     }
 }
 
-/* Theme toggle shine effect - blind sweeping from right to left */
-@keyframes themeBlindSweep {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-200%); }
-}
-
-.theme-toggle-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 200%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 9999;
-    animation: themeBlindSweep 0.55s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-.theme-toggle-overlay-inner {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 50%;
-    height: 100%;
-}
-
 /* ========== ENHANCED CARD HOVER EFFECTS ========== */
 
 .card::before {

@@ -83,30 +83,39 @@ function initDarkModeBtn() {
 }
 
 function triggerThemeToggleShine(switchThemeFn) {
-    // Capture the old background color before switching
-    var oldBg = getComputedStyle(document.documentElement).getPropertyValue('--bg-light').trim();
+    // Capture old background before switching (resolved color, not CSS var)
+    var oldBg = getComputedStyle(document.body).backgroundColor;
 
-    // Create outer wrapper (slides left)
+    // Switch the theme immediately
+    switchThemeFn();
+
+    // Now capture the new background color
+    var newBg = getComputedStyle(document.body).backgroundColor;
+
+    // Build overlay: full-screen panel colored with OLD theme bg,
+    // starting on-screen (covering everything), then sweeps off to the left.
     var overlay = document.createElement('div');
-    overlay.className = 'theme-toggle-overlay';
-
-    // Create inner block (the solid blind panel, old theme color)
-    var inner = document.createElement('div');
-    inner.className = 'theme-toggle-overlay-inner';
-    inner.style.background = oldBg;
-    overlay.appendChild(inner);
+    overlay.style.cssText = [
+        'position:fixed', 'top:0', 'left:0', 'width:100%', 'height:100%',
+        'pointer-events:none', 'z-index:9999',
+        'background:' + oldBg,
+        'transform:translateX(0)',
+        'transition:transform 0.55s cubic-bezier(0.4,0,0.2,1)'
+    ].join(';');
 
     document.body.appendChild(overlay);
 
-    // Switch the theme right at the midpoint of the animation (when blind fully covers screen)
-    setTimeout(function() {
-        switchThemeFn();
-    }, 275);
+    // Trigger the slide-off on next frame
+    requestAnimationFrame(function() {
+        requestAnimationFrame(function() {
+            overlay.style.transform = 'translateX(-100%)';
+        });
+    });
 
     // Remove overlay after animation completes
     setTimeout(function() {
         overlay.remove();
-    }, 600);
+    }, 650);
 }
 
 function initHamburger() {
