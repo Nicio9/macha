@@ -82,6 +82,15 @@ header {
     font-size: var(--font-xl);
     font-weight: 700;
     color: var(--primary);
+    text-decoration: none;
+    display: inline-block;
+    transition: color 0.2s, transform 0.2s;
+    cursor: pointer;
+}
+
+.logo:hover {
+    color: var(--secondary);
+    transform: scale(1.05);
 }
 nav ul {
     list-style: none;

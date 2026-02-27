@@ -39,7 +39,7 @@ function renderHeader() {
     var headerHTML = 
         '<header>' +
             '<div class="header-wrapper">' +
-                '<div class="logo">CS Division</div>' +
+                '<a href="/" class="logo">CS Division</a>' +
                 '<div class="header-right">' +
                     '<button class="hamburger" id="hamburger" aria-label="Toggle menu">' +
                         '<span></span>' +
