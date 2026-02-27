@@ -3,6 +3,21 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+/* Theme toggle: wipe from right to left using View Transitions API */
+::view-transition-old(root) {
+    animation: none;
+    mix-blend-mode: normal;
+}
+::view-transition-new(root) {
+    animation: theme-wipe-in 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    mix-blend-mode: normal;
+}
+@keyframes theme-wipe-in {
+    from { clip-path: inset(0 100% 0 0); }
+    to   { clip-path: inset(0 0% 0 0); }
+}
+
 :root {
     /* Colors */
     --primary: #61223B;

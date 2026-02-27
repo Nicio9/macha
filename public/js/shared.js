@@ -83,43 +83,14 @@ function initDarkModeBtn() {
 }
 
 function triggerThemeToggleShine(switchThemeFn) {
-    // Suppress all page transitions so the theme switch is instant
-    var noTransition = document.createElement('style');
-    noTransition.textContent = '*, *::before, *::after { transition: none !important; animation: none !important; }';
-    document.head.appendChild(noTransition);
-
-    var oldBg = getComputedStyle(document.body).backgroundColor;
-    switchThemeFn();
-    var newBg = getComputedStyle(document.body).backgroundColor;
-
-    noTransition.remove();
-
-    // Panel layout: [newBg | oldBg], each half = 100vw, total width = 200vw
-    // Start: shifted left so oldBg half fills the viewport (translateX(-50%))
-    // End:   shifted right so newBg half fills the viewport (translateX(0))
-    // The hard boundary between them sweeps right-to-left across the screen
-    var panel = document.createElement('div');
-    panel.style.position = 'fixed';
-    panel.style.top = '0';
-    panel.style.left = '0';
-    panel.style.width = '200vw';
-    panel.style.height = '100vh';
-    panel.style.pointerEvents = 'none';
-    panel.style.zIndex = '9999';
-    panel.style.background = 'linear-gradient(to right,' + newBg + ' 50%,' + oldBg + ' 50%)';
-    panel.style.transform = 'translateX(-50%)';
-    panel.style.willChange = 'transform';
-
-    document.body.appendChild(panel);
-
-    // Force a reflow so the browser registers the starting transform
-    panel.getBoundingClientRect();
-
-    // Now animate to show the new colour
-    panel.style.transition = 'transform 0.55s cubic-bezier(0.4,0,0.2,1)';
-    panel.style.transform = 'translateX(0%)';
-
-    setTimeout(function() { panel.remove(); }, 700);
+    if (!document.startViewTransition) {
+        // Fallback for unsupported browsers
+        switchThemeFn();
+        return;
+    }
+    document.startViewTransition(function() {
+        switchThemeFn();
+    });
 }
 
 function initHamburger() {
