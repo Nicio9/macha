@@ -83,48 +83,43 @@ function initDarkModeBtn() {
 }
 
 function triggerThemeToggleShine(switchThemeFn) {
-    // Suppress all page transitions so the theme switch is instant underneath
+    // Suppress all page transitions so the theme switch is instant
     var noTransition = document.createElement('style');
-    noTransition.id = 'wipe-no-transition';
     noTransition.textContent = '*, *::before, *::after { transition: none !important; animation: none !important; }';
     document.head.appendChild(noTransition);
 
-    // Sample old bg colour
     var oldBg = getComputedStyle(document.body).backgroundColor;
-
-    // Switch theme instantly (no transitions to fight)
     switchThemeFn();
-
-    // Sample new bg colour
     var newBg = getComputedStyle(document.body).backgroundColor;
 
-    // Re-enable page transitions
     noTransition.remove();
 
-    // Build a 200vw panel: left half = new colour, right half = old colour
-    // Starting position: translateX(0) → right half (old colour) fills the viewport
-    // End position: translateX(-50%) → left half (new colour) fills the viewport
-    // The hard colour boundary sweeps across like a 1px blind
+    // Panel layout: [newBg | oldBg], each half = 100vw, total width = 200vw
+    // Start: shifted left so oldBg half fills the viewport (translateX(-50%))
+    // End:   shifted right so newBg half fills the viewport (translateX(0))
+    // The hard boundary between them sweeps right-to-left across the screen
     var panel = document.createElement('div');
-    panel.style.cssText = [
-        'position:fixed', 'top:0', 'left:0',
-        'width:200vw', 'height:100vh',
-        'pointer-events:none',
-        'z-index:9999',
-        'background:linear-gradient(to right,' + newBg + ' 50%,' + oldBg + ' 50%)',
-        'transform:translateX(0)',
-        'will-change:transform'
-    ].join(';');
+    panel.style.position = 'fixed';
+    panel.style.top = '0';
+    panel.style.left = '0';
+    panel.style.width = '200vw';
+    panel.style.height = '100vh';
+    panel.style.pointerEvents = 'none';
+    panel.style.zIndex = '9999';
+    panel.style.background = 'linear-gradient(to right,' + newBg + ' 50%,' + oldBg + ' 50%)';
+    panel.style.transform = 'translateX(-50%)';
+    panel.style.willChange = 'transform';
 
     document.body.appendChild(panel);
 
-    // Trigger the wipe on next frame
-    requestAnimationFrame(function() {
-        panel.style.transition = 'transform 0.55s cubic-bezier(0.4,0,0.2,1)';
-        panel.style.transform = 'translateX(-50%)';
-    });
+    // Force a reflow so the browser registers the starting transform
+    panel.getBoundingClientRect();
 
-    setTimeout(function() { panel.remove(); }, 650);
+    // Now animate to show the new colour
+    panel.style.transition = 'transform 0.55s cubic-bezier(0.4,0,0.2,1)';
+    panel.style.transform = 'translateX(0%)';
+
+    setTimeout(function() { panel.remove(); }, 700);
 }
 
 function initHamburger() {
