@@ -83,39 +83,39 @@ function initDarkModeBtn() {
 }
 
 function triggerThemeToggleShine(switchThemeFn) {
-    // Capture old background before switching (resolved color, not CSS var)
     var oldBg = getComputedStyle(document.body).backgroundColor;
 
-    // Switch the theme immediately
+    // Switch the theme immediately so we can sample the new color
     switchThemeFn();
 
-    // Now capture the new background color
     var newBg = getComputedStyle(document.body).backgroundColor;
 
-    // Build overlay: full-screen panel colored with OLD theme bg,
-    // starting on-screen (covering everything), then sweeps off to the left.
+    // A 200vw panel: right half = old color, left half = new color.
+    // Starts shifted right so only the old-color half is visible (covering the screen).
+    // Sweeps left until only the new-color half is visible — revealing the new theme.
+    // Net effect: a single wipe edge crosses the screen right-to-left.
     var overlay = document.createElement('div');
     overlay.style.cssText = [
-        'position:fixed', 'top:0', 'left:0', 'width:100%', 'height:100%',
+        'position:fixed', 'top:0', 'left:0',
+        'width:200vw', 'height:100%',
         'pointer-events:none', 'z-index:9999',
-        'background:' + oldBg,
+        'background:linear-gradient(to right,' + newBg + ' 50%,' + oldBg + ' 50%)',
         'transform:translateX(0)',
         'transition:transform 0.55s cubic-bezier(0.4,0,0.2,1)'
     ].join(';');
 
     document.body.appendChild(overlay);
 
-    // Trigger the slide-off on next frame
+    // Slide the panel left by 100vw — the dividing edge crosses the screen
     requestAnimationFrame(function() {
         requestAnimationFrame(function() {
-            overlay.style.transform = 'translateX(-100%)';
+            overlay.style.transform = 'translateX(-50%)';
         });
     });
 
-    // Remove overlay after animation completes
     setTimeout(function() {
         overlay.remove();
-    }, 650);
+    }, 700);
 }
 
 function initHamburger() {
