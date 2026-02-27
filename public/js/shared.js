@@ -75,7 +75,21 @@ function initDarkModeBtn() {
         if (isDark) { html.setAttribute('data-theme', 'dark'); } else { html.removeAttribute('data-theme'); }
         setButtonLabel(isDark);
         localStorage.setItem('darkMode', isDark);
+        
+        // Trigger the theme toggle shine effect
+        triggerThemeToggleShine();
     });
+}
+
+function triggerThemeToggleShine() {
+    var overlay = document.createElement('div');
+    overlay.className = 'theme-toggle-overlay';
+    document.body.appendChild(overlay);
+    
+    // Remove the overlay after animation completes
+    setTimeout(function() {
+        overlay.remove();
+    }, 600);
 }
 
 function initHamburger() {
