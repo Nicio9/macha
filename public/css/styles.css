@@ -44,8 +44,8 @@
     --space-3xl: 30px;     /* 3x large */
 }
 [data-theme="dark"] {
-    --primary: #7D4A6B;
-    --secondary: #A86A94;
+    --primary: #CAA258;
+    --secondary: #E8C590;
     --highlight: #2a202d;
     --badge: #44203C;
     --text: #E8E8E8;
