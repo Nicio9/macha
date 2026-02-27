@@ -141,23 +141,20 @@
 // Year filter functionality
 (function () {
   let currentYearFilter = 'all';
-  let isFirstFilter = true;
   
   document.addEventListener('DOMContentLoaded', function () {
     const filterButtons = document.querySelectorAll('.filter-btn');
     const courseCards = document.querySelectorAll('.card[data-year]');
     const grid = document.querySelector('.grid');
 
+    // Disable animations after initial page load animations complete (~1 second)
+    setTimeout(function () {
+      if (grid) grid.classList.add('filtered');
+    }, 1000);
+
     filterButtons.forEach(button => {
       button.addEventListener('click', function (e) {
         e.preventDefault();
-        
-        // After first filter, disable animations
-        if (isFirstFilter) {
-          isFirstFilter = false;
-          if (grid) grid.classList.add('filtered');
-        }
-        
         currentYearFilter = this.getAttribute('data-filter');
 
         // Update active button
