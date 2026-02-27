@@ -83,48 +83,50 @@ function initDarkModeBtn() {
 }
 
 function triggerThemeToggleShine(switchThemeFn) {
-    // Load html2canvas lazily on first use
-    function doWipe() {
-        html2canvas(document.body, { useCORS: true, allowTaint: true, scale: 1 }).then(function(canvas) {
-            // We have a pixel-perfect snapshot of the OLD theme
+    // Clone the entire body to freeze the current theme visually
+    var clone = document.body.cloneNode(true);
 
-            // Switch theme now — page beneath updates instantly
-            switchThemeFn();
+    // Remove any nested clones/overlays from the clone to avoid recursion
+    var existingOverlay = clone.querySelector('#theme-wipe-overlay');
+    if (existingOverlay) existingOverlay.remove();
 
-            // Place the snapshot as a fixed overlay covering the whole screen
-            canvas.style.cssText = [
-                'position:fixed', 'top:0', 'left:0',
-                'width:100vw', 'height:100vh',
-                'pointer-events:none', 'z-index:9999',
-                'object-fit:cover',
-                // clip-path starts showing full canvas, then shrinks from the left
-                'clip-path:inset(0 0 0 0)',
-                'transition:clip-path 0.65s cubic-bezier(0.4,0,0.2,1)'
-            ].join(';');
+    // Wrap clone in a fixed, full-viewport, non-interactive overlay
+    var overlay = document.createElement('div');
+    overlay.id = 'theme-wipe-overlay';
+    overlay.style.cssText = [
+        'position:fixed', 'top:0', 'left:0',
+        'width:100vw', 'height:100vh',
+        'overflow:hidden',
+        'pointer-events:none',
+        'z-index:9999',
+        'clip-path:inset(0 0% 0 0)',   // start: fully visible
+        'transition:clip-path 0.65s cubic-bezier(0.4,0,0.2,1)'
+    ].join(';');
 
-            document.body.appendChild(canvas);
+    // The clone needs to match the current scroll position
+    clone.style.cssText = [
+        'position:absolute', 'top:' + (-window.scrollY) + 'px', 'left:0',
+        'width:' + document.documentElement.scrollWidth + 'px',
+        'pointer-events:none',
+        'margin:0'
+    ].join(';');
 
-            // Wipe the snapshot away from left to right (revealing new theme on the left first)
-            requestAnimationFrame(function() {
-                requestAnimationFrame(function() {
-                    canvas.style.clipPath = 'inset(0 0 0 100%)';
-                });
-            });
+    overlay.appendChild(clone);
+    document.body.appendChild(overlay);
 
-            setTimeout(function() {
-                canvas.remove();
-            }, 800);
+    // Switch theme now — page underneath updates
+    switchThemeFn();
+
+    // Wipe the clone away left-to-right: clip-path right edge shrinks to 100%
+    requestAnimationFrame(function() {
+        requestAnimationFrame(function() {
+            overlay.style.clipPath = 'inset(0 100% 0 0)';
         });
-    }
+    });
 
-    if (window.html2canvas) {
-        doWipe();
-    } else {
-        var script = document.createElement('script');
-        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
-        script.onload = doWipe;
-        document.head.appendChild(script);
-    }
+    setTimeout(function() {
+        overlay.remove();
+    }, 800);
 }
 
 function initHamburger() {
