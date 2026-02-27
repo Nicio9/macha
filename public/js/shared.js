@@ -83,39 +83,37 @@ function initDarkModeBtn() {
 }
 
 function triggerThemeToggleShine(switchThemeFn) {
+    // Take a screenshot of the current page by capturing computed bg
+    // We'll fake the "old right side" with a shrinking overlay.
     var oldBg = getComputedStyle(document.body).backgroundColor;
 
-    // Switch the theme immediately so we can sample the new color
+    // Switch the theme immediately — left side of the screen now shows new theme live
     switchThemeFn();
 
-    var newBg = getComputedStyle(document.body).backgroundColor;
-
-    // A 200vw panel: right half = old color, left half = new color.
-    // Starts shifted right so only the old-color half is visible (covering the screen).
-    // Sweeps left until only the new-color half is visible — revealing the new theme.
-    // Net effect: a single wipe edge crosses the screen right-to-left.
+    // A shrinking overlay that covers the RIGHT portion of the screen with the old theme color.
+    // It starts at full width and shrinks leftward, revealing the new theme underneath.
+    // A 1px right-edge line acts as the visible "blind" divider.
     var overlay = document.createElement('div');
     overlay.style.cssText = [
-        'position:fixed', 'top:0', 'left:0',
-        'width:200vw', 'height:100%',
+        'position:fixed', 'top:0', 'right:0',
+        'width:100%', 'height:100%',
         'pointer-events:none', 'z-index:9999',
-        'background:linear-gradient(to right,' + newBg + ' 50%,' + oldBg + ' 50%)',
-        'transform:translateX(0)',
-        'transition:transform 0.55s cubic-bezier(0.4,0,0.2,1)'
+        'background:' + oldBg,
+        'border-left:1px solid rgba(128,128,128,0.4)',
+        'transition:width 0.6s cubic-bezier(0.4,0,0.2,1)'
     ].join(';');
 
     document.body.appendChild(overlay);
 
-    // Slide the panel left by 100vw — the dividing edge crosses the screen
     requestAnimationFrame(function() {
         requestAnimationFrame(function() {
-            overlay.style.transform = 'translateX(-50%)';
+            overlay.style.width = '0%';
         });
     });
 
     setTimeout(function() {
         overlay.remove();
-    }, 700);
+    }, 750);
 }
 
 function initHamburger() {
