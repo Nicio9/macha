@@ -91,35 +91,6 @@
         <p>Department of Mathematical Sciences | Stellenbosch, South Africa</p>
     </footer>
     <script>
-        // Dark mode toggle button
-        function initDarkModeBtn() {
-            var html = document.documentElement;
-            var btn = document.getElementById('theme-toggle-btn');
-            if (!btn) return;
-            function setButtonLabel(isDark) {
-                btn.textContent = isDark ? '☀️' : '🌙';
-                btn.classList.toggle('dark', isDark);
-            }
-            var isDark = localStorage.getItem('darkMode') === 'true';
-            if (isDark) {
-                html.setAttribute('data-theme', 'dark');
-            } else {
-                html.removeAttribute('data-theme');
-            }
-            setButtonLabel(isDark);
-            btn.addEventListener('click', function () {
-                isDark = !(html.getAttribute('data-theme') === 'dark');
-                if (isDark) {
-                    html.setAttribute('data-theme', 'dark');
-                } else {
-                    html.removeAttribute('data-theme');
-                }
-                setButtonLabel(isDark);
-                localStorage.setItem('darkMode', isDark);
-            });
-        }
-    </script>
-<script>
 // 3D tilt effect for homepage quick-link cards
 (function () {
   const maxTilt = 14; // degrees
