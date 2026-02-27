@@ -705,6 +705,23 @@ button:not(.theme-toggle-btn):not(.hamburger):hover {
     font-weight: 600;
 }
 
+/* ========== FILTER TABS CONTAINER ========== */
+.filter-tabs {
+    display: flex;
+    gap: var(--space-md);
+    margin-bottom: var(--space-2xl);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card[data-year] {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.card[data-year].hidden {
+    display: none;
+}
+
 /* ========== INPUT & SEARCH FIELD ANIMATIONS ========== */
 input[type="text"]:not(.search-input),
 input[type="search"]:not(.search-input) {
