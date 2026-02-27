@@ -1,0 +1,22 @@
+## IMMEDIATE PRIORITIES (HIGH)
+- [ ] Deploy to live URL (Vercel recommended, takes 15 min)
+- [ ] Verify all pages have proper meta descriptions for SEO
+- [ ] Check WCAG color contrast ratios (ensure AA standard)
+
+## ENHANCEMENTS (MEDIUM)
+- [ ] Add course page details: prerequisites, learning outcomes, assessment methods
+- [ ] Enhance research groups with publication links
+- [ ] Improve events calendar view
+- [ ] Add interactive features: search/filters for courses and staff
+
+## POLISH (LOW PRIORITY)
+- [ ] Verify performance (check lazy loading potential for images)
+- [ ] Minify CSS if not already done
+- [ ] Test on various mobile devices (iPhone, Android tablets)
+- [ ] Check all links work and are not broken
+
+## COMPLETED ✓
+- [x] Staff images cached locally
+- [x] Staff navbar consistency (no issue - dynamically injected)
+- [x] Dark mode support (all pages)
+- [x] Mobile responsiveness design (looks good)
