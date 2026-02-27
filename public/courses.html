@@ -7,12 +7,37 @@
     <link rel="stylesheet" href="/css/styles.css">
     <script src="/js/shared.js"></script>
     <style>
-        .courses-intro {
-            color: var(--text-light);
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-    </style>
+         .courses-intro {
+             color: var(--text-light);
+             font-size: 1.2rem;
+             margin-bottom: 2rem;
+         }
+         .search-wrapper {
+             position: relative;
+             display: inline-block;
+             width: 100%;
+             max-width: 500px;
+         }
+         .search-wrapper::before {
+             content: '🔍';
+             position: absolute;
+             left: 18px;
+             top: 50%;
+             transform: translateY(-50%);
+             font-size: 1.1rem;
+             pointer-events: none;
+             opacity: 0.6;
+             transition: opacity 0.3s ease;
+         }
+         .search-wrapper:focus-within::before {
+             opacity: 1;
+             color: var(--primary);
+         }
+         .search-wrapper .search-input {
+             padding-left: 50px;
+             width: 100%;
+         }
+     </style>
 </head>
 <body>
 
@@ -20,9 +45,11 @@
         <h1>Course Catalogue</h1>
         <p class="courses-intro">Every Computer Science course, at a glance. Click any card for detailed module info, semester, and prerequisites. Powered by Stellenbosch colours ✺</p>
         
-        <div class="search-box">
-             <input type="text" class="search-input" id="courseSearch" placeholder="Search by course code, name, or topic..." onkeyup="searchCourses()">
-         </div>
+         <div class="search-box">
+              <div class="search-wrapper">
+                  <input type="text" class="search-input" id="courseSearch" placeholder="Search by course code, name, or topic..." onkeyup="searchCourses()">
+              </div>
+          </div>
         
         <div class="grid">
             <a class="card" href="https://cs.sun.ac.za/courses/cs114/" target="_blank">

@@ -132,7 +132,32 @@
                  grid-template-columns: 1fr;
              }
          }
-        .no-results { padding: 40px 20px; text-align: center; color: var(--text-light); }
+         .no-results { padding: 40px 20px; text-align: center; color: var(--text-light); }
+         .search-wrapper {
+             position: relative;
+             display: inline-block;
+             width: 100%;
+             max-width: 500px;
+         }
+         .search-wrapper::before {
+             content: '🔍';
+             position: absolute;
+             left: 18px;
+             top: 50%;
+             transform: translateY(-50%);
+             font-size: 1.1rem;
+             pointer-events: none;
+             opacity: 0.6;
+             transition: opacity 0.3s ease;
+         }
+         .search-wrapper:focus-within::before {
+             opacity: 1;
+             color: var(--primary);
+         }
+         .search-wrapper .search-input {
+             padding-left: 50px;
+             width: 100%;
+         }
     </style>
 </head>
 <body>
@@ -143,9 +168,11 @@
             <p>Meet our 27 staff members. The Computer Science Division brings together researchers, educators, and practitioners working across all major areas of computing science.</p>
         </div>
 
-        <div class="search-box">
-            <input type="text" class="search-input" id="staffSearch" placeholder="Search by name or research area..." onkeyup="searchStaff()">
-        </div>
+         <div class="search-box">
+             <div class="search-wrapper">
+                 <input type="text" class="search-input" id="staffSearch" placeholder="Search by name or research area..." onkeyup="searchStaff()">
+             </div>
+         </div>
 
         <h2 style="color: var(--primary); margin-bottom: 20px;">Professors</h2>
         <div class="staff-list">
