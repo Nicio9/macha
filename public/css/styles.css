@@ -285,10 +285,22 @@ h2, h3 {
 
 /* Homepage quick links grid - smaller, more compact layout */
 .container > .grid:first-of-type {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--space-lg);
     margin-top: var(--space-lg);
     margin-bottom: var(--space-2xl);
+}
+
+@media (max-width: 1024px) {
+    .container > .grid:first-of-type {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .container > .grid:first-of-type {
+        grid-template-columns: 1fr;
+    }
 }
 
 .container > .grid:first-of-type .card {
