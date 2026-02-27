@@ -380,6 +380,19 @@ h2, h3 {
     display: inline-block;
     vertical-align: middle;
 }
+
+.card h3 {
+    color: var(--primary);
+    font-weight: 700;
+    margin: 0 0 var(--space-md) 0;
+}
+
+.card p {
+    color: var(--text-light);
+    margin: 0;
+    font-size: var(--font-base);
+    line-height: 1.5;
+}
 @media (max-width: 700px) {
     .container { padding: 0 4vw 16vw 4vw; }
      h1 { font-size: var(--font-2xl); }
