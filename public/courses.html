@@ -140,27 +140,34 @@
 <script>
 // Year filter functionality
 (function () {
+  let currentYearFilter = 'all';
+  let isFirstFilter = true;
+  
   document.addEventListener('DOMContentLoaded', function () {
     const filterButtons = document.querySelectorAll('.filter-btn');
     const courseCards = document.querySelectorAll('.card[data-year]');
+    const grid = document.querySelector('.grid');
 
     filterButtons.forEach(button => {
-      button.addEventListener('click', function () {
-        const selectedFilter = this.getAttribute('data-filter');
+      button.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        // After first filter, disable animations
+        if (isFirstFilter) {
+          isFirstFilter = false;
+          if (grid) grid.classList.add('filtered');
+        }
+        
+        currentYearFilter = this.getAttribute('data-filter');
 
         // Update active button
         filterButtons.forEach(btn => btn.classList.remove('active'));
         this.classList.add('active');
 
-        // Filter courses
+        // Apply year filter
         courseCards.forEach(card => {
-          if (selectedFilter === 'all') {
-            card.classList.remove('hidden');
-          } else if (card.getAttribute('data-year') === selectedFilter) {
-            card.classList.remove('hidden');
-          } else {
-            card.classList.add('hidden');
-          }
+          const yearMatch = currentYearFilter === 'all' || card.getAttribute('data-year') === currentYearFilter;
+          card.style.display = yearMatch ? '' : 'none';
         });
       });
     });
