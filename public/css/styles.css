@@ -786,56 +786,71 @@ input[type="search"]:focus {
     gap: 10px;
 }
 
-.search-input {
-    flex: 1;
-    max-width: 500px;
-    padding: 14px 18px;
-    border: 2px solid var(--border);
-    border-radius: 10px;
+.search-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: 450px;
+}
+
+.search-wrapper::before {
+    content: '🔍';
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
     font-size: 1rem;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.search-input {
+    width: 100%;
+    padding: 11px 14px 11px 42px;
+    border: 1px solid #d0d0d5;
+    border-radius: 6px;
+    font-size: 0.95rem;
     background: var(--white);
     color: var(--text);
     font-family: 'Raleway', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    box-shadow: 0 2px 8px rgba(97, 34, 59, 0.05);
+    transition: all 0.25s ease;
+    box-shadow: none;
 }
 
 .search-input::placeholder {
-    color: var(--text-light);
+    color: #999;
+}
+
+.search-input:hover {
+    border-color: var(--primary);
+    background: var(--white);
 }
 
 .search-input:focus {
     outline: none;
     border-color: var(--primary);
-    box-shadow: 0 4px 16px rgba(97, 34, 59, 0.15);
-    transform: translateY(-2px);
+    box-shadow: 0 0 0 2px rgba(97, 34, 59, 0.1);
     background: var(--white);
-}
-
-.search-input:hover {
-    border-color: var(--primary);
-    box-shadow: 0 4px 12px rgba(97, 34, 59, 0.1);
 }
 
 /* Dark mode search input */
 [data-theme="dark"] .search-input {
-    background: #2a2a2d;
-    color: #E8E8E8;
-    border-color: #44444a;
+    background: #2d2d31;
+    color: #e0e0e0;
+    border-color: #404047;
 }
 
 [data-theme="dark"] .search-input::placeholder {
-    color: #888;
+    color: #777;
 }
 
 [data-theme="dark"] .search-input:hover {
-    border-color: var(--primary);
-    box-shadow: 0 4px 12px rgba(179, 104, 141, 0.15);
-    background: #333336;
+    border-color: #8b6b95;
+    background: #323238;
 }
 
 [data-theme="dark"] .search-input:focus {
-    background: #333336;
-    border-color: var(--primary);
-    box-shadow: 0 4px 16px rgba(179, 104, 141, 0.25);
+    border-color: #8b6b95;
+    box-shadow: 0 0 0 2px rgba(139, 107, 149, 0.15);
+    background: #323238;
 }

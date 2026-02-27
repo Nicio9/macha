@@ -12,31 +12,6 @@
              font-size: 1.2rem;
              margin-bottom: 2rem;
          }
-         .search-wrapper {
-             position: relative;
-             display: inline-block;
-             width: 100%;
-             max-width: 500px;
-         }
-         .search-wrapper::before {
-             content: '🔍';
-             position: absolute;
-             left: 18px;
-             top: 50%;
-             transform: translateY(-50%);
-             font-size: 1.1rem;
-             pointer-events: none;
-             opacity: 0.6;
-             transition: opacity 0.3s ease;
-         }
-         .search-wrapper:focus-within::before {
-             opacity: 1;
-             color: var(--primary);
-         }
-         .search-wrapper .search-input {
-             padding-left: 50px;
-             width: 100%;
-         }
      </style>
 </head>
 <body>
