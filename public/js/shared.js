@@ -83,66 +83,48 @@ function initDarkModeBtn() {
 }
 
 function triggerThemeToggleShine(switchThemeFn) {
-    // Snapshot all current CSS variable values BEFORE switching
-    var cs = getComputedStyle(document.documentElement);
-    var frozenVars = [
-        '--primary','--secondary','--highlight','--badge',
-        '--text','--text-light','--bg-light','--border','--link','--white',
-        '--shadow','--shadow-hover','--dropdown-bg','--dropdown-link',
-        '--warning-bg','--warning-text','--warning-border'
-    ].map(function(v) { return v + ':' + cs.getPropertyValue(v).trim(); }).join(';');
+    // Suppress all page transitions so the theme switch is instant underneath
+    var noTransition = document.createElement('style');
+    noTransition.id = 'wipe-no-transition';
+    noTransition.textContent = '*, *::before, *::after { transition: none !important; animation: none !important; }';
+    document.head.appendChild(noTransition);
 
-    // Clone the entire body to freeze the current theme visually
-    var clone = document.body.cloneNode(true);
+    // Sample old bg colour
+    var oldBg = getComputedStyle(document.body).backgroundColor;
 
-    // Remove any nested overlays from the clone
-    var existingOverlay = clone.querySelector('#theme-wipe-overlay');
-    if (existingOverlay) existingOverlay.remove();
-
-    // Inject a <style> that hard-freezes the old CSS vars onto every element in the clone
-    var freezeStyle = document.createElement('style');
-    freezeStyle.textContent = '* { ' + frozenVars + ' !important; transition: none !important; }';
-    clone.insertBefore(freezeStyle, clone.firstChild);
-
-    // Position clone to match current scroll
-    clone.style.cssText = [
-        'position:absolute',
-        'top:' + (-window.scrollY) + 'px',
-        'left:0',
-        'width:' + document.documentElement.scrollWidth + 'px',
-        'margin:0',
-        'pointer-events:none'
-    ].join(';');
-
-    // Overlay: starts fully visible on the RIGHT side of the screen (inset from left = 0)
-    // Wipes to the right (inset from left grows to 100%), revealing new theme from the left
-    var overlay = document.createElement('div');
-    overlay.id = 'theme-wipe-overlay';
-    overlay.style.position = 'fixed';
-    overlay.style.top = '0';
-    overlay.style.left = '0';
-    overlay.style.width = '100vw';
-    overlay.style.height = '100vh';
-    overlay.style.overflow = 'hidden';
-    overlay.style.pointerEvents = 'none';
-    overlay.style.zIndex = '9999';
-    overlay.style.clipPath = 'inset(0 0 0 0%)';
-
-    overlay.appendChild(clone);
-    document.body.appendChild(overlay);
-
-    // Switch theme underneath immediately
+    // Switch theme instantly (no transitions to fight)
     switchThemeFn();
 
-    // Animate the wipe: clip grows from the left, pushing the old theme off to the right
-    setTimeout(function() {
-        overlay.style.transition = 'clip-path 0.65s cubic-bezier(0.4,0,0.2,1)';
-        overlay.style.clipPath = 'inset(0 0 0 100%)';
-    }, 20);
+    // Sample new bg colour
+    var newBg = getComputedStyle(document.body).backgroundColor;
 
-    setTimeout(function() {
-        overlay.remove();
-    }, 800);
+    // Re-enable page transitions
+    noTransition.remove();
+
+    // Build a 200vw panel: left half = new colour, right half = old colour
+    // Starting position: translateX(0) → right half (old colour) fills the viewport
+    // End position: translateX(-50%) → left half (new colour) fills the viewport
+    // The hard colour boundary sweeps across like a 1px blind
+    var panel = document.createElement('div');
+    panel.style.cssText = [
+        'position:fixed', 'top:0', 'left:0',
+        'width:200vw', 'height:100vh',
+        'pointer-events:none',
+        'z-index:9999',
+        'background:linear-gradient(to right,' + newBg + ' 50%,' + oldBg + ' 50%)',
+        'transform:translateX(0)',
+        'will-change:transform'
+    ].join(';');
+
+    document.body.appendChild(panel);
+
+    // Trigger the wipe on next frame
+    requestAnimationFrame(function() {
+        panel.style.transition = 'transform 0.55s cubic-bezier(0.4,0,0.2,1)';
+        panel.style.transform = 'translateX(-50%)';
+    });
+
+    setTimeout(function() { panel.remove(); }, 650);
 }
 
 function initHamburger() {
