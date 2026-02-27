@@ -90,7 +90,7 @@ function triggerThemeToggleShine(switchThemeFn) {
         '--text','--text-light','--bg-light','--border','--link','--white',
         '--shadow','--shadow-hover','--dropdown-bg','--dropdown-link',
         '--warning-bg','--warning-text','--warning-border'
-    ].map(function(v) { return v + ':' + cs.getPropertyValue(v); }).join(';');
+    ].map(function(v) { return v + ':' + cs.getPropertyValue(v).trim(); }).join(';');
 
     // Clone the entire body to freeze the current theme visually
     var clone = document.body.cloneNode(true);
@@ -99,10 +99,25 @@ function triggerThemeToggleShine(switchThemeFn) {
     var existingOverlay = clone.querySelector('#theme-wipe-overlay');
     if (existingOverlay) existingOverlay.remove();
 
-    // Freeze the clone's CSS variables so it ignores theme changes on <html>
-    clone.setAttribute('style', (clone.getAttribute('style') || '') + ';' + frozenVars);
+    // Freeze ALL colour-bearing elements in the clone by forcing the old vars
+    // onto the clone root — use a <style> tag injected into the clone so it
+    // overrides the live [data-theme] attribute with higher specificity.
+    var freezeStyle = document.createElement('style');
+    freezeStyle.textContent = 'body, body * { ' + frozenVars + ' !important; }';
+    // Insert as first child so it applies
+    clone.insertBefore(freezeStyle, clone.firstChild);
 
-    // Wrap clone in a fixed, full-viewport, non-interactive overlay
+    // Position the clone to match the current scroll
+    clone.style.cssText = [
+        'position:absolute',
+        'top:' + (-window.scrollY) + 'px',
+        'left:0',
+        'width:' + document.documentElement.scrollWidth + 'px',
+        'margin:0',
+        'pointer-events:none'
+    ].join(';');
+
+    // Wrap in a fixed viewport overlay, clipped to full screen initially
     var overlay = document.createElement('div');
     overlay.id = 'theme-wipe-overlay';
     overlay.style.cssText = [
@@ -111,27 +126,21 @@ function triggerThemeToggleShine(switchThemeFn) {
         'overflow:hidden',
         'pointer-events:none',
         'z-index:9999',
-        'clip-path:inset(0 0% 0 0)',
-        'transition:clip-path 0.65s cubic-bezier(0.4,0,0.2,1)'
+        'clip-path:inset(0 0 0 0%)',   // fully visible
+        'transition:none'
     ].join(';');
-
-    clone.style.position = 'absolute';
-    clone.style.top = (-window.scrollY) + 'px';
-    clone.style.left = '0';
-    clone.style.width = document.documentElement.scrollWidth + 'px';
-    clone.style.margin = '0';
-    clone.style.pointerEvents = 'none';
 
     overlay.appendChild(clone);
     document.body.appendChild(overlay);
 
-    // Switch theme underneath
+    // Switch theme underneath — live page now shows new theme
     switchThemeFn();
 
-    // Wipe the clone away right-to-left
+    // On next frame, animate the clip from left: old theme retreats to the right
     requestAnimationFrame(function() {
         requestAnimationFrame(function() {
-            overlay.style.clipPath = 'inset(0 100% 0 0)';
+            overlay.style.transition = 'clip-path 0.65s cubic-bezier(0.4,0,0.2,1)';
+            overlay.style.clipPath = 'inset(0 0 0 100%)';
         });
     });
 
