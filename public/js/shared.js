@@ -83,37 +83,48 @@ function initDarkModeBtn() {
 }
 
 function triggerThemeToggleShine(switchThemeFn) {
-    // Take a screenshot of the current page by capturing computed bg
-    // We'll fake the "old right side" with a shrinking overlay.
-    var oldBg = getComputedStyle(document.body).backgroundColor;
+    // Load html2canvas lazily on first use
+    function doWipe() {
+        html2canvas(document.body, { useCORS: true, allowTaint: true, scale: 1 }).then(function(canvas) {
+            // We have a pixel-perfect snapshot of the OLD theme
 
-    // Switch the theme immediately — left side of the screen now shows new theme live
-    switchThemeFn();
+            // Switch theme now — page beneath updates instantly
+            switchThemeFn();
 
-    // A shrinking overlay that covers the RIGHT portion of the screen with the old theme color.
-    // It starts at full width and shrinks leftward, revealing the new theme underneath.
-    // A 1px right-edge line acts as the visible "blind" divider.
-    var overlay = document.createElement('div');
-    overlay.style.cssText = [
-        'position:fixed', 'top:0', 'right:0',
-        'width:100%', 'height:100%',
-        'pointer-events:none', 'z-index:9999',
-        'background:' + oldBg,
-        'border-left:1px solid rgba(128,128,128,0.4)',
-        'transition:width 0.6s cubic-bezier(0.4,0,0.2,1)'
-    ].join(';');
+            // Place the snapshot as a fixed overlay covering the whole screen
+            canvas.style.cssText = [
+                'position:fixed', 'top:0', 'left:0',
+                'width:100vw', 'height:100vh',
+                'pointer-events:none', 'z-index:9999',
+                'object-fit:cover',
+                // clip-path starts showing full canvas, then shrinks from the left
+                'clip-path:inset(0 0 0 0)',
+                'transition:clip-path 0.65s cubic-bezier(0.4,0,0.2,1)'
+            ].join(';');
 
-    document.body.appendChild(overlay);
+            document.body.appendChild(canvas);
 
-    requestAnimationFrame(function() {
-        requestAnimationFrame(function() {
-            overlay.style.width = '0%';
+            // Wipe the snapshot away from left to right (revealing new theme on the left first)
+            requestAnimationFrame(function() {
+                requestAnimationFrame(function() {
+                    canvas.style.clipPath = 'inset(0 0 0 100%)';
+                });
+            });
+
+            setTimeout(function() {
+                canvas.remove();
+            }, 800);
         });
-    });
+    }
 
-    setTimeout(function() {
-        overlay.remove();
-    }, 750);
+    if (window.html2canvas) {
+        doWipe();
+    } else {
+        var script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+        script.onload = doWipe;
+        document.head.appendChild(script);
+    }
 }
 
 function initHamburger() {
