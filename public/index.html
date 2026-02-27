@@ -52,43 +52,48 @@
               <h2 class="spacing-bottom-lg">Latest News</h2>
               <div class="news-carousel-wrapper">
                   <button class="carousel-btn carousel-btn-prev" aria-label="Previous news">❮</button>
-                  <div class="news-carousel">
-                      <div class="news-carousel-item">
-                          <div class="carousel-date">Feb 23, 2026</div>
-                          <div class="carousel-category">Announcement</div>
-                          <h3>2026 Honours and Masters Admission Cycle Open</h3>
-                          <p>The Computer Science Division is now accepting applications for Honours and Masters programmes for the 2026 academic year.</p>
-                          <a href="/news.html" class="carousel-link">Read more →</a>
-                      </div>
-                      <div class="news-carousel-item">
-                          <div class="carousel-date">Feb 15, 2026</div>
-                          <div class="carousel-category">Event</div>
-                          <h3>Div & Conquer Hackathon 2026 - Department Website Launch</h3>
-                          <p>As part of the Div & Conquer Hackathon 2026, the Computer Science Division has launched a modern, comprehensive website.</p>
-                          <a href="/news.html" class="carousel-link">Read more →</a>
-                      </div>
-                      <div class="news-carousel-item">
-                          <div class="carousel-date">Feb 10, 2026</div>
-                          <div class="carousel-category">Research</div>
-                          <h3>New Research Collaboration: Machine Learning for Earth Observation</h3>
-                          <p>The Machine Learning research group has established a collaboration with international partners on earth observation and remote sensing applications.</p>
-                          <a href="/news.html" class="carousel-link">Read more →</a>
-                      </div>
-                      <div class="news-carousel-item">
-                          <div class="carousel-date">Jan 28, 2026</div>
-                          <div class="carousel-category">Academic</div>
-                          <h3>First Year Computer Science Orientation Programme</h3>
-                          <p>Welcome to all new first-year students! Orientation activities begin in February with introductions to campus life and academic support services.</p>
-                          <a href="/news.html" class="carousel-link">Read more →</a>
-                      </div>
-                      <div class="news-carousel-item">
-                          <div class="carousel-date">Jan 15, 2026</div>
-                          <div class="carousel-category">Award</div>
-                          <h3>Professor Andries Engelbrecht Recognized for Research Excellence</h3>
-                          <p>Professor Andries Engelbrecht has been recognized for his outstanding contributions to swarm intelligence and evolutionary computation.</p>
-                          <a href="/news.html" class="carousel-link">Read more →</a>
-                      </div>
-                  </div>
+                   <div class="news-carousel">
+                       <div class="news-carousel-item">
+                           <img src="/images/news-admissions.svg" alt="2026 Admissions" class="carousel-image">
+                           <div class="carousel-date">Feb 23, 2026</div>
+                           <div class="carousel-category">Announcement</div>
+                           <h3>2026 Honours and Masters Admission Cycle Open</h3>
+                           <p>The Computer Science Division is now accepting applications for Honours and Masters programmes for the 2026 academic year.</p>
+                           <a href="/news.html" class="carousel-link">Read more →</a>
+                       </div>
+                       <div class="news-carousel-item">
+                           <img src="/images/news-hackathon.svg" alt="Website Launch" class="carousel-image">
+                           <div class="carousel-date">Feb 15, 2026</div>
+                           <div class="carousel-category">Event</div>
+                           <h3>Div & Conquer Hackathon 2026 - Department Website Launch</h3>
+                           <p>As part of the Div & Conquer Hackathon 2026, the Computer Science Division has launched a modern, comprehensive website.</p>
+                           <a href="/news.html" class="carousel-link">Read more →</a>
+                       </div>
+                       <div class="news-carousel-item">
+                           <img src="/images/news-research.svg" alt="ML Research" class="carousel-image">
+                           <div class="carousel-date">Feb 10, 2026</div>
+                           <div class="carousel-category">Research</div>
+                           <h3>New Research Collaboration: Machine Learning for Earth Observation</h3>
+                           <p>The Machine Learning research group has established a collaboration with international partners on earth observation and remote sensing applications.</p>
+                           <a href="/news.html" class="carousel-link">Read more →</a>
+                       </div>
+                       <div class="news-carousel-item">
+                           <img src="/images/news-orientation.svg" alt="Orientation" class="carousel-image">
+                           <div class="carousel-date">Jan 28, 2026</div>
+                           <div class="carousel-category">Academic</div>
+                           <h3>First Year Computer Science Orientation Programme</h3>
+                           <p>Welcome to all new first-year students! Orientation activities begin in February with introductions to campus life and academic support services.</p>
+                           <a href="/news.html" class="carousel-link">Read more →</a>
+                       </div>
+                       <div class="news-carousel-item">
+                           <img src="/images/news-award.svg" alt="Research Award" class="carousel-image">
+                           <div class="carousel-date">Jan 15, 2026</div>
+                           <div class="carousel-category">Award</div>
+                           <h3>Professor Andries Engelbrecht Recognized for Research Excellence</h3>
+                           <p>Professor Andries Engelbrecht has been recognized for his outstanding contributions to swarm intelligence and evolutionary computation.</p>
+                           <a href="/news.html" class="carousel-link">Read more →</a>
+                       </div>
+                   </div>
                   <button class="carousel-btn carousel-btn-next" aria-label="Next news">❯</button>
               </div>
           </div>
@@ -137,7 +142,7 @@
         <p>Department of Mathematical Sciences | Stellenbosch, South Africa</p>
     </footer>
     <script>
-// News carousel scroll functionality
+// News carousel auto-scroll functionality
 (function () {
   document.addEventListener('DOMContentLoaded', function () {
     const carousel = document.querySelector('.news-carousel');
@@ -146,15 +151,60 @@
     
     if (!carousel || !prevBtn || !nextBtn) return;
     
-    const scrollAmount = 400; // pixels to scroll
+    const scrollAmount = 400;
+    let autoScrollInterval;
+    let isUserInteracting = false;
     
+    // Auto-scroll function
+    function autoScroll() {
+      carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+    
+    // Start auto-scroll
+    function startAutoScroll() {
+      if (!isUserInteracting) {
+        autoScrollInterval = setInterval(autoScroll, 5000); // Scroll every 5 seconds
+      }
+    }
+    
+    // Stop auto-scroll
+    function stopAutoScroll() {
+      clearInterval(autoScrollInterval);
+    }
+    
+    // Reset auto-scroll on user interaction
+    function resetAutoScroll() {
+      isUserInteracting = true;
+      stopAutoScroll();
+      setTimeout(() => {
+        isUserInteracting = false;
+        startAutoScroll();
+      }, 8000); // Resume after 8 seconds of inactivity
+    }
+    
+    // Manual button controls
     prevBtn.addEventListener('click', function () {
       carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      resetAutoScroll();
     });
     
     nextBtn.addEventListener('click', function () {
       carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      resetAutoScroll();
     });
+    
+    // Pause auto-scroll on carousel hover
+    carousel.addEventListener('mouseenter', stopAutoScroll);
+    carousel.addEventListener('mouseleave', () => {
+      isUserInteracting = false;
+      startAutoScroll();
+    });
+    
+    // Handle manual scrolling
+    carousel.addEventListener('scroll', resetAutoScroll);
+    
+    // Start auto-scroll on load
+    startAutoScroll();
   });
 })();
 
