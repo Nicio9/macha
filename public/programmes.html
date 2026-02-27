@@ -4,63 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Programmes - Computer Science Division</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/shared.js"></script>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --primary: #61223B;
-            --text: #333333;
-            --bg-light: #F5F5F5;
-            --border: #CCCCCC;
-            --link: #0779BF;
-            --white: #FFFFFF;
-        }
-        body {
-            font-family: 'Raleway', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            color: var(--text);
-            line-height: 1.6;
-            background-color: var(--white);
-        }
-        header {
-            background-color: var(--white);
-            border-bottom: 3px solid var(--primary);
-            padding: 16px 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .header-wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            cursor: pointer;
-        }
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 30px;
-        }
-        nav a {
-            color: var(--text);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-        nav a:hover, nav a.active {
-            color: var(--primary);
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
         h1 {
             font-size: 2rem;
             margin-bottom: 30px;
@@ -98,94 +44,52 @@
         .programme-card:hover {
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
+        .programme-type {
+            display: inline-block;
+            padding: 4px 12px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+        }
         .programme-card h3 {
             margin-top: 0;
         }
-        .programme-type {
-            display: inline-block;
-            background-color: var(--primary);
-            color: var(--white);
-            padding: 4px 12px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 10px;
+        .programme-details {
+            margin-top: 15px;
+        }
+        .programme-details p {
+            margin: 8px 0;
         }
         .duration {
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-        .key-info {
-            background-color: var(--bg-light);
-            padding: 15px;
-            border-radius: 4px;
-            margin-top: 15px;
+            color: var(--text-light);
             font-size: 0.95rem;
         }
-        .key-info ul {
-            margin-left: 20px;
-            margin-top: 10px;
+        ul.programme-list {
+            list-style: none;
+            padding-left: 0;
         }
-        .key-info li {
-            margin-bottom: 8px;
+        ul.programme-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
         }
-        .focal-areas {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
+        ul.programme-list li:last-child {
+            border-bottom: none;
         }
-        .focal-area {
-            background-color: var(--bg-light);
-            padding: 15px;
-            border-radius: 4px;
-            border-left: 3px solid var(--primary);
-        }
-        .focal-area h4 {
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
-        a {
-            color: var(--link);
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        footer {
-            background-color: var(--primary);
-            color: var(--white);
-            padding: 40px 20px;
-            text-align: center;
-            margin-top: 60px;
+        .highlight-box {
+            background-color: var(--highlight);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
         }
         @media (max-width: 768px) {
-            nav ul {
-                gap: 15px;
-                flex-direction: column;
-            }
             h1 { font-size: 1.5rem; }
             h2 { font-size: 1.2rem; }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="header-wrapper">
-            <div class="logo" onclick="window.location='/'">CS Division</div>
-            <nav>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/programmes.html" class="active">Programmes</a></li>
-                    <li><a href="/courses.html">Courses</a></li>
-                    <li><a href="/staff.html">Staff</a></li>
-                    <li><a href="/research.html">Research</a></li>
-                    <li><a href="/contact.html">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
 
     <div class="container">
         <h1>Academic Programmes</h1>

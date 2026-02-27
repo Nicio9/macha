@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background: white;
+            color: black;
+            padding: 20px;
+            font-family: Arial;
+        }button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dark Mode Test</h1>
+    <button id="theme-toggle">🌙 Toggle</button>
+    <p id="status">Status: Light</p>
+    
+    <script>
+        const darkModeToggle = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+        const status = document.getElementById('status');
+        
+        // Load saved preference
+        const isDarkMode = localStorage.getItem('darkMode') === 'true';
+        if (isDarkMode) {
+            htmlElement.setAttribute('data-theme', 'dark');
+            if (darkModeToggle) darkModeToggle.textContent = '☀️ Toggle';
+            status.textContent = 'Status: Dark';
+        }
+        
+        // Toggle handler
+        if (darkModeToggle) {
+            darkModeToggle.addEventListener('click', function() {
+                const currentMode = localStorage.getItem('darkMode') === 'true';
+                const newMode = !currentMode;
+                
+                console.log('Current mode:', currentMode, 'New mode:', newMode);
+                
+                if (newMode) {
+                    htmlElement.setAttribute('data-theme', 'dark');
+                    darkModeToggle.textContent = '☀️ Toggle';
+                    status.textContent = 'Status: Dark (dark mode is ON)';
+                } else {
+                    htmlElement.removeAttribute('data-theme');
+                    darkModeToggle.textContent = '🌙 Toggle';
+                    status.textContent = 'Status: Light (dark mode is OFF)';
+                }
+                
+                localStorage.setItem('darkMode', newMode);
+            });
+        }
+    </script>
+    <script>
+        // Dark mode toggle - wait for DOM to be ready
+        function initDarkMode() {
+            const darkModeToggle = document.getElementById('theme-toggle');
+            const htmlElement = document.documentElement;
+            
+            if (!darkModeToggle) {
+                console.error('Theme toggle button not found!');
+                return;
+            }
+            
+            // Load saved preference
+            const isDarkMode = localStorage.getItem('darkMode') === 'true';
+            if (isDarkMode) {
+                htmlElement.setAttribute('data-theme', 'dark');
+                darkModeToggle.textContent = '☀️';
+            }
+            
+            // Toggle handler
+            darkModeToggle.addEventListener('click', function() {
+                console.log('Dark mode button clicked');
+                const currentMode = localStorage.getItem('darkMode') === 'true';
+                const newMode = !currentMode;
+                console.log('Current mode:', currentMode, 'New mode:', newMode);
+                
+                if (newMode) {
+                    htmlElement.setAttribute('data-theme', 'dark');
+                    darkModeToggle.textContent = '☀️';
+                } else {
+                    htmlElement.removeAttribute('data-theme');
+                    darkModeToggle.textContent = '🌙';
+                }
+                
+                localStorage.setItem('darkMode', newMode);
+                console.log('Dark mode toggled to:', newMode);
+            });
+        }
+        
+        // Run when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initDarkMode);
+        } else {
+            initDarkMode();
+        }
+    </script>
+
+</body>
+</html>

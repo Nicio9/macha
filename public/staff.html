@@ -4,68 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Staff Directory - Computer Science Division</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/shared.js"></script>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --primary: #61223B;
-            --text: #333333;
-            --bg-light: #F5F5F5;
-            --border: #CCCCCC;
-            --link: #0779BF;
-            --white: #FFFFFF;
-        }
-        body {
-            font-family: 'Raleway', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            color: var(--text);
-            line-height: 1.6;
-            background-color: var(--white);
-        }
-        header {
-            background-color: var(--white);
-            border-bottom: 3px solid var(--primary);
-            padding: 16px 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .header-wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            cursor: pointer;
-        }
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 30px;
-        }
-        nav a {
-            color: var(--text);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-        nav a:hover, nav a.active {
-            color: var(--primary);
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-        h1 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: var(--primary);
-        }
         .intro {
             margin-bottom: 30px;
             font-size: 1.05rem;
@@ -74,59 +15,87 @@
             border-left: 4px solid var(--primary);
             border-radius: 4px;
         }
-        .filter-section {
-            margin-bottom: 30px;
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-        .filter-section input {
-            padding: 10px 15px;
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            font-family: inherit;
-            flex: 1;
-            min-width: 200px;
-        }
-        .staff-category {
-            margin-bottom: 40px;
-        }
-        .category-title {
-            font-size: 1.3rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--primary);
-        }
         .staff-list {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
             margin-bottom: 30px;
         }
         .staff-card {
-            border: 1px solid var(--border);
-            border-radius: 8px;
+            border: 1.5px solid var(--border);
+            border-radius: 12px;
             padding: 20px;
             background-color: var(--white);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            transition: box-shadow 0.3s;
+            box-shadow: var(--shadow);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            position: relative;
+            overflow: hidden;
+        }
+        .staff-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+            transition: left 0.5s ease;
+            z-index: 0;
+        }
+        .staff-card:hover::before {
+            left: 100%;
+        }
+        .staff-card > * {
+            position: relative;
+            z-index: 1;
         }
         .staff-card:hover {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary);
+            transform: translateY(-4px);
+        }
+        .staff-info {
+            flex: 1;
+            min-width: 0;
+        }
+        .staff-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+            flex-shrink: 0;
+            background: var(--bg-light);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 4px 12px rgba(97, 34, 59, 0.15);
+        }
+        .staff-card:hover .staff-photo {
+            border-color: var(--secondary);
+            transform: scale(1.08) rotate(2deg);
+            box-shadow: 0 8px 20px rgba(97, 34, 59, 0.25);
         }
         .staff-name {
             font-size: 1.15rem;
             font-weight: 700;
             color: var(--primary);
             margin-bottom: 5px;
+            transition: color 0.3s ease;
+        }
+        .staff-card:hover .staff-name {
+            color: var(--secondary);
         }
         .staff-title {
             font-size: 0.9rem;
             font-weight: 600;
-            color: #666;
+            color: var(--text-light);
             margin-bottom: 12px;
+            transition: color 0.3s ease;
+        }
+        .staff-card:hover .staff-title {
+            color: var(--primary);
         }
         .staff-research {
             font-size: 0.85rem;
@@ -147,160 +116,154 @@
         .staff-contact-item {
             display: flex;
             gap: 8px;
-            word-break: break-word;
         }
         .staff-contact-label {
             font-weight: 600;
             min-width: 65px;
             flex-shrink: 0;
         }
-        a {
-            color: var(--link);
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        footer {
-            background-color: var(--primary);
-            color: var(--white);
-            padding: 40px 20px;
-            text-align: center;
-            margin-top: 60px;
+        h2 {
+            width: 100%;
+            box-sizing: border-box;
         }
         @media (max-width: 768px) {
-            nav ul {
-                gap: 15px;
-                flex-direction: column;
-            }
-            h1 { font-size: 1.5rem; }
+             h1 { font-size: 1.5rem; }
             .staff-list {
                 grid-template-columns: 1fr;
             }
         }
+        .search-box { margin-bottom: 30px; display: flex; gap: 10px; }
+        .search-input { flex: 1; padding: 12px 16px; border: 1px solid var(--border); border-radius: 6px; font-size: 1rem; background: var(--white); }
+        .search-input::placeholder { color: #999; }
+        .search-input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 2px rgba(97, 34, 59, 0.1); }
+        .no-results { padding: 40px 20px; text-align: center; color: var(--text-light); }
     </style>
 </head>
 <body>
-    <header>
-        <div class="header-wrapper">
-            <div class="logo" onclick="window.location='/'">CS Division</div>
-            <nav>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/programmes.html">Programmes</a></li>
-                    <li><a href="/courses.html">Courses</a></li>
-                    <li><a href="/staff.html" class="active">Staff</a></li>
-                    <li><a href="/research.html">Research</a></li>
-                    <li><a href="/contact.html">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
 
     <div class="container">
         <h1>Staff Directory</h1>
         <div class="intro">
-            <p>Meet our 24 academic staff members. The Computer Science Division brings together researchers, educators, and practitioners working across all major areas of computing science.</p>
+            <p>Meet our 27 staff members. The Computer Science Division brings together researchers, educators, and practitioners working across all major areas of computing science.</p>
+        </div>
+
+        <div class="search-box">
+            <input type="text" class="search-input" id="staffSearch" placeholder="Search by name or research area..." onkeyup="searchStaff()">
         </div>
 
         <h2 style="color: var(--primary); margin-bottom: 20px;">Professors</h2>
         <div class="staff-list">
-            <div class="staff-card">
-                <div class="staff-name">Andries Engelbrecht</div>
-                <div class="staff-title">Professor</div>
-                <div class="staff-research">Swarm intelligence, Evolutionary computation, Hyper-heuristics, Neural networks, Machine learning, Data analytics, Optimization, Fitness landscape analysis</div>
-                <div class="staff-contact">
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Office:</span>
-                        <span>B2023, Ind. Eng.</span>
-                    </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Email:</span>
-                        <a href="mailto:engel@sun.ac.za">engel@sun.ac.za</a>
-                    </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Phone:</span>
-                        <span>+27 21 808 9259</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="staff-card">
-                <div class="staff-name">Bernd Fischer</div>
-                <div class="staff-title">Professor</div>
-                <div class="staff-research">Software engineering, Formal methods, Program analysis, Program generation, Program verification, Artificial intelligence</div>
-                <div class="staff-contact">
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Office:</span>
-                        <span>A513</span>
-                    </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Email:</span>
-                        <a href="mailto:bfischer@cs.sun.ac.za">bfischer@cs.sun.ac.za</a>
-                    </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Phone:</span>
-                        <span>+27 21 808 2527</span>
+            <div class="staff-card" id="andries-engelbrecht">
+                <img loading="lazy" src="/images/staff/APE.jpg" alt="Andries Engelbrecht" class="staff-photo">
+                <div class="staff-info">
+                    <div class="staff-name">Andries Engelbrecht</div>
+                    <div class="staff-title">Professor</div>
+                    <div class="staff-research">Swarm intelligence, Evolutionary computation, Hyper-heuristics, Neural networks, Machine learning, Data analytics, Optimization, Fitness landscape analysis</div>
+                    <div class="staff-contact">
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Office:</span>
+                            <span>B2023, Ind. Eng.</span>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Email:</span>
+                            <a href="mailto:engel@sun.ac.za">engel@sun.ac.za</a>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Phone:</span>
+                            <span>+27 21 808 9259</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="staff-card">
-                <div class="staff-name">William (Bill) Tucker</div>
-                <div class="staff-title">Professor</div>
-                <div class="staff-research">Computer networks and their applications, Human computer interaction, Social impact, Ethical and responsible computing</div>
-                <div class="staff-contact">
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Office:</span>
-                        <span>A522</span>
-                    </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Email:</span>
-                        <a href="mailto:btucker@sun.ac.za">btucker@sun.ac.za</a>
-                    </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Phone:</span>
-                        <span>+27 21 808 3382</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="staff-card">
-                <div class="staff-name">Brink van der Merwe</div>
-                <div class="staff-title">Professor (Head of Division)</div>
-                <div class="staff-research">Tree automata and applications, Learning of grammars and languages from data</div>
-                <div class="staff-contact">
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Office:</span>
-                        <span>A511</span>
-                    </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Email:</span>
-                        <a href="mailto:abvdm@cs.sun.ac.za">abvdm@cs.sun.ac.za</a>
-                    </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Phone:</span>
-                        <span>+27 21 808 4232</span>
+            <div class="staff-card" id="bernd-fischer">
+                <img loading="lazy" src="/images/staff/berndfischer.JPG" alt="Bernd Fischer" class="staff-photo">
+                <div class="staff-info">
+                    <div class="staff-name">Bernd Fischer</div>
+                    <div class="staff-title">Professor</div>
+                    <div class="staff-research">Software engineering, Formal methods, Program analysis, Program generation, Program verification, Artificial intelligence</div>
+                    <div class="staff-contact">
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Office:</span>
+                            <span>A513</span>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Email:</span>
+                            <a href="mailto:bfischer@cs.sun.ac.za">bfischer@cs.sun.ac.za</a>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Phone:</span>
+                            <span>+27 21 808 2527</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="staff-card">
-                <div class="staff-name">Lynette van Zijl</div>
-                <div class="staff-title">Professor</div>
-                <div class="staff-research">Implementation and applications of automata, Assistive technologies</div>
-                <div class="staff-contact">
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Office:</span>
-                        <span>A520</span>
+            <div class="staff-card" id="william-bill-tucker">
+                <img loading="lazy" src="/images/staff/btucker.jpg" alt="William (Bill) Tucker" class="staff-photo">
+                <div class="staff-info">
+                    <div class="staff-name">William (Bill) Tucker</div>
+                    <div class="staff-title">Professor</div>
+                    <div class="staff-research">Computer networks and their applications, Human computer interaction, Social impact, Ethical and responsible computing</div>
+                    <div class="staff-contact">
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Office:</span>
+                            <span>A522</span>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Email:</span>
+                            <a href="mailto:btucker@sun.ac.za">btucker@sun.ac.za</a>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Phone:</span>
+                            <span>+27 21 808 3382</span>
+                        </div>
                     </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Email:</span>
-                        <a href="mailto:lvzijl@sun.ac.za">lvzijl@sun.ac.za</a>
+                </div>
+            </div>
+
+            <div class="staff-card" id="brink-van-der-merwe">
+                <img loading="lazy" src="/images/staff/abvdm.jpg" alt="Brink van der Merwe" class="staff-photo">
+                <div class="staff-info">
+                    <div class="staff-name">Brink van der Merwe</div>
+                    <div class="staff-title">Professor (Head of Division)</div>
+                    <div class="staff-research">Tree automata and applications, Learning of grammars and languages from data</div>
+                    <div class="staff-contact">
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Office:</span>
+                            <span>A511</span>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Email:</span>
+                            <a href="mailto:abvdm@cs.sun.ac.za">abvdm@cs.sun.ac.za</a>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Phone:</span>
+                            <span>+27 21 808 4232</span>
+                        </div>
                     </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Phone:</span>
-                        <span>+27 21 808 4232</span>
+                </div>
+            </div>
+
+            <div class="staff-card" id="lynette-van-zijl">
+                <img loading="lazy" src="/images/staff/lvzijl.jpg" alt="Lynette van Zijl" class="staff-photo">
+                <div class="staff-info">
+                    <div class="staff-name">Lynette van Zijl</div>
+                    <div class="staff-title">Professor</div>
+                    <div class="staff-research">Implementation and applications of automata, Assistive technologies</div>
+                    <div class="staff-contact">
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Office:</span>
+                            <span>A520</span>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Email:</span>
+                            <a href="mailto:lvzijl@sun.ac.za">lvzijl@sun.ac.za</a>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Phone:</span>
+                            <span>+27 21 808 4232</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -308,62 +271,71 @@
 
         <h2 style="color: var(--primary); margin-top: 40px; margin-bottom: 20px;">Associate & Senior Lecturers</h2>
         <div class="staff-list">
-            <div class="staff-card">
-                <div class="staff-name">Steve Kroon</div>
-                <div class="staff-title">Associate Professor</div>
-                <div class="staff-research">Artificial intelligence/machine learning, Statistical learning theory, Probability and computing</div>
-                <div class="staff-contact">
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Office:</span>
-                        <span>A515</span>
-                    </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Email:</span>
-                        <a href="mailto:kroon@sun.ac.za">kroon@sun.ac.za</a>
-                    </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Phone:</span>
-                        <span>+27 21 808 9375</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="staff-card">
-                <div class="staff-name">Marcel Dunaiski</div>
-                <div class="staff-title">Senior Lecturer</div>
-                <div class="staff-research">Data Science, Informetrics, Scientometrics</div>
-                <div class="staff-contact">
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Office:</span>
-                        <span>A519</span>
-                    </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Email:</span>
-                        <a href="mailto:marceldunaiski@sun.ac.za">marceldunaiski@sun.ac.za</a>
-                    </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Phone:</span>
-                        <span>+27 21 808 4232</span>
+            <div class="staff-card" id="steve-kroon">
+                <img loading="lazy" src="/images/staff/kroon.jpg" alt="Steve Kroon" class="staff-photo">
+                <div class="staff-info">
+                    <div class="staff-name">Steve Kroon</div>
+                    <div class="staff-title">Associate Professor</div>
+                    <div class="staff-research">Artificial intelligence/machine learning, Statistical learning theory, Probability and computing</div>
+                    <div class="staff-contact">
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Office:</span>
+                            <span>A515</span>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Email:</span>
+                            <a href="mailto:kroon@sun.ac.za">kroon@sun.ac.za</a>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Phone:</span>
+                            <span>+27 21 808 9375</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="staff-card">
-                <div class="staff-name">Cornelia Inggs</div>
-                <div class="staff-title">Senior Lecturer</div>
-                <div class="staff-research">Formal methods, Model checking, Concurrency</div>
-                <div class="staff-contact">
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Office:</span>
-                        <span>A509</span>
+            <div class="staff-card" id="marcel-dunaiski">
+                <img loading="lazy" src="/images/staff/mdunaiski.jpg" alt="Marcel Dunaiski" class="staff-photo">
+                <div class="staff-info">
+                    <div class="staff-name">Marcel Dunaiski</div>
+                    <div class="staff-title">Senior Lecturer</div>
+                    <div class="staff-research">Data Science, Informetrics, Scientometrics</div>
+                    <div class="staff-contact">
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Office:</span>
+                            <span>A519</span>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Email:</span>
+                            <a href="mailto:marceldunaiski@sun.ac.za">marceldunaiski@sun.ac.za</a>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Phone:</span>
+                            <span>+27 21 808 4232</span>
+                        </div>
                     </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Email:</span>
-                        <a href="mailto:cinggs@cs.sun.ac.za">cinggs@cs.sun.ac.za</a>
-                    </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Phone:</span>
-                        <span>+27 21 808 4232</span>
+                </div>
+            </div>
+
+            <div class="staff-card" id="cornelia-inggs">
+                <img loading="lazy" src="/images/staff/cinggs.jpg" alt="Cornelia Inggs" class="staff-photo">
+                <div class="staff-info">
+                    <div class="staff-name">Cornelia Inggs</div>
+                    <div class="staff-title">Senior Lecturer</div>
+                    <div class="staff-research">Formal methods, Model checking, Concurrency</div>
+                    <div class="staff-contact">
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Office:</span>
+                            <span>A509</span>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Email:</span>
+                            <a href="mailto:cinggs@cs.sun.ac.za">cinggs@cs.sun.ac.za</a>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Phone:</span>
+                            <span>+27 21 808 4232</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -371,62 +343,71 @@
 
         <h2 style="color: var(--primary); margin-top: 40px; margin-bottom: 20px;">Lecturers</h2>
         <div class="staff-list">
-            <div class="staff-card">
-                <div class="staff-name">Trienko Grobler</div>
-                <div class="staff-title">Lecturer</div>
-                <div class="staff-research">Machine learning, Remote sensing, Radio interferometry, Coding theory, Epoch of reionization</div>
-                <div class="staff-contact">
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Office:</span>
-                        <span>A510</span>
-                    </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Email:</span>
-                        <a href="mailto:tlgrobler@sun.ac.za">tlgrobler@sun.ac.za</a>
-                    </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Phone:</span>
-                        <span>+27 21 808 4232</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="staff-card">
-                <div class="staff-name">Mkhuseli Ngxande</div>
-                <div class="staff-title">Lecturer</div>
-                <div class="staff-research">Machine learning, Computer vision, Bioinformatics, Wide area surveillance</div>
-                <div class="staff-contact">
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Office:</span>
-                        <span>A518</span>
-                    </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Email:</span>
-                        <a href="mailto:ngxandem@sun.ac.za">ngxandem@sun.ac.za</a>
-                    </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Phone:</span>
-                        <span>+27 21 808 4232</span>
+            <div class="staff-card" id="trienko-grobler">
+                <img loading="lazy" src="/images/staff/TLGrobler_html_4a3853191f04f0e9.gif" alt="Trienko Grobler" class="staff-photo">
+                <div class="staff-info">
+                    <div class="staff-name">Trienko Grobler</div>
+                    <div class="staff-title">Lecturer</div>
+                    <div class="staff-research">Machine learning, Remote sensing, Radio interferometry, Coding theory, Epoch of reionization</div>
+                    <div class="staff-contact">
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Office:</span>
+                            <span>A510</span>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Email:</span>
+                            <a href="mailto:tlgrobler@sun.ac.za">tlgrobler@sun.ac.za</a>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Phone:</span>
+                            <span>+27 21 808 4232</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="staff-card">
-                <div class="staff-name">Gavin Rens</div>
-                <div class="staff-title">Lecturer</div>
-                <div class="staff-research">Cognitive Robotics, Knowledge representation and reasoning under uncertainty, Probabilistic planning, Reinforcement learning</div>
-                <div class="staff-contact">
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Office:</span>
-                        <span>A508</span>
+            <div class="staff-card" id="mkhuseli-ngxande">
+                <img loading="lazy" src="/images/staff/ngxandem.jpg" alt="Mkhuseli Ngxande" class="staff-photo">
+                <div class="staff-info">
+                    <div class="staff-name">Mkhuseli Ngxande</div>
+                    <div class="staff-title">Lecturer</div>
+                    <div class="staff-research">Machine learning, Computer vision, Bioinformatics, Wide area surveillance</div>
+                    <div class="staff-contact">
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Office:</span>
+                            <span>A518</span>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Email:</span>
+                            <a href="mailto:ngxandem@sun.ac.za">ngxandem@sun.ac.za</a>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Phone:</span>
+                            <span>+27 21 808 4232</span>
+                        </div>
                     </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Email:</span>
-                        <a href="mailto:gavinrens@sun.ac.za">gavinrens@sun.ac.za</a>
-                    </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Phone:</span>
-                        <span>+27 21 808 4232</span>
+                </div>
+            </div>
+
+            <div class="staff-card" id="gavin-rens">
+                <img loading="lazy" src="/images/staff/grens.jpg" alt="Gavin Rens" class="staff-photo">
+                <div class="staff-info">
+                    <div class="staff-name">Gavin Rens</div>
+                    <div class="staff-title">Lecturer</div>
+                    <div class="staff-research">Cognitive Robotics, Knowledge representation and reasoning under uncertainty, Probabilistic planning, Reinforcement learning</div>
+                    <div class="staff-contact">
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Office:</span>
+                            <span>A508</span>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Email:</span>
+                            <a href="mailto:gavinrens@sun.ac.za">gavinrens@sun.ac.za</a>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Phone:</span>
+                            <span>+27 21 808 4232</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -434,38 +415,44 @@
 
         <h2 style="color: var(--primary); margin-top: 40px; margin-bottom: 20px;">Junior & Research Staff</h2>
         <div class="staff-list">
-            <div class="staff-card">
-                <div class="staff-name">Willem Bester</div>
-                <div class="staff-title">Junior Lecturer</div>
-                <div class="staff-research">Software Engineering, Formal Methods, Formal Language and Automata Theory</div>
-                <div class="staff-contact">
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Office:</span>
-                        <span>A508</span>
-                    </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Email:</span>
-                        <a href="mailto:whkbester@cs.sun.ac.za">whkbester@cs.sun.ac.za</a>
-                    </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Phone:</span>
-                        <span>+27 21 808 4232</span>
+            <div class="staff-card" id="willem-bester">
+                <img loading="lazy" src="/images/staff/whkbester.jpg" alt="Willem Bester" class="staff-photo">
+                <div class="staff-info">
+                    <div class="staff-name">Willem Bester</div>
+                    <div class="staff-title">Junior Lecturer</div>
+                    <div class="staff-research">Software Engineering, Formal Methods, Formal Language and Automata Theory</div>
+                    <div class="staff-contact">
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Office:</span>
+                            <span>A508</span>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Email:</span>
+                            <a href="mailto:whkbester@cs.sun.ac.za">whkbester@cs.sun.ac.za</a>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Phone:</span>
+                            <span>+27 21 808 4232</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="staff-card">
-                <div class="staff-name">David Baker Effendi</div>
-                <div class="staff-title">Research Fellow</div>
-                <div class="staff-research">Program analysis, Static analysis</div>
-                <div class="staff-contact">
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Office:</span>
-                        <span>Remote</span>
-                    </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Phone:</span>
-                        <span>+27 21 808 4232</span>
+            <div class="staff-card" id="david-baker-effendi">
+                <img loading="lazy" src="/images/staff/deffendi.jpg" alt="David Baker Effendi" class="staff-photo">
+                <div class="staff-info">
+                    <div class="staff-name">David Baker Effendi</div>
+                    <div class="staff-title">Research Fellow</div>
+                    <div class="staff-research">Program analysis, Static analysis</div>
+                    <div class="staff-contact">
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Office:</span>
+                            <span>Remote</span>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Phone:</span>
+                            <span>+27 21 808 4232</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -473,198 +460,231 @@
 
         <h2 style="color: var(--primary); margin-top: 40px; margin-bottom: 20px;">Extraordinary & Visiting Academics</h2>
         <div class="staff-list">
-            <div class="staff-card">
-                <div class="staff-name">George Azzopardi</div>
-                <div class="staff-title">Associate Professor Extraordinary</div>
-                <div class="staff-research">Brain-inspired computing, Computer Vision, Pattern Recognition, Machine Learning</div>
-                <div class="staff-contact">
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Office:</span>
-                        <span>Remote</span>
-                    </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Phone:</span>
-                        <span>+27 21 808 4232</span>
-                    </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Website:</span>
-                        <a href="https://www.rug.nl/staff/g.azzopardi/?lang=en" target="_blank">Profile</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="staff-card">
-                <div class="staff-name">Judith Bishop</div>
-                <div class="staff-title">Professor Extraordinary</div>
-                <div class="staff-research">Programming languages, Software engineering, Mobile computing, Open source software</div>
-                <div class="staff-contact">
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Email:</span>
-                        <a href="mailto:jbishop@sun.ac.za">jbishop@sun.ac.za</a>
-                    </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Website:</span>
-                        <a href="https://www.linkedin.com/in/judith-bishop" target="_blank">LinkedIn</a>
+            <div class="staff-card" id="george-azzopardi">
+                <img loading="lazy" src="/images/staff/gazzopardi.jpg" alt="George Azzopardi" class="staff-photo">
+                <div class="staff-info">
+                    <div class="staff-name">George Azzopardi</div>
+                    <div class="staff-title">Associate Professor Extraordinary</div>
+                    <div class="staff-research">Brain-inspired computing, Computer Vision, Pattern Recognition, Machine Learning</div>
+                    <div class="staff-contact">
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Office:</span>
+                            <span>Remote</span>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Phone:</span>
+                            <span>+27 21 808 4232</span>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Website:</span>
+                            <a href="https://www.rug.nl/staff/g.azzopardi/?lang=en" target="_blank">Profile</a>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="staff-card">
-                <div class="staff-name">Loek Cleophas</div>
-                <div class="staff-title">Associate Professor Extraordinary</div>
-                <div class="staff-research">Model-driven engineering, Digital Twins, Algorithm + model variability</div>
-                <div class="staff-contact">
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Office:</span>
-                        <span>Remote</span>
-                    </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Phone:</span>
-                        <span>+27 21 808 4232</span>
-                    </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Website:</span>
-                        <a href="https://www.tue.nl/en/research/researchers/loek-cleophas" target="_blank">Profile</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="staff-card">
-                <div class="staff-name">McElory Hoffmann</div>
-                <div class="staff-title">Senior Lecturer Extraordinary</div>
-                <div class="staff-research">Computer vision, Machine learning, Smart cameras</div>
-                <div class="staff-contact">
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Email:</span>
-                        <a href="mailto:mcelory@praelexis.co.za">mcelory@praelexis.co.za</a>
+            <div class="staff-card" id="judith-bishop">
+                <img loading="lazy" src="/images/staff/jbishop.jpg" alt="Judith Bishop" class="staff-photo">
+                <div class="staff-info">
+                    <div class="staff-name">Judith Bishop</div>
+                    <div class="staff-title">Professor Extraordinary</div>
+                    <div class="staff-research">Programming languages, Software engineering, Mobile computing, Open source software</div>
+                    <div class="staff-contact">
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Email:</span>
+                            <a href="mailto:jbishop@sun.ac.za">jbishop@sun.ac.za</a>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Website:</span>
+                            <a href="https://www.linkedin.com/in/judith-bishop" target="_blank">LinkedIn</a>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="staff-card">
-                <div class="staff-name">Maria Keet</div>
-                <div class="staff-title">Professor Extraordinary</div>
-                <div class="staff-research">Ontology, Semantic Web, Conceptual Modeling, Knowledge Representation and reasoning</div>
-                <div class="staff-contact">
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Office:</span>
-                        <span>Remote</span>
-                    </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Phone:</span>
-                        <span>+27 21 808 4232</span>
-                    </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Website:</span>
-                        <a href="http://www.meteck.org/" target="_blank">Profile</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="staff-card">
-                <div class="staff-name">Laurette Pretorius</div>
-                <div class="staff-title">Associate Professor Extraordinary</div>
-                <div class="staff-research">Multilingual NLP, Semantic computing, Ontology development, Machine translation, Language generation</div>
-                <div class="staff-contact">
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Phone:</span>
-                        <span>+27 21 808 4232</span>
+            <div class="staff-card" id="loek-cleophas">
+                <img loading="lazy" src="/images/staff/lcleophas.jpg" alt="Loek Cleophas" class="staff-photo">
+                <div class="staff-info">
+                    <div class="staff-name">Loek Cleophas</div>
+                    <div class="staff-title">Associate Professor Extraordinary</div>
+                    <div class="staff-research">Model-driven engineering, Digital Twins, Algorithm + model variability</div>
+                    <div class="staff-contact">
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Office:</span>
+                            <span>Remote</span>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Phone:</span>
+                            <span>+27 21 808 4232</span>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Website:</span>
+                            <a href="https://www.tue.nl/en/research/researchers/loek-cleophas" target="_blank">Profile</a>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="staff-card">
-                <div class="staff-name">Moeketsi Raselimo</div>
-                <div class="staff-title">Lecturer Extraordinary</div>
-                <div class="staff-research">Programming Languages, Software Testing, Fuzzing</div>
-                <div class="staff-contact">
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Office:</span>
-                        <span>Remote</span>
-                    </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Phone:</span>
-                        <span>+27 21 808 4232</span>
-                    </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Website:</span>
-                        <a href="https://de.linkedin.com/in/moeketsi-raselimo" target="_blank">LinkedIn</a>
+            <div class="staff-card" id="mcelory-hoffmann">
+                <img loading="lazy" src="/images/staff/mcelory.jpg" alt="McElory Hoffmann" class="staff-photo">
+                <div class="staff-info">
+                    <div class="staff-name">McElory Hoffmann</div>
+                    <div class="staff-title">Senior Lecturer Extraordinary</div>
+                    <div class="staff-research">Computer vision, Machine learning, Smart cameras</div>
+                    <div class="staff-contact">
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Email:</span>
+                            <a href="mailto:mcelory@praelexis.co.za">mcelory@praelexis.co.za</a>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="staff-card">
-                <div class="staff-name">Francesco Petruccione</div>
-                <div class="staff-title">Visiting Academic</div>
-                <div class="staff-research">Theoretical and Computational Sciences, Physics-informed computing</div>
-                <div class="staff-contact">
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Office:</span>
-                        <span>MIV 1003</span>
-                    </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Email:</span>
-                        <a href="mailto:petruccione@sun.ac.za">petruccione@sun.ac.za</a>
-                    </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Phone:</span>
-                        <span>+27 21 808 4562</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="staff-card">
-                <div class="staff-name">Willem Visser</div>
-                <div class="staff-title">Part-time Professor</div>
-                <div class="staff-research">Software engineering, Testing, Symbolic execution, Model checking</div>
-                <div class="staff-contact">
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Office:</span>
-                        <span>A517</span>
-                    </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Email:</span>
-                        <a href="mailto:visserw@sun.ac.za">visserw@sun.ac.za</a>
-                    </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Phone:</span>
-                        <span>+27 21 808 4232</span>
+            <div class="staff-card" id="maria-keet">
+                <img loading="lazy" src="/images/staff/mkeet.png" alt="Maria Keet" class="staff-photo">
+                <div class="staff-info">
+                    <div class="staff-name">Maria Keet</div>
+                    <div class="staff-title">Professor Extraordinary</div>
+                    <div class="staff-research">Ontology, Semantic Web, Conceptual Modeling, Knowledge Representation and reasoning</div>
+                    <div class="staff-contact">
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Office:</span>
+                            <span>Remote</span>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Phone:</span>
+                            <span>+27 21 808 4232</span>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Website:</span>
+                            <a href="http://www.meteck.org/" target="_blank">Profile</a>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="staff-card">
-                <div class="staff-name">Wolf-Tilo Balke</div>
-                <div class="staff-title">Visiting Academic</div>
-                <div class="staff-research">Query Processing, User Preferences and Personalization, Peer-to-Peer Networks</div>
-                <div class="staff-contact">
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Email:</span>
-                        <a href="mailto:balke@ifis.cs.tu-bs.de">balke@ifis.cs.tu-bs.de</a>
-                    </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Phone:</span>
-                        <span>+27 21 808 4232</span>
-                    </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Website:</span>
-                        <a href="http://www.ifis.cs.tu-bs.de/staff/balke" target="_blank">Profile</a>
+            <div class="staff-card" id="laurette-pretorius">
+                <img loading="lazy" src="/images/staff/lpretorius.jpg" alt="Laurette Pretorius" class="staff-photo">
+                <div class="staff-info">
+                    <div class="staff-name">Laurette Pretorius</div>
+                    <div class="staff-title">Associate Professor Extraordinary</div>
+                    <div class="staff-research">Multilingual NLP, Semantic computing, Ontology development, Machine translation, Language generation</div>
+                    <div class="staff-contact">
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Phone:</span>
+                            <span>+27 21 808 4232</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="staff-card">
-                <div class="staff-name">Fabian Yamaguchi</div>
-                <div class="staff-title">Professor Extraordinary</div>
-                <div class="staff-research">Computer security, Program analysis, Machine learning</div>
-                <div class="staff-contact">
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Email:</span>
-                        <a href="mailto:fabs@shiftleft.io">fabs@shiftleft.io</a>
+            <div class="staff-card" id="moeketsi-raselimo">
+                <img loading="lazy" src="/images/staff/mraselimo.jpg" alt="Moeketsi Raselimo" class="staff-photo">
+                <div class="staff-info">
+                    <div class="staff-name">Moeketsi Raselimo</div>
+                    <div class="staff-title">Lecturer Extraordinary</div>
+                    <div class="staff-research">Programming Languages, Software Testing, Fuzzing</div>
+                    <div class="staff-contact">
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Office:</span>
+                            <span>Remote</span>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Phone:</span>
+                            <span>+27 21 808 4232</span>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Website:</span>
+                            <a href="https://de.linkedin.com/in/moeketsi-raselimo" target="_blank">LinkedIn</a>
+                        </div>
                     </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Website:</span>
-                        <a href="https://fabs.codeminers.org/" target="_blank">Profile</a>
+                </div>
+            </div>
+
+            <div class="staff-card" id="francesco-petruccione">
+                <img loading="lazy" src="/images/staff/petruccione.jpg" alt="Francesco Petruccione" class="staff-photo">
+                <div class="staff-info">
+                    <div class="staff-name">Francesco Petruccione</div>
+                    <div class="staff-title">Visiting Academic</div>
+                    <div class="staff-research">Theoretical and Computational Sciences, Physics-informed computing</div>
+                    <div class="staff-contact">
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Office:</span>
+                            <span>MIV 1003</span>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Email:</span>
+                            <a href="mailto:petruccione@sun.ac.za">petruccione@sun.ac.za</a>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Phone:</span>
+                            <span>+27 21 808 4562</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="staff-card" id="willem-visser">
+                <img loading="lazy" src="/images/staff/visserw.jpg" alt="Willem Visser" class="staff-photo">
+                <div class="staff-info">
+                    <div class="staff-name">Willem Visser</div>
+                    <div class="staff-title">Part-time Professor</div>
+                    <div class="staff-research">Software engineering, Testing, Symbolic execution, Model checking</div>
+                    <div class="staff-contact">
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Office:</span>
+                            <span>A517</span>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Email:</span>
+                            <a href="mailto:visserw@sun.ac.za">visserw@sun.ac.za</a>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Phone:</span>
+                            <span>+27 21 808 4232</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="staff-card" id="wolf-tilo-balke">
+                <img loading="lazy" src="/images/staff/tbalke.jpg" alt="Wolf-Tilo Balke" class="staff-photo">
+                <div class="staff-info">
+                    <div class="staff-name">Wolf-Tilo Balke</div>
+                    <div class="staff-title">Visiting Academic</div>
+                    <div class="staff-research">Query Processing, User Preferences and Personalization, Peer-to-Peer Networks</div>
+                    <div class="staff-contact">
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Email:</span>
+                            <a href="mailto:balke@ifis.cs.tu-bs.de">balke@ifis.cs.tu-bs.de</a>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Phone:</span>
+                            <span>+27 21 808 4232</span>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Website:</span>
+                            <a href="http://www.ifis.cs.tu-bs.de/staff/balke" target="_blank">Profile</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="staff-card" id="fabian-yamaguchi">
+                <img loading="lazy" src="/images/staff/fabian3.jpg" alt="Fabian Yamaguchi" class="staff-photo">
+                <div class="staff-info">
+                    <div class="staff-name">Fabian Yamaguchi</div>
+                    <div class="staff-title">Professor Extraordinary</div>
+                    <div class="staff-research">Computer security, Program analysis, Machine learning</div>
+                    <div class="staff-contact">
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Email:</span>
+                            <a href="mailto:fabs@shiftleft.io">fabs@shiftleft.io</a>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Website:</span>
+                            <a href="https://fabs.codeminers.org/" target="_blank">Profile</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -672,47 +692,56 @@
 
         <h2 style="color: var(--primary); margin-top: 40px; margin-bottom: 20px;">Administrative Staff</h2>
         <div class="staff-list">
-            <div class="staff-card">
-                <div class="staff-name">Gaynor Fortuin</div>
-                <div class="staff-title">Administrative Officer</div>
-                <div class="staff-contact">
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Office:</span>
-                        <span>A514</span>
-                    </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Email:</span>
-                        <a href="mailto:gfortuin@cs.sun.ac.za">gfortuin@cs.sun.ac.za</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="staff-card">
-                <div class="staff-name">Emile Dreyer</div>
-                <div class="staff-title">Administrative Assistant</div>
-                <div class="staff-contact">
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Office:</span>
-                        <span>A507</span>
-                    </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Email:</span>
-                        <a href="mailto:edreyer@sun.ac.za">edreyer@sun.ac.za</a>
+            <div class="staff-card" id="gaynor-fortuin">
+                <img loading="lazy" src="/images/staff/gfortuin.jpg" alt="Gaynor Fortuin" class="staff-photo">
+                <div class="staff-info">
+                    <div class="staff-name">Gaynor Fortuin</div>
+                    <div class="staff-title">Administrative Officer</div>
+                    <div class="staff-contact">
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Office:</span>
+                            <span>A514</span>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Email:</span>
+                            <a href="mailto:gfortuin@cs.sun.ac.za">gfortuin@cs.sun.ac.za</a>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="staff-card">
-                <div class="staff-name">Derrick Stephanus</div>
-                <div class="staff-title">Administrative Assistant</div>
-                <div class="staff-contact">
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Office:</span>
-                        <span>A507</span>
+            <div class="staff-card" id="emile-dreyer">
+                <img loading="lazy" src="/images/staff/placeholder.jpg" alt="Emile Dreyer" class="staff-photo">
+                <div class="staff-info">
+                    <div class="staff-name">Emile Dreyer</div>
+                    <div class="staff-title">Administrative Assistant</div>
+                    <div class="staff-contact">
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Office:</span>
+                            <span>A507</span>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Email:</span>
+                            <a href="mailto:edreyer@sun.ac.za">edreyer@sun.ac.za</a>
+                        </div>
                     </div>
-                    <div class="staff-contact-item">
-                        <span class="staff-contact-label">Email:</span>
-                        <a href="mailto:djstep@sun.ac.za">djstep@sun.ac.za</a>
+                </div>
+            </div>
+
+            <div class="staff-card" id="derrick-stephanus">
+                <img loading="lazy" src="/images/staff/djstep.jpg" alt="Derrick Stephanus" class="staff-photo">
+                <div class="staff-info">
+                    <div class="staff-name">Derrick Stephanus</div>
+                    <div class="staff-title">Administrative Assistant</div>
+                    <div class="staff-contact">
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Office:</span>
+                            <span>A507</span>
+                        </div>
+                        <div class="staff-contact-item">
+                            <span class="staff-contact-label">Email:</span>
+                            <a href="mailto:djstep@sun.ac.za">djstep@sun.ac.za</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -722,5 +751,40 @@
     <footer>
         <p>&copy; 2026 Computer Science Division, Stellenbosch University</p>
     </footer>
+
+    <script>
+        function searchStaff() {
+            const input = document.getElementById('staffSearch');
+            const filter = input.value.toLowerCase();
+            const staffCards = document.querySelectorAll('.staff-card');
+            let visibleCount = 0;
+            
+            staffCards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                if (text.includes(filter)) {
+                    card.style.display = '';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // Show "no results" message if needed
+            let noResultsMsg = document.getElementById('noResultsMsg');
+            if (visibleCount === 0 && filter.length > 0) {
+                if (!noResultsMsg) {
+                    noResultsMsg = document.createElement('div');
+                    noResultsMsg.id = 'noResultsMsg';
+                    noResultsMsg.className = 'no-results';
+                    noResultsMsg.textContent = 'No staff members found matching your search.';
+                    const staffList = document.querySelector('.staff-list:last-of-type');
+                    if (staffList) staffList.parentNode.insertBefore(noResultsMsg, staffList.nextSibling);
+                }
+                noResultsMsg.style.display = 'block';
+            } else if (noResultsMsg) {
+                noResultsMsg.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
