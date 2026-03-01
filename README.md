@@ -23,13 +23,13 @@ This is a static HTML/CSS/JS website covering all 10 required content areas:
 
 ```bash
 # Start a local server (Python 3)
-python3 -m http.server 8000 --directory public
+python3 -m http.server 8000 --directory docs
 # Then open http://localhost:8000
 ```
 
 > Note: because pages use `<base href="/macha/">`, you may need to browse to
 > `http://localhost:8000/` (root) and navigate from there. Alternatively use a
-> tool like `npx serve public` which handles this transparently.
+> tool like `npx serve docs` which handles this transparently.
 
 ## Deployment
 
@@ -43,13 +43,13 @@ git commit -m "your message"
 git push origin master
 ```
 
-GitHub Pages settings: repo → Settings → Pages → Branch: `master`, Folder: `/public`.
+GitHub Pages settings: repo → Settings → Pages → Branch: `master`, Folder: `/docs`.
 
 ## Project Structure
 
 ```
 macha/
-├── public/                  # All site files (served directly)
+├── docs/                    # All site files (served directly)
 │   ├── index.html           # Home page
 │   ├── programmes.html      # Academic programmes
 │   ├── courses.html         # Course catalogue
