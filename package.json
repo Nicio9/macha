@@ -1,13 +1,12 @@
 {
   "name": "cs-department-website",
   "version": "1.0.0",
-  "description": "CS Department Website Redesign - Hackathon",
+  "description": "CS Department Website Redesign - Div & Conquer Hackathon 2026",
   "scripts": {
     "dev": "python3 -m http.server 8000 --directory public",
-    "build": "node build.js",
     "start": "python3 -m http.server 8000 --directory public"
   },
-  "keywords": ["drupal", "hackathon", "stellenbosch"],
+  "keywords": ["hackathon", "stellenbosch", "static-site"],
   "author": "",
   "license": "ISC"
 }
