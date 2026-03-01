@@ -125,7 +125,10 @@ function triggerThemeToggleShine(switchThemeFn) {
         switchThemeFn();
     });
     transition.finished.then(function() {
-        document.documentElement.classList.remove('theme-transitioning');
+        // Small delay so the class outlasts any post-transition repaint
+        setTimeout(function() {
+            document.documentElement.classList.remove('theme-transitioning');
+        }, 50);
     });
 }
 

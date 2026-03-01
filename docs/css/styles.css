@@ -26,22 +26,11 @@ img, video {
     to   { clip-path: inset(0 0% 0 0); }
 }
 
-/* Suppress all entry animations during theme transitions so they don't replay */
-:root:active-view-transition body,
-:root:active-view-transition .hero,
-:root:active-view-transition .hero h1,
-:root:active-view-transition .hero p,
-:root:active-view-transition .container > h2,
-:root:active-view-transition .container > h3,
-:root:active-view-transition .grid > .card,
-.theme-transitioning body,
-.theme-transitioning .hero,
-.theme-transitioning .hero h1,
-.theme-transitioning .hero p,
-.theme-transitioning .container > h2,
-.theme-transitioning .container > h3,
-.theme-transitioning .grid > .card {
+/* Suppress ALL entry animations during theme transitions so they don't replay */
+:root:active-view-transition *,
+.theme-transitioning * {
     animation: none !important;
+    transition: none !important;
 }
 
 :root {
