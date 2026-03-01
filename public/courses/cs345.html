@@ -2,18 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <base href="/macha/">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CS345 - Computability and Automata Theory — Computer Science Division, Stellenbosch University.">
     <title>CS345 - Computability and Automata Theory</title>
-    <link rel="stylesheet" href="/css/styles.css">
-    <script src="/js/shared.js"></script>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/shared.js"></script>
 </head>
 <body>
 
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="/">Home</a> / 
-        <a href="/courses.html">Courses</a> / 
-        <span>CS345 - Computability and Automata Theory</span>
-    </nav>
+    <nav class="breadcrumb" aria-label="Breadcrumb"><span class="breadcrumb-group"><a href="./">Home</a><span class="breadcrumb-sep">›</span></span><span class="breadcrumb-group"><a href="courses.html">Courses</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">CS345 - Computability and Automata Theory</span></span></nav>
 
     <div class="course-header">
         <div class="official-link">
@@ -26,6 +25,14 @@
                 2nd Semester
             </div>
             <div class="meta-item">
+                <strong>Credits:</strong>
+                16
+            </div>
+            <div class="meta-item">
+                <strong>Year:</strong>
+                3rd Year
+            </div>
+            <div class="meta-item">
                 <strong>Prerequisites:</strong>
                 CS214
             </div>
@@ -36,21 +43,50 @@
         <div class="course-content">
             <div class="course-section">
                 <h2>Course Description</h2>
-                <p>This course covers advanced topics in computer science. For detailed information, please visit the main <a href="/courses.html">course catalogue</a>.</p>
+                <p>This course introduces the mathematical foundations of computer science through the study of formal languages, automata, and computability. Students explore the theoretical limits of what computers can and cannot compute, and the relationship between different classes of computational problems.</p>
+                <p>The course is central to the CS curriculum at Stellenbosch University, where the department has a distinguished research tradition in automata theory. Students will develop rigorous mathematical proof skills alongside deep insight into the nature of computation.</p>
+            </div>
+
+            <div class="course-section">
+                <h2>Topics Covered</h2>
+                <ul>
+                    <li>Finite automata: deterministic (DFA) and non-deterministic (NFA)</li>
+                    <li>Regular languages and regular expressions</li>
+                    <li>Closure properties and the Pumping Lemma for regular languages</li>
+                    <li>Pushdown automata (PDA)</li>
+                    <li>Context-free grammars (CFG) and context-free languages</li>
+                    <li>The Pumping Lemma for context-free languages</li>
+                    <li>Turing machines: definition, variants, and Church–Turing thesis</li>
+                    <li>Decidability: decidable and undecidable problems</li>
+                    <li>The Halting Problem and reductions</li>
+                    <li>Introduction to computational complexity: P, NP, NP-completeness</li>
+                </ul>
             </div>
 
             <div class="course-section">
                 <h2>Learning Outcomes</h2>
                 <ul>
-                    <li>Develop advanced technical skills in the course subject area</li>
-                    <li>Apply theoretical concepts to practical problems</li>
-                    <li>Participate in hands-on projects and assignments</li>
+                    <li>Construct and reason about finite automata and regular languages</li>
+                    <li>Design context-free grammars and pushdown automata</li>
+                    <li>Apply the Pumping Lemmas to prove languages are not regular or not context-free</li>
+                    <li>Describe the Turing machine model of computation and its variants</li>
+                    <li>Demonstrate the undecidability of the Halting Problem using diagonalisation and reductions</li>
+                    <li>Distinguish between the complexity classes P and NP and identify NP-complete problems</li>
                 </ul>
             </div>
 
             <div class="course-section">
                 <h2>Assessment</h2>
-                <p>Assessment is based on practical assignments, examinations, and projects that demonstrate mastery of the course concepts.</p>
+                <ul>
+                    <li>Problem sets and assignments (30%)</li>
+                    <li>Written tests (30%)</li>
+                    <li>Final examination (40%)</li>
+                </ul>
+            </div>
+
+            <div class="course-section">
+                <h2>Recommended Textbook</h2>
+                <p>Sipser, M. (2012). <em>Introduction to the Theory of Computation</em> (3rd ed.). Cengage Learning.</p>
             </div>
         </div>
     </div>

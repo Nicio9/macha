@@ -2,18 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <base href="/macha/">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CS244 - Computer Architecture — Computer Science Division, Stellenbosch University.">
     <title>CS244 - Computer Architecture</title>
-    <link rel="stylesheet" href="/css/styles.css">
-    <script src="/js/shared.js"></script>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/shared.js"></script>
 </head>
 <body>
 
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="/">Home</a> / 
-        <a href="/courses.html">Courses</a> / 
-        <span>CS244 - Computer Architecture</span>
-    </nav>
+    <nav class="breadcrumb" aria-label="Breadcrumb"><span class="breadcrumb-group"><a href="./">Home</a><span class="breadcrumb-sep">›</span></span><span class="breadcrumb-group"><a href="courses.html">Courses</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">CS244 - Computer Architecture</span></span></nav>
 
     <div class="course-header">
         <div class="official-link">
@@ -26,6 +25,14 @@
                 2nd Semester
             </div>
             <div class="meta-item">
+                <strong>Credits:</strong>
+                16
+            </div>
+            <div class="meta-item">
+                <strong>Year:</strong>
+                2nd Year
+            </div>
+            <div class="meta-item">
                 <strong>Prerequisites:</strong>
                 CS144
             </div>
@@ -36,21 +43,50 @@
         <div class="course-content">
             <div class="course-section">
                 <h2>Course Description</h2>
-                <p>This course covers advanced topics in computer science. For detailed information, please visit the main <a href="/courses.html">course catalogue</a>.</p>
+                <p>This course provides a thorough understanding of computer architecture from the logic level up to the operating system interface. Students explore how hardware design decisions affect software performance and how programmers can write code that exploits modern processor features.</p>
+                <p>The course covers digital logic design, instruction set architectures, processor microarchitecture (pipelining, out-of-order execution, branch prediction), memory hierarchy, caching, and the basics of parallel computing. Students will work with a real instruction set architecture and develop an appreciation for the interaction between hardware and software.</p>
+            </div>
+
+            <div class="course-section">
+                <h2>Topics Covered</h2>
+                <ul>
+                    <li>Boolean algebra and digital logic: gates, combinational and sequential circuits</li>
+                    <li>Number representations: integers, floating-point (IEEE 754)</li>
+                    <li>Instruction set architecture (ISA) design principles</li>
+                    <li>Assembly language programming</li>
+                    <li>CPU datapath and control unit design</li>
+                    <li>Pipelining: hazards, forwarding, branch prediction</li>
+                    <li>Out-of-order execution and superscalar processors</li>
+                    <li>Memory hierarchy: SRAM, DRAM, caches, virtual memory</li>
+                    <li>I/O systems and interrupt handling</li>
+                    <li>Introduction to parallel architectures: multi-core, SIMD</li>
+                </ul>
             </div>
 
             <div class="course-section">
                 <h2>Learning Outcomes</h2>
                 <ul>
-                    <li>Develop advanced technical skills in the course subject area</li>
-                    <li>Apply theoretical concepts to practical problems</li>
-                    <li>Participate in hands-on projects and assignments</li>
+                    <li>Describe and design basic digital circuits using Boolean algebra</li>
+                    <li>Explain the key components of a modern CPU and their interactions</li>
+                    <li>Read and write simple assembly language programs</li>
+                    <li>Analyse the effect of pipelining and caching on program performance</li>
+                    <li>Understand how the memory hierarchy affects data access patterns</li>
+                    <li>Describe the basics of parallel processor design</li>
                 </ul>
             </div>
 
             <div class="course-section">
                 <h2>Assessment</h2>
-                <p>Assessment is based on practical assignments, examinations, and projects that demonstrate mastery of the course concepts.</p>
+                <ul>
+                    <li>Practical labs and assignments (35%)</li>
+                    <li>Written tests (25%)</li>
+                    <li>Final examination (40%)</li>
+                </ul>
+            </div>
+
+            <div class="course-section">
+                <h2>Recommended Textbook</h2>
+                <p>Patterson, D. A., &amp; Hennessy, J. L. (2020). <em>Computer Organization and Design: RISC-V Edition</em> (2nd ed.). Morgan Kaufmann.</p>
             </div>
         </div>
     </div>
