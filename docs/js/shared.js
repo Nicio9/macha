@@ -179,6 +179,14 @@ document.addEventListener('DOMContentLoaded', function() {
     initStaffSearch();
     initNewsFilter();
     initFaqAccordion();
+
+    // Add .loaded after first paint so entry animations fire once on load only,
+    // never during startViewTransition repaints.
+    requestAnimationFrame(function() {
+        requestAnimationFrame(function() {
+            document.body.classList.add('loaded');
+        });
+    });
 });
 
 // Search and Filter Functions

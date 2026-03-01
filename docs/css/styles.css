@@ -26,12 +26,7 @@ img, video {
     to   { clip-path: inset(0 0% 0 0); }
 }
 
-/* Suppress ALL entry animations during theme transitions so they don't replay */
-:root:active-view-transition *,
-.theme-transitioning * {
-    animation: none !important;
-    transition: none !important;
-}
+/* (no suppression needed — entry animations are gated behind body.loaded) */
 
 :root {
     /* Colors */
@@ -337,7 +332,6 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    animation: fadeIn 0.5s ease-in;
     transition: background-color 0.1s ease, color 0.1s ease;
     overflow-x: hidden;
 }
@@ -510,8 +504,11 @@ html {
     padding: var(--space-3xl) var(--space-lg);
     background: var(--bg-light);
     margin-bottom: var(--space-md);
-    animation: heroSlideUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
     transition: background-color 0.1s ease;
+}
+
+body.loaded .hero {
+    animation: heroSlideUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 @keyframes heroSlideUp {
@@ -525,11 +522,11 @@ html {
     }
 }
 
-.hero h1 {
+body.loaded .hero h1 {
     animation: textFadeInScale 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both;
 }
 
-.hero p {
+body.loaded .hero p {
     animation: textFadeInScale 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s both;
 }
 
@@ -631,8 +628,8 @@ html {
 }
 
 /* ========== SECTION & CONTENT ANIMATIONS ========== */
-.container > h2,
-.container > h3 {
+body.loaded .container > h2,
+body.loaded .container > h3 {
     animation: slideInLeft 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
@@ -647,7 +644,7 @@ html {
     }
 }
 
-.grid > .card {
+body.loaded .grid > .card {
     animation: cardSlideUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
@@ -756,7 +753,7 @@ input[type="search"]:not(.search-input):focus {
         transform: translateY(-3px) scale(1.01);
     }
     
-    .hero h1 {
+    body.loaded .hero h1 {
         animation: textFadeInScale 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both;
     }
     
