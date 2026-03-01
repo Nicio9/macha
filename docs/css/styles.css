@@ -1301,14 +1301,14 @@ footer p {
 /* ========== RESPONSIVE CAROUSEL ========== */
 @media (max-width: 768px) {
     .news-carousel-section {
-        padding: var(--space-2xl) var(--space-lg);
+        padding: var(--space-lg) var(--space-sm);
         border-radius: var(--card-radius);
         margin-left: 0;
         margin-right: 0;
     }
 
     .news-carousel-item {
-        flex: 0 0 min(320px, calc(100vw - 60px));
+        flex: 0 0 min(300px, calc(100vw - 100px));
     }
 
     .carousel-btn {
