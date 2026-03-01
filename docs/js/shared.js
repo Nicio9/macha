@@ -110,25 +110,12 @@ function initDarkModeBtn() {
 }
 
 function triggerThemeToggleShine(switchThemeFn) {
-    // Add class to suppress entry animations during the theme transition
-    document.documentElement.classList.add('theme-transitioning');
-
     if (!document.startViewTransition) {
         switchThemeFn();
-        // Remove class after a short delay (same duration as CSS transition fallback)
-        setTimeout(function() {
-            document.documentElement.classList.remove('theme-transitioning');
-        }, 150);
         return;
     }
     var transition = document.startViewTransition(function() {
         switchThemeFn();
-    });
-    transition.finished.then(function() {
-        // Small delay so the class outlasts any post-transition repaint
-        setTimeout(function() {
-            document.documentElement.classList.remove('theme-transitioning');
-        }, 50);
     });
 }
 
@@ -180,11 +167,22 @@ document.addEventListener('DOMContentLoaded', function() {
     initNewsFilter();
     initFaqAccordion();
 
-    // Add .loaded after first paint so entry animations fire once on load only,
-    // never during startViewTransition repaints.
+    // Fire entry animations once, then lock them off so theme transitions
+    // never replay them.
     requestAnimationFrame(function() {
         requestAnimationFrame(function() {
             document.body.classList.add('loaded');
+            // After animations complete, override them to none so
+            // startViewTransition repaints cannot re-trigger them.
+            var maxDuration = 1200; // ms — longest animation + delay
+            setTimeout(function() {
+                var animated = document.querySelectorAll(
+                    '.hero, .hero h1, .hero p, .container > h2, .container > h3, .grid > .card'
+                );
+                animated.forEach(function(el) {
+                    el.style.animation = 'none';
+                });
+            }, maxDuration);
         });
     });
 });
