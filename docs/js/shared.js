@@ -24,13 +24,14 @@ function renderHeader() {
     var themeBtn = isDark ? '☀️' : '🌙';
 
     // Academics dropdown
-    var academicsPages = ['programmes', 'courses', 'research'];
+    var academicsPages = ['programmes', 'courses', 'research', 'resources'];
     var academicsActive = academicsPages.indexOf(currentPage) !== -1;
     var academicsDropdown =
         '<ul class="dropdown">' +
             '<li><a href="programmes.html"' + (currentPage === 'programmes' ? ' class="active"' : '') + '>Programmes</a></li>' +
             '<li><a href="courses.html"'    + (currentPage === 'courses'    ? ' class="active"' : '') + '>Courses</a></li>' +
             '<li><a href="research.html"'   + (currentPage === 'research'   ? ' class="active"' : '') + '>Research</a></li>' +
+            '<li><a href="resources.html"'  + (currentPage === 'resources'  ? ' class="active"' : '') + '>Student Resources</a></li>' +
         '</ul>';
     var academicsBtn =
         '<li class="has-dropdown">' +
