@@ -19,31 +19,9 @@ This is a static HTML/CSS/JS website covering all 10 required content areas:
 9. Student resources — FAQs, forms, useful links
 10. Contact information, location, and directions
 
-## Local Development
-
-```bash
-# Start a local server (Python 3)
-python3 -m http.server 8000 --directory docs
-# Then open http://localhost:8000
-```
-
-> Note: because pages use `<base href="/macha/">`, you may need to browse to
-> `http://localhost:8000/` (root) and navigate from there. Alternatively use a
-> tool like `npx serve docs` which handles this transparently.
-
 ## Deployment
 
 The site is deployed via **GitHub Pages** from the `master` branch, `/public` folder.
-
-To redeploy after changes:
-
-```bash
-git add .
-git commit -m "your message"
-git push origin master
-```
-
-GitHub Pages settings: repo → Settings → Pages → Branch: `master`, Folder: `/docs`.
 
 ## Project Structure
 
@@ -72,8 +50,8 @@ macha/
 
 ## Features
 
-- **Stellenbosch branding**: official maroon (#61223B), Raleway typography
-- **Dark mode**: default dark theme with toggle; smooth view-transition animation
+- **Stellenbosch branding**: official maroon (#61223B) and brilliant gold (#caa258), Raleway typography
+- **Dark mode**: dark theme with toggle; smooth view-transition animation
 - **Responsive**: mobile-first CSS Grid & Flexbox; hamburger nav on small screens
 - **Click-driven dropdowns**: Academics and Latest nav menus
 - **Events calendar**: filterable by event type
